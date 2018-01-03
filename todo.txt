@@ -1,0 +1,16 @@
+- Use Alpha Start column for start page
+- Add javascript on start page for image scroll
+- Remove kimi page from svn
+
+- create csv automated from google
+- make an index.html page by redirect to ger
+
+Closed
+- Add company type (studio, publisher, ...)
+- Image creation only ones
+- Use resource copy from taschenfahrrad
+- Use one real image 
+- Make a report from Projects.csv whenever Generation is started. HTML
+- Add artist role (director, author)
+- Adopt project overview pages as proposed
+- Adopt project page as proposed by kimi

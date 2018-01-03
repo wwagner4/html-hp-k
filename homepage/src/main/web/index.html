@@ -1,0 +1,22 @@
+<html>
+<head>
+<script type="text/javascript">
+	var language = navigator.language || navigator.browserLanguage;
+    console.log("language: '" + language + "'");
+    if (language && language.length >= 2) {
+    	var lang = language.substr(0, 2).toUpperCase()
+        console.log("lang: '" + lang + "'");
+    	if (lang == "EN") {
+            console.log("---> EN");
+            window.location.href = "index-eng.html";
+    	} else {
+            console.log("---> DE");
+            window.location.href = "index-ger.html";
+    	}
+    } else {
+        console.log("---> DE");
+        window.location.href = "index-ger.html";
+    }
+</script>
+</head>
+</html>
