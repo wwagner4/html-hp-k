@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"> 
+<style>
+.browser {  display: block;}
+.mobile_portrait {  display: none;}
+.mobile_landscape {  display: none;}
+
+body {
+    font-family: sans-serif;
+    background: #ffcc99;
+}
+p {
+    font-size: 30px;
+}
+</style>
+<style media="(max-width: 800px) and (orientation: portrait)">
+.browser {  display: none;}
+.mobile_portrait {  display: block;}
+.mobile_landscape {  display: none;}
+
+body {
+    background: #ffcc66;
+}
+p {
+    font-size: 20px;
+}
+</style>
+<style media="(max-width: 800px) and (orientation: landscape)">
+.browser {  display: none;}
+.mobile_portrait {  display: none;}
+.mobile_landscape {  display: block;}
+
+body {
+    background: #ffcc33;
+}
+p {
+    font-size: 20px;
+}
+</style>
+
+</head>
+<body>
+<div class="browser">
+<p>BROWSER</p>
+<p>
+I am in the browser now. I am in the browser now. I am in the browser now. I am in the browser now. I am in the browser now. I am in the browser now. 
+I am in the browser now. I am in the browser now. I am in the browser now. I am in the browser now. I am in the browser now. I am in the browser now. 
+I am in the browser now. I am in the browser now. I am in the browser now. I am in the browser now. I am in the browser now. I am in the browser now. 
+</p>
+</div>
+<div class="mobile_portrait">
+<p>MOBILE PORTRAIT</p>
+<img src="and.png"></img>
+<p>
+I am mobile portrait now. I am mobile portrait now. I am mobile portrait now. I am mobile portrait now. I am mobile portrait now. I am mobile portrait now. 
+I am mobile portrait now. I am mobile portrait now. I am mobile portrait now. I am mobile portrait now. I am mobile portrait now. I am mobile portrait now. 
+I am mobile portrait now. I am mobile portrait now. I am mobile portrait now. I am mobile portrait now. I am mobile portrait now. I am mobile portrait now. 
+</p>
+</div>
+<div class="mobile_landscape">
+<p>MOBILE LANDSCAPE</p>
+<img src="andl.png"></img>
+<p>
+I am mobile landscape now. I am mobile landscape now. I am mobile landscape now. I am mobile landscape now. I am mobile landscape now. I am mobile landscape now. 
+I am mobile landscape now. I am mobile landscape now. I am mobile landscape now. I am mobile landscape now. I am mobile landscape now. I am mobile landscape now. 
+I am mobile landscape now. I am mobile landscape now. I am mobile landscape now. I am mobile landscape now. I am mobile landscape now. I am mobile landscape now. 
+</p>
+</div>
+</body>
+</html>

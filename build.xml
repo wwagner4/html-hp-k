@@ -2,44 +2,33 @@
 	
 	<property name="sbt">/opt/local/bin/sbt</property>
 
-	<target name="eclipse">
-		<exec executable="${sbt}" dir="homepage">
-			<arg line="-Dsbt.log.noformat=true eclipse" />
-		</exec>
-	</target>
-
 	<target name="test" depends="clean">
-		<exec executable="${sbt}" dir="homepage">
+		<exec executable="${sbt}" dir=".">
 			<arg line="-Dsbt.log.noformat=true clean test" />
 		</exec>
 	</target>
 
-	<target name="clean">
-		<delete dir="output" includes="**/*">
-		</delete>
-	</target>
 	<target name="deploy" depends="clean">
-		<exec executable="${sbt}" dir="homepage">
+		<exec executable="${sbt}" dir=".">
 			<arg line="-Dsbt.log.noformat=true 'runMain net.entelijan.kimi.BuildKimiHomepage'" />
 		</exec>
 		<sshexec host="entelijan.net"
 			failonerror="false"
 			username="root"
 			keyfile="${user.home}/.ssh/id_rsa"
-			verbose="true" 
+			verbose="true"
 			command="rm -rf /var/www/kimi1/*"/>
 		<scp verbose="true" todir="root@entelijan.net:/var/www/kimi1" keyfile="${user.home}/.ssh/id_rsa">
-			<fileset dir="output">
+			<fileset dir="${user.home}/work/work-html-hp-k/output">
 				<include name="**/*" />
 			</fileset>
 		</scp>	
 	</target>
-	<target name="clean-images">
-		<delete verbose="true">
-			<fileset dir="homepage/src/main/web/images">
-				<include name="*/*.png"/>
-				<exclude name="*/original"/>				
-			</fileset>
-		</delete>
-	</target>
+
+    <target name="clean">
+        <delete dir="${user.home}/work/work-html-hp-k/output">
+			<include name="**/*" />
+        </delete>
+    </target>
+
 </project>

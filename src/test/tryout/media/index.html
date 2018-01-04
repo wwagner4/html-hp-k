@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+p {
+    font-family: sans-serif;
+    font-size: 30px;
+    background: yellow;
+}
+
+.white {
+  background: white;
+  font-size: 20px;
+}
+.small {
+  display: none;
+}
+.wide {
+  display: block;
+}
+</style>
+
+<style media="(max-width: 400px)">
+p {
+    background: green;
+}
+.small {
+  display: block;
+}
+.wide {
+  display: none;
+}
+</style>
+
+</head>
+<body>
+<p>always<p>
+<p class="white wide">wide<p>
+<p class="white small">small<p>
+</body>
+</html>

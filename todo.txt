@@ -1,9 +1,15 @@
+- Adopt for handhelds
+-- Add devices: Browser, MobileLandscape, MobilePortrait
+-- Have a separate css and tag for every device. classes: Browser, MobileLandscape, MobilePortrait
+-- Add a Pagebuilder that can be subclassed for different devices.
+
+Do not understand any longer :(
 - Use Alpha Start column for start page
 - Add javascript on start page for image scroll
 - Remove kimi page from svn
-
 - create csv automated from google
 - make an index.html page by redirect to ger
+
 
 Closed
 - Add company type (studio, publisher, ...)
