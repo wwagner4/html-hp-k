@@ -7,11 +7,11 @@ object ImageTransformFiles {
   def runInOutDir(indir: File, outdir: File, maxWidth: Int, maxHeight: Int): Unit = {
 
     def runFile(file: File, h: Handler): Unit = {
-      if (!file.isDirectory()) h.handle(file.getPath)
+      if (!file.isDirectory) h.handle(file.getPath)
     }
 
     def runDir(indir: File, h: Handler): Unit = {
-      if (!indir.isDirectory()) throw new IllegalArgumentException("Input directory %s is not a directory" format indir)
+      if (!indir.isDirectory) throw new IllegalArgumentException("Input directory %s is not a directory" format indir)
       val files = indir.listFiles().toList
       files.foreach { f => runFile(f, h) }
     }
@@ -47,7 +47,7 @@ trait ToOtherFileHandler extends Handler {
 class DefaultHandler(outDirName: String) extends ToOtherFileHandler {
   import sys.process._
 
-  def convertToOutfile = Utils.toSeparateDirectory(_)(outDirName)
+  def convertToOutfile: String => String = Utils.toSeparateDirectory(_)(outDirName)
 
   def handleToOutFile(in: String, out: String): Unit = {
     if (in.endsWith("jpg")) {

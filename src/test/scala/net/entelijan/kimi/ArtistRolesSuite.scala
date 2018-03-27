@@ -17,10 +17,10 @@ class ArtistRolesSuite extends FunSuite {
       List(Artist(G_Feminin, AR_Author$, "Gerda Klein", "Klein Gerda"),
         Artist(G_Masculin, AR1_Artist, "Emil Tumpl", "Tumpl Emil"))),
     PTV("femB", " Gerda Klein ", "Klein Gerda",
-      List(Artist(G_Feminin, AR_Architect$, "Gerda Klein", "Klein Gerda"))))
+      List(Artist(G_Feminin, AR_Architect, "Gerda Klein", "Klein Gerda"))))
 
   ptvs.foreach { tv =>
-    test(s"""Parse ${tv}""") {
+    test(s"""Parse $tv""") {
       val trs = parse(tv.roles, tv.names, tv.namesRev)
       assert(trs === tv.should)
     }
@@ -60,7 +60,7 @@ class ArtistRolesSuite extends FunSuite {
       List("Author: B A")))
 
   ftvs.foreach { tv =>
-    test(s"""Format ${tv}""") {
+    test(s"""Format $tv""") {
       val trs = format(tv.artists, tv.lang)
       assert(trs === tv.should)
     }

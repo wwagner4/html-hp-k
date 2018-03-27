@@ -12,7 +12,7 @@ object ImageTransformFilesTaschenfahrrad extends App {
   val maxHeight = 600
 
   baseindir.listFiles().foreach { indir => 
-    if (indir.isDirectory()) {
+    if (indir.isDirectory) {
       val name = indir.getName
       val outdir = new File(baseoutdir, name)
       println("--- processing directory %s ---" format indir)

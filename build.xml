@@ -2,13 +2,13 @@
 	
 	<property name="sbt">/opt/local/bin/sbt</property>
 
-	<target name="test" depends="clean">
+	<target name="test">
 		<exec executable="${sbt}" dir=".">
 			<arg line="-Dsbt.log.noformat=true clean test" />
 		</exec>
 	</target>
 
-	<target name="deploy" depends="clean">
+	<target name="deploy">
 		<exec executable="${sbt}" dir=".">
 			<arg line="-Dsbt.log.noformat=true 'runMain net.entelijan.kimi.BuildKimiHomepage'" />
 		</exec>
@@ -24,11 +24,5 @@
 			</fileset>
 		</scp>	
 	</target>
-
-    <target name="clean">
-        <delete dir="${user.home}/work/work-html-hp-k/output">
-			<include name="**/*" />
-        </delete>
-    </target>
 
 </project>

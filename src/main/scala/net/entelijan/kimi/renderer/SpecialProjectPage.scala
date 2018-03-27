@@ -1,12 +1,11 @@
-package net.entelijan.kimi
+package net.entelijan.kimi.renderer
 
 import net.entelijan.kimi.Model._
 
 object SpecialProjectPage {
 
   private val pages: Map[String, (Lang) => String] = Map("jirkuff" -> jirkuff)
-  
-  
+
   def isSpecialPage(id: String): Boolean = pages.contains(id)
   
   def specialPage(id: String, lang: Lang): String = pages(id)(lang)

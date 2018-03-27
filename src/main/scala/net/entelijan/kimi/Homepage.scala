@@ -2,18 +2,31 @@ package net.entelijan.kimi
 
 import java.io._
 
+import net.entelijan.kimi.PagesConf._
+import net.entelijan.kimi.renderer.MobileRenderer01
+
 case object Homepage {
 
   import HtmlTemplateEngine._
   import Model._
 
-  val outDir = KimiUtil.outputDir
+  private val outDir = KimiUtil.outputDir
 
-  val languages = List(Ger, Eng)
+  private val languages = List(Ger, Eng)
 
-  val categories = List(Cat_A, Cat_D, Cat_M, Cat_L, Cat_S, Cat_U)
+  private val devices = List(DV_Browser, DV_MobilePortrait, DV_MobileLandscape)
 
-  val projects: CreationResult[List[Project]] = ProjectFromFile.projects
+  private val projects: CreationResult[List[Project]] = ProjectFromFile.projects
+
+  lazy val renderer: Renderer = new MobileRenderer01
+
+  private val startPage: Page = StartPage(projects.result)
+  private val prjAlphaPage: Page = PrjAlphaPage(projects.result)
+  private val prjCatPage: Page = PrjCatPage(projects.result)
+  private val prjAuthPage: Page = PrjAuthPage(projects.result)
+  private val bioContactPage: Page = BioContactPage()
+
+  val pages: List[Page] = List(startPage, bioContactPage, prjAlphaPage, prjCatPage, prjAuthPage)
 
   def build(): Unit = {
 
@@ -26,16 +39,16 @@ case object Homepage {
       }
       ReportFormatterTxt.format(rep)
     } else {
-      val buildReport = buildPages(PagesConf.pages)
+      val buildReport = buildPages(pages)
       ResCopy.copy(new File("src/main/web"), outDir, List("original", """\.DS.*"""))
 
       val allReports: List[Report] = List(validateHompageAlphaResult.report, projects.report, buildReport)
       val rep = new Report {
-        def heading =
+        def heading: Some[String] =
           if (containsErrorReports(allReports)) Some("ERROR creating Kimi Homepage")
           else Some("Success creating Kimi Homepage")
 
-        def body = allReports
+        def body: List[Report] = allReports
       }
       ReportFormatterTxt.format(rep)
     }
@@ -64,7 +77,7 @@ case object Homepage {
         ok = false
         infos ::= "'%s' is defined in more than one project for german. %s" format(a.alph, a.projectsIDsWithHpAlph.mkString(","))
       } else if (a.projectsIDsWithHpAlph.isEmpty) {
-        infos ::= "'%s' is not defined for german" format (a.alph)
+        infos ::= "'%s' is not defined for german" format a.alph
       }
     })
     eng.foreach(a => {
@@ -72,35 +85,38 @@ case object Homepage {
         ok = false
         infos ::= "'%s' is defined in more than one project for english. %s" format(a.alph, a.projectsIDsWithHpAlph.mkString(","))
       } else if (a.projectsIDsWithHpAlph.isEmpty) {
-        infos ::= "'%s' is not defined for english" format (a.alph)
+        infos ::= "'%s' is not defined for english" format a.alph
       }
     })
 
     new CreationResult[Boolean] {
-      def result = ok
+      def result: Boolean = ok
 
-      def report = new Report {
-        def heading = if (ok) Some("Homepage Alpha Validation OK") else Some("ERROR: Homepage Alpha Validation. More than one Project for a Character")
+      def report: Report = new Report {
+        def heading: Some[String] = if (ok) Some("Homepage Alpha Validation OK") else Some("ERROR: Homepage Alpha Validation. More than one Project for a Character")
 
-        def body = List(ReportLinesImpl(infos.reverse))
+        def body: List[ReportLinesImpl] = List(ReportLinesImpl(infos.reverse))
       }
     }
+
   }
 
   private def buildPages(pages: List[Page]): Report = {
     var buildReports = List.empty[ReportBody]
-    List(Ger, Eng).foreach(lang => {
+    languages.foreach { lang =>
       pages.foreach(p => buildPage(p, lang))
-      projects.result.foreach(p => {
-        buildReports ::= buildPage(projectToPage(p, pages, languages), lang)
-      })
-    })
+      projects.result.foreach { p =>
+        buildReports ::= buildPage(ProjectPage(p), lang)
+      }
+    }
     new Report {
-      def heading = Some("Built pages")
 
-      def body = buildReports.reverse
+      def heading: Option[String] = Some("Built pages")
+
+      def body: List[ReportBody] = buildReports.reverse
     }
   }
+
 
   private def buildPage(page: Page, lang: Lang): Report = {
 
@@ -112,12 +128,13 @@ case object Homepage {
     val fname = fileName(page, lang)
     val pw: PrintWriter = openFile(outDir, fname)
     try {
-      pw.println(page.htmlText.value(lang))
+      pw.println(renderer.rendPage(page, pages, lang, languages, devices))
     } finally {
       pw.close()
     }
     new Report {
       def heading = Some(s"Created output for page ${page.id} $outDir/$fname")
+
       def body = List.empty[ReportBody]
     }
   }
@@ -135,20 +152,20 @@ case object Homepage {
     def containsErrorBodies(bodies: List[ReportBody]): Boolean = {
       bodies match {
         case Nil => false
-        case (body: ReportLines) :: rest => body.lines.exists(s => s.contains("ERROR"))
-        case (report: Report) :: rest => {
+        case (body: ReportLines) :: _ => body.lines.exists(s => s.contains("ERROR"))
+        case (report: Report) :: rest =>
           if (containsErrorReport(report)) true
           else containsErrorBodies(rest)
-        }
+
       }
     }
 
     reports match {
       case Nil => false
-      case r :: rest => {
+      case r :: rest =>
         if (containsErrorReport(r)) true
         else containsErrorReports(rest)
-      }
+
     }
   }
 

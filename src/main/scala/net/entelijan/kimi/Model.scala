@@ -92,7 +92,7 @@ object Model {
     def order = 30
   }
 
-  case object AR_Architect$ extends ArtistRole {
+  case object AR_Architect extends ArtistRole {
     def masculineSingular = MultiLangString(ger = "Architekt:", eng = "Architect:")
 
     def femininSingular = MultiLangString(ger = "Architektin:", eng = "Architect:")
@@ -106,7 +106,7 @@ object Model {
     def order = 10
   }
 
-  case object AR_Undef$ extends ArtistRole {
+  case object AR_Undef extends ArtistRole {
     def masculineSingular = MultiLangString(ger = "", eng = "")
 
     def femininSingular = MultiLangString(ger = "", eng = "")
@@ -121,12 +121,12 @@ object Model {
   }
 
   case class Artist(gender: Gender, role: ArtistRole, name: String, nameReverse: String) {
-    override def equals(o: Any) = o match {
+    override def equals(o: Any): Boolean = o match {
       case that: Artist => that.name.equalsIgnoreCase(this.name)
       case _ => false
     }
 
-    override def hashCode = 1
+    override def hashCode: Int = 1
   }
 
   sealed trait Gender
@@ -224,7 +224,7 @@ object Model {
   case class AlphStringImpl(alph: String, get: String, getUqual: String) extends AlphString
 
   case class AlphStringSimple(get: String, getUqual: String) extends AlphString {
-    def alph = get match {
+    def alph: String = get match {
       case "" => "ZZZZZZ"
       case _ => get.trim().toUpperCase()
     }
@@ -258,9 +258,9 @@ object Model {
   case class MultiLangGeneric[T](ger: T, eng: T) extends MultiLang[T]
 
   case class MultiLangStringSimple(value: String) extends MultiLang[String] {
-    def ger = value
+    def ger: String = value
 
-    def eng = value
+    def eng: String = value
   }
 
   case class MultiLangAlphString(ger: AlphString, eng: AlphString) extends MultiLang[AlphString]
@@ -309,8 +309,8 @@ object Model {
           else if (code.endsWith("E")) AR_Editor$
           else if (code.endsWith("W")) AR_Author$
           else if (code.endsWith("A")) AR1_Artist
-          else if (code.endsWith("B")) AR_Architect$
-          else AR_Undef$
+          else if (code.endsWith("B")) AR_Architect
+          else AR_Undef
 
         val code = rn._1.trim()
 
@@ -345,9 +345,9 @@ object Model {
       def roleGroupsToString(rg: List[Artist], lang: Lang): String = {
         val g = rg(0)
 
-        def allFeminin: Boolean = rg.foldLeft(true)((actual, artist) => actual && artist.gender == G_Feminin)
+        def allFeminin: Boolean = rg.forall(artist => artist.gender == G_Feminin)
 
-        def allMasculin: Boolean = rg.foldLeft(true)((actual, artist) => actual && artist.gender == G_Masculin)
+        def allMasculin: Boolean = rg.forall(artist => artist.gender == G_Masculin)
 
         def heading: String =
           if (rg.size == 1) {
@@ -370,28 +370,33 @@ object Model {
 
       if (artists.isEmpty) throw new IllegalStateException("Artists list must never be empty")
       val roles = artists.groupBy { x => x.role }
-      val orderedRoles = {
-        val orderedKeys = roles.keys.toList.sortBy {
-          _.order
-        }
-        orderedKeys.map {
-          roles(_)
-        }
-      }
       roles.values.toList.map(rg => roleGroupsToString(rg, lang))
     }
 
   }
 
+  sealed trait Device
+
+  case object DV_Browser extends Device
+
+  case object DV_MobilePortrait extends Device
+
+  case object DV_MobileLandscape extends Device
+
+
+  case class DeviceData[T] (device: Device, data: T)
+
+
   sealed trait PageType
 
-  case object Start extends PageType
+  case object PT_Start extends PageType
 
-  case object ProjectOverview extends PageType
+  case object PT_ProjectOverview extends PageType
 
-  case object ProjectPage extends PageType
+  case object PT_Project extends PageType
 
-  case object Info extends PageType
+  case object PT_Info extends PageType
+
 
   case class PageName(prefix: Option[String], name: String)
 
@@ -404,12 +409,8 @@ object Model {
 
     def menuSortOrder: Int
 
-    def htmlText: MultiLang[String]
+    def menuId: Option[String]
 
-    def menuId = pageType match {
-      case ProjectOverview => Some(id)
-      case _ => None
-    }
   }
 
   trait ProjectTitle {
@@ -514,10 +515,10 @@ object Model {
 
       new ImageLangLoc {
 
-        lazy val gerStart = bestFit(Ger, ILStart, analyzed)
-        lazy val engStart = bestFit(Eng, ILStart, analyzed)
-        lazy val gerPrj = bestFit(Ger, ILProject, analyzed)
-        lazy val engPrj = bestFit(Eng, ILProject, analyzed)
+        lazy val gerStart: ImageInfo = bestFit(Ger, ILStart, analyzed)
+        lazy val engStart: ImageInfo = bestFit(Eng, ILStart, analyzed)
+        lazy val gerPrj: ImageInfo = bestFit(Ger, ILProject, analyzed)
+        lazy val engPrj: ImageInfo = bestFit(Eng, ILProject, analyzed)
 
         def imageInfo(lang: Lang, loc: ImageLocation): ImageInfo = {
           lang match {
