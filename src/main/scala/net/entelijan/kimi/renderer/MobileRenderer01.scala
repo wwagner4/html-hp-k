@@ -15,7 +15,7 @@ class MobileRenderer01 extends DefaultRenderer {
        |</div>
        |<div class="headlineB">
        |  <span class="headline2">ÜBERSETZERIN</span>
-       |  <span class="headline3">aus dem Deutschen ins Englische</span>
+       |  <span class="headline3">Deutsch > Englisch</span>
        |</div>
        """.stripMargin,
     s"""

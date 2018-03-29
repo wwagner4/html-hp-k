@@ -146,7 +146,7 @@ object ProjectFromFile {
 
     def createSubTitle: Option[MultiLang[String]] = createMultilangString(9, 12)
 
-    def createContrib: Option[MultiLang[String]] = createMultilangString(5, 6)
+    def createContrib: Option[MultiLang[String]] = createMultilangString(6, 7)
 
     def createMultilangString(indexDe: Int, indexEn: Int): Option[MultiLang[String]] = {
       val de = line(indexDe)
