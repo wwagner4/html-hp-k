@@ -231,7 +231,7 @@ object Css {
       |  margin-top: 10px;
       |  margin-bottom: 10px;
       |  font-size: 15px;
-      |  width: 240px; }
+      |  width: 300px; }
       |
       |.bioAdr {
       |  margin-top: 30px; }
