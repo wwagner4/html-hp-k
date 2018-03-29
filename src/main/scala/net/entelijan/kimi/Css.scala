@@ -249,7 +249,8 @@ object Css {
       |  color: #BBBBBB;
       |  font-weight: bold;
       |  letter-spacing: 0.06em;
-      |  padding-top: 5px; }
+      |  padding-top: 5px;
+      |  line-height: 1.1em; }
       |
       |.prjSubtitle {
       |  padding-top: 6px;
@@ -313,6 +314,17 @@ object Css {
       |  min-width: 400px;
       |  height: 42px;
       |}
+      |
+      |.prjTitle {
+      |  color: #BBBBBB;
+      |  font-weight: bold;
+      |  letter-spacing: 0.06em;
+      |  padding-top: 5px;
+      |  text-indent: -18px;
+      |  padding-left: 18px;
+      |  line-height: 1.1em; }
+      |
+      |
       |
       |""".stripMargin
   }
