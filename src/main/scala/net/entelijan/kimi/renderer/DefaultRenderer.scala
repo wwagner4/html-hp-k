@@ -43,7 +43,7 @@ class DefaultRenderer extends Renderer {
   override def rendPageBioContact(page: BioContactPage, lang: Lang, device: Device): String = {
     lang match {
       case Ger =>
-        s"""<div class="bioText">
+        s"""<div class="bioTextGer">
            |Geboren in Hawaii, USA, aufgewachsen in Kalifornien,
            |lebt und arbeitet in Wien.
            |Kam in den 80er Jahren im Rahmen eines Auslandsstudiums
@@ -51,13 +51,12 @@ class DefaultRenderer extends Renderer {
            |Absolvierte 1996 das Studium am Institut für Übersetzen
            |und Dolmetschen an der Universität Wien.
            |Seither freiberufliche Übersetzerin
-           |mit den Schwerpunkten
-           |Film, Kunst und Architektur.<br>
+           |mit den Schwerpunkten Film, Kunst und Architektur.
            |Mitglied der IG Übersetzerinnen Übersetzer, der Interessenvertretung der
            |literarischen und wissenschaftlichen ÜbersetzerInnen in Österreich.
            |</div>
            |<div class="bioAdr">
-           |<div class="bioText">
+           |<div class="bioTextGer">
            |<span class="bioTitle">Mag.</span><span class="bioName">KIMI LUM</span><br>
            |Ungargasse 65/9<br>
            |A-1030 Wien<br>
@@ -65,14 +64,14 @@ class DefaultRenderer extends Renderer {
            |EUROPA<br>
            |</div>
            |</div>
-           |<div class="bioText">
+           |<div class="bioTextGer">
            |+43/(0)664/73 45 16 21<br>
            |office(at)kimilum.com<br>
            |</div>
            |<div class="bioCredit">Grafikdesign: Liz Pompe</div>
            |""".stripMargin
       case Eng =>
-        s"""<div class="bioText">
+        s"""<div class="bioTextEng">
            |Born in Hawaii, grew up in California,
            |lives and works in Vienna.
            |Came to Austria on a study abroad
@@ -82,12 +81,12 @@ class DefaultRenderer extends Renderer {
            |and Interpreting Studies in 1996.
            |Has worked since then as a freelance
            |translator mainly in the areas of
-           |film, art, and architecture.<br>
+           |film, art, and architecture.
            |Member of IG Übersetzerinnen Übersetzer, the Austrian Association
-           |of Literary & Scientific Translators.
+           |of Literary and Scientific Translators.
            |</div>
            |<div class="bioAdr">
-           |<div class="bioText">
+           |<div class="bioTextEng">
            |<span class="bioTitle">Mag.</span><span class="bioName">KIMI LUM</span><br>
            |Ungargasse 65/9<br>
            |A-1030 Vienna<br>
@@ -95,7 +94,7 @@ class DefaultRenderer extends Renderer {
            |EUROPE<br>
            |</div>
            |</div>
-           |<div class="bioText">
+           |<div class="bioTextEng">
            |+43/(0)664/73 45 16 21<br>
            |office(at)kimilum.com<br>
            |</div>

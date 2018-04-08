@@ -227,11 +227,17 @@ object Css {
       |  font-size: 20px;
       |  letter-spacing: 0.06em; }
       |
-      |.bioText {
+      |.bioTextGer {
       |  margin-top: 10px;
       |  margin-bottom: 10px;
       |  font-size: 15px;
-      |  width: 300px; }
+      |  width: 283px; }
+      |
+      |.bioTextEng {
+      |  margin-top: 10px;
+      |  margin-bottom: 10px;
+      |  font-size: 15px;
+      |  width: 288px; }
       |
       |.bioAdr {
       |  margin-top: 30px; }
@@ -320,8 +326,6 @@ object Css {
       |  font-weight: bold;
       |  letter-spacing: 0.06em;
       |  padding-top: 5px;
-      |  text-indent: -18px;
-      |  padding-left: 18px;
       |  line-height: 1.1em; }
       |
       |
