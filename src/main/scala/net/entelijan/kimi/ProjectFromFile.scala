@@ -144,7 +144,7 @@ object ProjectFromFile {
 
     def uqual(title: String): String = KimiUtil.uqual(title)
 
-    def createSubTitle: Option[MultiLang[String]] = createMultilangString(9, 12)
+    def createSubTitle: Option[MultiLang[String]] = createMultilangString(10, 13)
 
     def createContrib: Option[MultiLang[String]] = createMultilangString(6, 7)
 
