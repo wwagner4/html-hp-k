@@ -209,7 +209,9 @@ object Css {
       |  background-repeat: no-repeat; }
       |
       |.alphText {
-      |  padding-top: 3px; }
+      |  padding-top: 3px;
+      |  padding-left: 15px;
+      |  text-indent: -15px; }
       |
       |.alphFill {
       |  padding-top: 20px; }
@@ -274,7 +276,9 @@ object Css {
       |
       |.prjCatLink {
       |  margin-left: 40px;
-      |  font-size: 15px; }
+      |  font-size: 15px;
+      |  padding-left: 12px;
+      |  text-indent: -12px; }
       |""".stripMargin
 
   def mobile: String = {
