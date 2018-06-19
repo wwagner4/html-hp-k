@@ -6,6 +6,7 @@
         .startImageImage {
             box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.3);
             background-repeat: no-repeat;
+            z-index: -10;
         }
 
 
@@ -24,6 +25,7 @@
 </div>
 
 <script>
+var idval, ids = ['#img_azw', '#img_diegetraumten', '#img_binder', '#img_frank', '#img_koex'];
 $( document ).ready(function() {
     var elem = $( "#content" );
     var height = elem.height();
@@ -31,16 +33,27 @@ $( document ).ready(function() {
     console.log("width:" + width);
     console.log("height:" + height);
 
-    ranpos("#img_azw", width, height);
-    ranpos("#img_diegetraumten", width, height);
-    ranpos("#img_binder", width, height);
-    ranpos("#img_frank", width, height);
-    ranpos("#img_koex", width, height);
+    for (idval of ids) {
+        console.log("idval:" + idval)
+        ranpos(idval, width, height);
+    }
+    setInterval(fadeinout, 3000)
+
 });
 function ranpos(id, width, height) {
     var r1 = Math.random() * (width - 500);
     var r2 = Math.random() * (height - 1200);
     $( id ).css({top: r2, left: r1, position:'absolute'});
+}
+
+
+function fadeinout() {
+    var len = ids.length;
+    var i = Math.floor(Math.random() * len);
+    console.log("fadeinout " + i + "/" + len);
+    var id = ids[i];
+    $( id ).fadeOut( 500 );
+    $( id ).fadeIn( 2500 );
 }
 
 </script>
