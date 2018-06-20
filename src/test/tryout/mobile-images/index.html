@@ -39,7 +39,6 @@ $( document ).ready(function() {
         ranpos(idval, elem);
     }
     setInterval(ranDelay, 2000)
-
 });
 function ranDelay() {
     var t = 500 + Math.random() * 1000;
@@ -53,8 +52,6 @@ function ranpos(id, parent) {
     var r2 = offset.top + Math.random() * (height - 500);
     $( id ).css({top: r2, left: r1, position:'absolute', display:'none'});
 }
-
-
 function fadeinout() {
     var len = ids.length;
     var i = Math.floor(Math.random() * len);
