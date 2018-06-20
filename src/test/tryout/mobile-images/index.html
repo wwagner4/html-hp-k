@@ -9,7 +9,7 @@
             z-index: -10;
         }
         #content {
-            background-color: #8bc34a3b;
+            //background-color: #8bc34a3b;
             margin-left: 20%
             margin-right: 20%
             width: 100%;
@@ -32,22 +32,26 @@
 </div>
 
 <script>
-var idval, ids = ['#img_azw', '#img_diegetraumten', '#img_binder', '#img_frank', '#img_koex'];
+var ids = ['#img_azw', '#img_diegetraumten', '#img_binder', '#img_frank', '#img_koex'];
 $( document ).ready(function() {
     var elem = $( '#content' );
-    for (idval of ids) {
+    for (var idval of ids) {
         ranpos(idval, elem);
     }
-    setInterval(fadeinout, 2000)
+    setInterval(ranDelay, 2000)
 
 });
+function ranDelay() {
+    var t = 500 + Math.random() * 1000;
+    setTimeout(fadeinout, t);
+}
 function ranpos(id, parent) {
     var height = parent.height();
     var width = parent.width();
     var offset = parent.offset();
     var r1 = offset.left + Math.random() * (width - 500);
     var r2 = offset.top + Math.random() * (height - 500);
-    $( id ).css({top: r2, left: r1, position:'absolute'});
+    $( id ).css({top: r2, left: r1, position:'absolute', display:'none'});
 }
 
 
@@ -56,8 +60,8 @@ function fadeinout() {
     var i = Math.floor(Math.random() * len);
     console.log("fadeinout " + i + "/" + len);
     var id = ids[i];
-    $( id ).fadeOut( 100 );
-    $( id ).fadeIn( 1500 );
+    $( id ).fadeIn( 100 );
+    $( id ).fadeOut( 2000 );
 }
 
 </script>
