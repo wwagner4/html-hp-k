@@ -36,7 +36,6 @@ var idval, ids = ['#img_azw', '#img_diegetraumten', '#img_binder', '#img_frank',
 $( document ).ready(function() {
     var elem = $( '#content' );
     for (idval of ids) {
-        console.log("idval:" + idval)
         ranpos(idval, elem);
     }
     setInterval(fadeinout, 2000)
@@ -48,7 +47,6 @@ function ranpos(id, parent) {
     var offset = parent.offset();
     var r1 = offset.left + Math.random() * (width - 500);
     var r2 = offset.top + Math.random() * (height - 500);
-    console.log("ranpos: " + id + " left: " + r1 + " top: " + r2)
     $( id ).css({top: r2, left: r1, position:'absolute'});
 }
 
