@@ -51,7 +51,7 @@ object KimiUtil {
 
     def outputDir: File = getOrCreateDir(Some(myWorkDir), "output")
 
-    def inputDir: File = getOrCreateDir(Some(myWorkDir), "input")
+    def inputDir: File = getOrCreateDir(Some(new File("src/main")), "input")
 
     def getOrCreateDir(parent: Option[File], path: String): File = {
       val re = parent.map(p => new File(p, path)).getOrElse(new File(path))
