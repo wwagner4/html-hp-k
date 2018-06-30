@@ -24,7 +24,9 @@ body {
   margin-top: 50px;
   background-color: #ffffff;
   color: #000000;
-  line-height: 0.8em; }
+  line-height: 0.8em;
+  width: 100%;
+  height: 50%; }
 
 #page {
   max-width: 1200px;
@@ -586,7 +588,7 @@ $(window).resize(function() {
 
             <script>
 $( document ).ready(function() {
-  {
+console.log("ready");
 var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
 $( "#img_koen" ).css({top: offset.top + -80, left: offset.left + -309, position:'absolute'});
 var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
@@ -635,7 +637,7 @@ var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem
 $( "#img_peterzumthor" ).css({top: offset.top + 80, left: offset.left + 240, position:'absolute'});
 var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
 $( "#img_thermevals" ).css({top: offset.top + -80, left: offset.left + 240, position:'absolute'});
-  }
+initMobileImages();
 });
 $( "#char_sos" ).mouseenter(function() { $( "#img_sos" ).fadeIn( 500 );});
 $( "#char_sos" ).mouseleave(function() { $( "#img_sos" ).fadeOut( 500 );});
@@ -733,6 +735,36 @@ $( "#char_peterzumthor" ).mouseenter(function() { $( "#img_peterzumthor" ).fadeI
 $( "#char_peterzumthor" ).mouseleave(function() { $( "#img_peterzumthor" ).fadeOut( 500 );});
 $( "#char_thermevals" ).mouseenter(function() { $( "#img_thermevals" ).fadeIn( 500 );});
 $( "#char_thermevals" ).mouseleave(function() { $( "#img_thermevals" ).fadeOut( 500 );});
+var idsm = [
+    '#imgm_azw',
+    '#imgm_diegetraumten',
+    '#imgm_binder',
+    '#imgm_frank',
+    '#imgm_koex'
+];
+function initMobileImages() {
+    var parent = $( document.body );
+    var border = 50;
+    var height = parent.height();
+    var width = parent.width();
+    var offset = parent.offset();
+    console.log("initMobileImages w/h/ol/ot " + width + '/' + height + '/' + offset.left + '/' + offset.top);
+    for (var idval of idsm) {
+        var r1 = offset.left + border + Math.random() * (width - 500 - (2 * border));
+        var r2 = offset.top + border + Math.random() * (height - 500 - (2 * border));
+        $( idval ).css({top: r2, left: r1, position:'absolute', display:'none'});
+    }
+    setInterval(fadeInOut, 5000);
+}
+function fadeInOut() {
+    var len = idsm.length;
+    var i = Math.floor(Math.random() * len);
+    console.log("fadeinout " + i + "/" + len);
+    var id = idsm[i];
+    $( id ).fadeIn( 100 );
+    $( id ).fadeOut( 4000 );
+}
+
 </script>
 
 
@@ -787,6 +819,12 @@ $( "#char_thermevals" ).mouseleave(function() { $( "#img_thermevals" ).fadeOut( 
             </div>
             <div id="startAlphaBlockBack"></div>
 
+            <div id="imgm_azw" class="startImageImage" style="background-image: url('images/azw.jpg'); width: 500px; height: 476px; "></div>
+            <div id="imgm_diegetraumten" class="startImageImage" style="background-image: url('images/diegetraeumten.jpg'); width: 354px; height: 500px; "></div>
+            <div id="imgm_binder" class="startImageImage" style="background-image: url('images/binder.jpeg'); width: 500px; height: 472px; "></div>
+            <div id="imgm_frank" class="startImageImage" style="background-image: url('images/frank.jpg'); width: 499px; height: 328px; "></div>
+            <div id="imgm_koex" class="startImageImage" style="background-image: url('images/koex.jpeg'); width: 363px; height: 500px; "></div>
+
         </div>
 
     </div>
@@ -836,6 +874,12 @@ $( "#char_thermevals" ).mouseleave(function() { $( "#img_thermevals" ).fadeOut( 
                 <div class="startChar" id="char_peterzumthor"><a href="peterzumthor-eng.html">Z</a></div></div>
         </div>
         <div id="startAlphaBlockBack"></div>
+
+        <div id="imgm_azw" class="startImageImage" style="background-image: url('images/azw.jpg'); width: 500px; height: 476px; "></div>
+        <div id="imgm_diegetraumten" class="startImageImage" style="background-image: url('images/diegetraeumten.jpg'); width: 354px; height: 500px; "></div>
+        <div id="imgm_binder" class="startImageImage" style="background-image: url('images/binder.jpeg'); width: 500px; height: 472px; "></div>
+        <div id="imgm_frank" class="startImageImage" style="background-image: url('images/frank.jpg'); width: 499px; height: 328px; "></div>
+        <div id="imgm_koex" class="startImageImage" style="background-image: url('images/koex.jpeg'); width: 363px; height: 500px; "></div>
 
     </div>
 
