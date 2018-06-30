@@ -8,10 +8,8 @@
             background-repeat: no-repeat;
             z-index: -10;
         }
-        #content {
-            //background-color: #8bc34a3b;
-            margin-left: 20%
-            margin-right: 20%
+        #contentStart {
+            background-color: #8bc34a3b;
             width: 100%;
             height: 100%;
         }
@@ -22,7 +20,7 @@
 
 </head>
 <body>
-<div id="content">
+<div id="contentStart">
     <div id="img_azw" class="startImageImage" style="background-image: url('images/azw.jpg'); width: 500px; height: 476px; "></div>
     <div id="img_diegetraumten" class="startImageImage"
          style="background-image: url('images/diegetraeumten.jpg'); width: 354px; height: 500px; "></div>
@@ -33,21 +31,19 @@
 
 <script>
 var ids = ['#img_azw', '#img_diegetraumten', '#img_binder', '#img_frank', '#img_koex'];
-$( document ).ready(function() {
-    var elem = $( '#content' );
+$( document ).ready(initMobileImages);
+function initMobileImages() {
+    var parent = $( '#contentStart' );
     for (var idval of ids) {
-        ranpos(idval, elem);
+        var border = 10;
+        var height = parent.height();
+        var width = parent.width();
+        var offset = parent.offset();
+        var r1 = offset.left + border + Math.random() * (width - 500 - (2 * border));
+        var r2 = offset.top + border + Math.random() * (height - 500 - (2 * border));
+        $( idval ).css({top: r2, left: r1, position:'absolute', display:'none'});
     }
     setInterval(fadeinout, 5000);
-    //bindTouch();
-});
-function ranpos(id, parent) {
-    var height = parent.height();
-    var width = parent.width();
-    var offset = parent.offset();
-    var r1 = offset.left + Math.random() * (width - 500);
-    var r2 = offset.top + Math.random() * (height - 500);
-    $( id ).css({top: r2, left: r1, position:'absolute', display:'none'});
 }
 function fadeinout() {
     var len = ids.length;
@@ -56,20 +52,6 @@ function fadeinout() {
     var id = ids[i];
     $( id ).fadeIn( 100 );
     $( id ).fadeOut( 4000 );
-}
-function bindTouch() {
-  var el = $( '#content' );
-  el.bind("touchstart", handleStart);
-  el.bind("touchend", handleEnd);
-  console.log("initialized.");
-}
-function handleStart(evt) {
-    evt.preventDefault();
-    console.log("handle start " + evt);
-}
-function handleEnd(evt) {
-    evt.preventDefault();
-    console.log("handle end " + evt);
 }
 </script>
 </body>
