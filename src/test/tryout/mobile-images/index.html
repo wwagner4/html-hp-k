@@ -9,7 +9,7 @@
             z-index: -10;
         }
         #contentStart {
-            background-color: #8bc34a3b;
+            //background-color: #8bc34a3b;
             width: 100%;
             height: 100%;
         }
@@ -33,22 +33,23 @@
 var ids = ['#img_azw', '#img_diegetraumten', '#img_binder', '#img_frank', '#img_koex'];
 $( document ).ready(initMobileImages);
 function initMobileImages() {
+    //console.log("initMobileImages");
     var parent = $( '#contentStart' );
+    var border = 50;
+    var height = parent.height();
+    var width = parent.width();
+    var offset = parent.offset();
     for (var idval of ids) {
-        var border = 10;
-        var height = parent.height();
-        var width = parent.width();
-        var offset = parent.offset();
         var r1 = offset.left + border + Math.random() * (width - 500 - (2 * border));
         var r2 = offset.top + border + Math.random() * (height - 500 - (2 * border));
         $( idval ).css({top: r2, left: r1, position:'absolute', display:'none'});
     }
-    setInterval(fadeinout, 5000);
+    setInterval(fadeInOut, 5000);
 }
-function fadeinout() {
+function fadeInOut() {
     var len = ids.length;
     var i = Math.floor(Math.random() * len);
-    // console.log("fadeinout " + i + "/" + len);
+    //console.log("fadeinout " + i + "/" + len);
     var id = ids[i];
     $( id ).fadeIn( 100 );
     $( id ).fadeOut( 4000 );
