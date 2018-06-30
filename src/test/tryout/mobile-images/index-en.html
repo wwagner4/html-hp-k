@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -788,41 +787,9 @@ $( "#char_thermevals" ).mouseleave(function() { $( "#img_thermevals" ).fadeOut( 
             </div>
             <div id="startAlphaBlockBack"></div>
 
-            <div id="img_azw" class="startImageImage" style="background-image: url('images/azw.jpg'); width: 500px; height: 476px; "></div>
-            <div id="img_diegetraumten" class="startImageImage" style="background-image: url('images/diegetraeumten.jpg'); width: 354px; height: 500px; "></div>
-            <div id="img_binder" class="startImageImage" style="background-image: url('images/binder.jpeg'); width: 500px; height: 472px; "></div>
-            <div id="img_frank" class="startImageImage" style="background-image: url('images/frank.jpg'); width: 499px; height: 328px; "></div>
-            <div id="img_koex" class="startImageImage" style="background-image: url('images/koex.jpeg'); width: 363px; height: 500px; "></div>
         </div>
 
     </div>
-    <script>
-var ids = ['#img_azw', '#img_diegetraumten', '#img_binder', '#img_frank', '#img_koex'];
-$( document ).ready(function() {
-    console.log("mobile portrait ready");
-    allRanpos();
-    setInterval(fadeinout, 5000);
-});
-function allRanpos() {
-    var parent = $( '#contentStart' );
-    var height = parent.height();
-    var width = parent.width();
-    var offset = parent.offset();
-    for (var idval of ids) {
-        var r1 = 10 + offset.left + Math.random() * (width - 520);
-        var r2 = 10 + offset.top + Math.random() * (height - 520);
-        $( idval ).css({top: r2, left: r1, position:'absolute', display:'none'});
-    }
-}
-function fadeinout() {
-    var len = ids.length;
-    var i = Math.floor(Math.random() * len);
-    // console.log("fadeinout " + i + "/" + len);
-    var id = ids[i];
-    $( id ).fadeIn( 100 );
-    $( id ).fadeOut( 4000 );
-}
-    </script>
 </div>
 
 <div class="DV_MobileLandscape">
