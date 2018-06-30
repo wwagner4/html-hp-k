@@ -38,13 +38,9 @@ $( document ).ready(function() {
     for (var idval of ids) {
         ranpos(idval, elem);
     }
-    setInterval(ranDelay, 2000);
-    startup();
+    setInterval(fadeinout, 5000);
+    //bindTouch();
 });
-function ranDelay() {
-    var t = 500 + Math.random() * 1000;
-    setTimeout(fadeinout, t);
-}
 function ranpos(id, parent) {
     var height = parent.height();
     var width = parent.width();
@@ -59,9 +55,9 @@ function fadeinout() {
     // console.log("fadeinout " + i + "/" + len);
     var id = ids[i];
     $( id ).fadeIn( 100 );
-    $( id ).fadeOut( 2000 );
+    $( id ).fadeOut( 4000 );
 }
-function startup() {
+function bindTouch() {
   var el = $( '#content' );
   el.bind("touchstart", handleStart);
   el.bind("touchend", handleEnd);
