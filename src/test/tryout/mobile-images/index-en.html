@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kimi Lum HOME</title>
+    <style type="text/css">
+.DV_Browser {  display: block;}
+.DV_MobilePortrait {  display: none;}
+.DV_MobileLandscape {  display: none;}
+
+@font-face {
+  font-family: 'TradeGothic';
+  src: url("css/TradeGothicLTStd Cn18.eot?") format("eot"), url("css/TradeGothicLTStd Cn18.woff") format("woff"), url("css/TradeGothicLTStd Cn18.ttf") format("truetype"); }
+@font-face {
+  font-family: 'TradeGothic';
+  src: url("css/TradeGothicLTStd BdCn20.eot?") format("eot"), url("css/TradeGothicLTStd BdCn20.woff") format("woff"), url("css/TradeGothicLTStd BdCn20.ttf") format("truetype");
+  font-weight: bold; }
+body {
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  font-family: TradeGothic;
+  margin: 0px;
+  margin-top: 50px;
+  background-color: #ffffff;
+  color: #000000;
+  line-height: 0.8em;
+  width: 100%;
+  height: 50%; }
+
+#page {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto; }
+
+#content {
+  z-index: -10;
+  border-left: 1px solid #d9d9d9;
+  position: absolute;
+  top: 100px;
+  left: 200px;
+  padding-left: 10px;
+  padding-top: 65px;
+  padding-right: 50px;
+  padding-bottom: 65px; }
+
+#contentPrj {
+  top: 170px;
+  width: 90%;
+  height: 40%;
+  position: absolute;
+  z-index: 20;
+  max-width: 1140px; }
+
+a:LINK {
+  text-decoration: none;
+  color: #000000; }
+
+a:VISITED {
+  text-decoration: none;
+  color: #000000; }
+
+a:ACTIVE {
+  text-decoration: none;
+  color: #BBBBBB; }
+
+a:HOVER {
+  text-decoration: none;
+  color: #BBBBBB; }
+
+.ainv:LINK {
+  text-decoration: none;
+  color: #BBBBBB; }
+
+.ainv:VISITED {
+  text-decoration: none;
+  color: #BBBBBB; }
+
+.ainv:ACTIVE {
+  text-decoration: none;
+  color: #000000; }
+
+.ainv:HOVER {
+  text-decoration: none;
+  color: #000000; }
+
+.nolink, .menuItem, .menuItemF, .menuItemM, .menuItemL, .menuLangItemF, .menuLangItemL {
+  color: #BBBBBB; }
+
+#infoMenu {
+  margin-bottom: 0px;
+  border-top: 1px solid #d9d9d9;
+  margin-top: 0px;
+  padding-top: 10px;
+  min-width: 866px; }
+
+.infoMenuItemText {
+  font-weight: bold;
+  letter-spacing: 0.06em; }
+
+.infoMenuItemTextPrefix {
+  padding-right: 5px; }
+
+.menuItemFill {
+  display: inline;
+  margin-left: 30px; }
+
+.menuItem, .menuItemF, .menuItemM, .menuItemL {
+  display: inline;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 0px;
+  border-top: 0px;
+  padding-top: 8.7px; }
+
+.menuItemM {
+  border-left: 1px solid #d9d9d9; }
+
+.menuItemL {
+  border-left: 1px solid #d9d9d9;
+  text-indent: 10px; }
+
+.headline {
+  height: 27px;
+  min-width: 730px; }
+
+.headline1 {
+  font-size: 35px;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  color: #830D00;
+  padding-left: 60px;
+  padding-right: 10px;
+  display: inline; }
+
+.headline2 {
+  font-weight: bold;
+  padding-right: 3px;
+  display: inline;
+  letter-spacing: 0.06em; }
+
+.headline3 {
+  display: inline; }
+
+.langMenu {
+  float: right;
+  padding-right: 30px;
+  padding-top: 3px; }
+
+.menuLangItemF {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 2px;
+  padding-bottom: 4.5px;
+  border-right: 1px solid #d9d9d9; }
+
+.menuLangItemL {
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-right: 10px; }
+
+#startAphaBlock {
+  font-size: 40px;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 160px;
+  margin-bottom: 100px;
+  width: 300px; }
+
+#startAlphaBlockBack {
+  width: 300px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -10px;
+  background-image: url("../layout/startbg_50.png");
+  box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.3); }
+
+.startImage {
+  position: absolute;
+  display: none;
+  z-index: -10; }
+
+.startChar {
+  width: 60px;
+  height: 32px;
+  padding-top: 27px;
+  cursor: default;
+  z-index: auto;
+  float: left;
+  text-align: center; }
+
+.startImageText, .startImageTextR, .startImageTextL {
+  height: 15px;
+  font-size: 12px;
+  margin-bottom: 3px;
+  margin-top: 3px; }
+
+.startImageTextR {
+  text-align: right; }
+
+.startImageTextL {
+  text-align: left; }
+
+.startImageImage {
+  box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.3);
+  background-repeat: no-repeat; }
+
+.alphText {
+  padding-top: 3px;
+  padding-left: 15px;
+  text-indent: -15px; }
+
+.alphFill {
+  padding-top: 20px; }
+
+.bioName {
+  padding-left: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #830D00;
+  font-weight: bold;
+  letter-spacing: 0.06em; }
+
+.bioTitle {
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 0.06em; }
+
+.bioTextGer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  width: 283px; }
+
+.bioTextEng {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  width: 288px; }
+
+.bioAdr {
+  margin-top: 30px; }
+
+.bioCredit {
+  margin-top: 60px;
+  font-size: 12px; }
+
+.prjImg {
+  float: left;
+  margin-right: 15px;
+  box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.3); }
+
+.prjTitle {
+  color: #BBBBBB;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  padding-top: 5px;
+  line-height: 1.1em; }
+
+.prjSubtitle {
+  padding-top: 6px;
+  font-size: 15px; }
+
+.prjText {
+  font-size: 15px; }
+
+.prjCatHeading {
+  margin-top: 20px;
+  margin-bottom: 2px;
+  color: #BBBBBB;
+  font-weight: bold;
+  letter-spacing: 0.06em; }
+
+.prjCatLink {
+  margin-left: 40px;
+  font-size: 15px;
+  padding-left: 12px;
+  text-indent: -12px; }
+
+</style>
+    <style media="(max-width: 900px) and (orientation: portrait)" type="text/css">
+#mobileContent {
+  z-index: -10;
+  position: absolute;
+  top: 120px;
+  left: 10px;
+  padding-left: 10px;
+  padding-top: 65px;
+  padding-right: 50px;
+  padding-bottom: 65px; }
+
+#mobileContentPrj {
+  margin-top: 20px;
+  padding-left: 20px;
+  top: 170px;
+  width: 90%;
+  height: 40%;
+  position: absolute;
+  z-index: 20; }
+
+.menuItemFill {
+  margin-left: 10px; }
+
+.headlineB {
+  padding-top: 5px;
+  padding-left: 20px;
+  height: 43px;
+  margin-top: -17px; }
+
+.headline1 {
+  padding-left: 20px }
+
+#startAlphaBlockBack {
+    margin-top: -100px;
+    margin-bottom: 100px; }
+
+#infoMenu {
+  min-width: 400px; }
+
+.headline {
+  min-width: 400px;
+  height: 42px;
+}
+
+.prjTitle {
+  color: #BBBBBB;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  padding-top: 5px;
+  line-height: 1.1em; }
+
+
+
+
+.DV_Browser {  display: none;}
+.DV_MobilePortrait {
+  zoom: 85%;
+  display: block;}
+.DV_MobileLandscape {  display: none;}
+
+body {
+  line-height: 0.7em;
+}
+
+#mobileContentPrj {
+  max-width: 400px; }
+
+
+</style>
+    <style media="(max-width: 900px) and (orientation: landscape)" type="text/css">
+#mobileContent {
+  z-index: -10;
+  position: absolute;
+  top: 120px;
+  left: 10px;
+  padding-left: 10px;
+  padding-top: 65px;
+  padding-right: 50px;
+  padding-bottom: 65px; }
+
+#mobileContentPrj {
+  margin-top: 20px;
+  padding-left: 20px;
+  top: 170px;
+  width: 90%;
+  height: 40%;
+  position: absolute;
+  z-index: 20; }
+
+.menuItemFill {
+  margin-left: 10px; }
+
+.headlineB {
+  padding-top: 5px;
+  padding-left: 20px;
+  height: 43px;
+  margin-top: -17px; }
+
+.headline1 {
+  padding-left: 20px }
+
+#startAlphaBlockBack {
+    margin-top: -100px;
+    margin-bottom: 100px; }
+
+#infoMenu {
+  min-width: 400px; }
+
+.headline {
+  min-width: 400px;
+  height: 42px;
+}
+
+.prjTitle {
+  color: #BBBBBB;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  padding-top: 5px;
+  line-height: 1.1em; }
+
+
+
+
+.DV_Browser {  display: none;}
+.DV_MobilePortrait {  display: none;}
+.DV_MobileLandscape {  display: block;}
+
+body {
+  line-height: 0.8em;
+}
+
+#mobileContentPrj {
+  margin-top: 0px;
+  max-width: 620px; }
+
+
+</style>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+function isMobile() {
+    return /Edge|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+</script>
+    <script type="text/javascript">
+function doPageReload() {
+    if(isMobile()) {
+      // Nothing to do
+    } else {
+      window.location.href = window.location.href;
+    }
+};
+var resizeTimer;
+$(window).resize(function() {
+    if (!isMobile()) {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(doPageReload, 100);
+    }
+});
+</script>
+
+
+
+</head>
+<body>
+<div class="DV_Browser">
+    <div id="page">
+        <div class="headline">
+            <span class="headline1">KIMI LUM</span>
+            <span class="headline2">TRANSLATOR</span>
+            <span class="headline3">from German to English</span>
+            <div class="langMenu"><span class="menuLangItemF"><a href="index-ger.html">DE</a></span><span class="menuLangItemL">EN</span></div>
+        </div>
+        <div id="infoMenu"><div class="menuItemFill"></div><div   class="menuItemF"><span class="infoMenuItemText">HOME</span></div><div id="prjAlphaPage"   class="menuItemM"><a href="prjAlphaPage-eng.html"><span class="infoMenuItemTextPrefix">Projects by</span><span class="infoMenuItemText">TITLE</span></a></div><div id="prjAuthPage"   class="menuItemM"><a href="prjAuthPage-eng.html"><span class="infoMenuItemTextPrefix">Projects by</span><span class="infoMenuItemText">AUTHOR</span></a></div><div id="prjCatPage"   class="menuItemM"><a href="prjCatPage-eng.html"><span class="infoMenuItemTextPrefix">Projects by</span><span class="infoMenuItemText">CATEGORY</span></a></div><div id="bio"   class="menuItemL"><a href="bio-eng.html"><span class="infoMenuItemText">BIO / CONTACT</span></a></div></div>
+        <div id="contentStart">
+            <div id="startAphaBlock">
+                <div><div class="startChar" id="char_atmen"><a href="atmen-eng.html">A</a></div>
+                    <div class="startChar" id="char_ewigeleben"><a href="ewigeleben-eng.html">B</a></div>
+                    <div class="startChar" id="char_crownhall"><a href="crownhall-eng.html">C</a></div>
+                    <div class="startChar" id="char_dogdays"><a href="dogdays-eng.html">D</a></div>
+                    <div class="startChar" id="char_earthfell"><a href="earthfell-eng.html">E</a></div></div>
+                <div><div class="startChar" id="char_frank"><a href="frank-eng.html">F</a></div>
+                    <div class="startChar" id="char_whoresgloryfilm"><a href="whoresgloryfilm-eng.html">G</a></div>
+                    <div class="startChar" id="char_honeybunny"><a href="honeybunny-eng.html">H</a></div>
+                    <div class="startChar" id="char_importexport"><a href="importexport-eng.html">I</a></div>
+                    <div class="startChar" id="char_jirkuff"><a href="jirkuff-eng.html">J</a></div></div>
+                <div><div class="startChar" id="char_koen"><a href="koen-eng.html">K</a></div>
+                    <div class="startChar" id="char_luftzigarette"><a href="luftzigarette-eng.html">L</a></div>
+                    <div class="startChar" id="char_sonne"><a href="sonne-eng.html">M</a></div>
+                    <div class="startChar" id="char_niedermayr"><a href="niedermayr-eng.html">N</a></div>
+                    <div class="startChar" id="char_ueberdiejahre"><a href="ueberdiejahre-eng.html">O</a></div></div>
+                <div><div class="startChar" id="char_paradiesglaube"><a href="paradiesglaube-eng.html">P</a></div>
+                    <div class="startChar" id="char_quadratsch"><a href="quadratsch-eng.html">Q</a></div>
+                    <div class="startChar" id="char_revanche"><a href="revanche-eng.html">R</a></div>
+                    <div class="startChar" id="char_spiluttini"><a href="spiluttini-eng.html">S</a></div>
+                    <div class="startChar" id="char_thermevals"><a href="thermevals-eng.html">T</a></div></div>
+                <div><div class="startChar" id="char_untitled"><a href="untitled-eng.html">U</a></div>
+                    <div class="startChar" id="char_vorderarchitektur"><a href="vorderarchitektur-eng.html">V</a></div>
+                    <div class="startChar" id="char_wmdbook"><a href="wmdbook-eng.html">W</a></div>
+                    <span class="startChar">X</span>
+                    <div class="startChar" id="char_peterzumthor"><a href="peterzumthor-eng.html">Z</a></div></div>
+            </div>
+            <div id="startAlphaBlockBack"></div>
+            <div>
+                <div class="startImage" style="width: 369px; " id="img_koen">
+                    <div class="startImageTextR">Fritz Koenig – 1924–2017 The Retrospective | Essays</div><div class="startImageImage" style="background-image: url('images/koen.jpg'); width: 368px; height: 499px; " ></div><div class="startImageTextR"></div>
+                </div>
+
+                <div class="startImage" style="width: 500px; " id="img_untitled">
+                    <div class="startImageTextR"></div><div class="startImageImage" style="background-image: url('images/untitled.jpg'); width: 499px; height: 280px; " ></div><div class="startImageTextR">Untitled | Narration</div>
+                </div>
+
+                <div class="startImage" style="width: 350px; " id="img_atmen">
+                    <div class="startImageTextR">Atmen | Subtitles</div><div class="startImageImage" style="background-image: url('images/atmen_EN.jpg'); width: 349px; height: 499px; " ></div><div class="startImageTextR"></div>
+                </div>
+
+                <div class="startImage" style="width: 353px; " id="img_ewigeleben">
+                    <div class="startImageTextR">Brenner | Subtitles</div><div class="startImageImage" style="background-image: url('images/ewigeleben.jpg'); width: 352px; height: 499px; " ></div><div class="startImageTextR"></div>
+                </div>
+
+                <div class="startImage" style="width: 500px; " id="img_crownhall">
+                    <div class="startImageTextR">Crown Hall | Essay</div><div class="startImageImage" style="background-image: url('images/crownhall.jpg'); width: 499px; height: 351px; " ></div><div class="startImageTextR"></div>
+                </div>
+
+                <div class="startImage" style="width: 353px; " id="img_dogdays">
+                    <div class="startImageTextL">Dog Days | Subtitles</div><div class="startImageImage" style="background-image: url('images/dogdays_EN.jpg'); width: 352px; height: 499px; " ></div><div class="startImageTextL"></div>
+                </div>
+
+                <div class="startImage" style="width: 500px; " id="img_earthfell">
+                    <div class="startImageTextL">Earth Fell on my Sentences | Novel</div><div class="startImageImage" style="background-image: url('images/earthfell.jpg'); width: 499px; height: 424px; " ></div><div class="startImageTextL"></div>
+                </div>
+
+                <div class="startImage" style="width: 500px; " id="img_frank">
+                    <div class="startImageTextR">Josef Frank | Essays</div><div class="startImageImage" style="background-image: url('images/frank.jpg'); width: 499px; height: 327px; " ></div><div class="startImageTextR"></div>
+                </div>
+
+                <div class="startImage" style="width: 353px; " id="img_whoresgloryfilm">
+                    <div class="startImageTextR">Whores’ Glory (Film) | Subtitles</div><div class="startImageImage" style="background-image: url('images/whoresgloryfilm.jpg'); width: 352px; height: 499px; " ></div><div class="startImageTextR"></div>
+                </div>
+
+                <div class="startImage" style="width: 500px; " id="img_wmdbook">
+                    <div class="startImageTextL"></div><div class="startImageImage" style="background-image: url('images/wmdbook.jpg'); width: 499px; height: 331px; " ></div><div class="startImageTextL">Workingman’s Death | Book</div>
+                </div>
+
+                <div class="startImage" style="width: 500px; " id="img_honeybunny">
+                    <div class="startImageTextL">honey & bunny | Book</div><div class="startImageImage" style="background-image: url('images/honeybunny.jpg'); width: 499px; height: 413px; " ></div><div class="startImageTextL"></div>
+                </div>
+
+                <div class="startImage" style="width: 333px; " id="img_importexport">
+                    <div class="startImageTextL">Import-Export | Subtitles</div><div class="startImageImage" style="background-image: url('images/importexport.jpg'); width: 332px; height: 499px; " ></div><div class="startImageTextL"></div>
+                </div>
+
+                <div class="startImage" style="width: 497px; " id="img_jirkuff">
+                    <div class="startImageTextL">Susi Jirkuff | Short film</div><div class="startImageImage" style="background-image: url('images/jirkuff_START.jpg'); width: 496px; height: 354px; " ></div><div class="startImageTextL">Photo: Susi Jirkuff, Wild Wood, 2013</div>
+                </div>
+
+                <div class="startImage" style="width: 500px; " id="img_luftzigarette">
+                    <div class="startImageTextR">Luftzigarette | Text, Essay</div><div class="startImageImage" style="background-image: url('images/luftzigarette_START.jpg'); width: 499px; height: 374px; " ></div><div class="startImageTextR"></div>
+                </div>
+
+                <div class="startImage" style="width: 500px; " id="img_sonne">
+                    <div class="startImageTextR">monochrom | Essay</div><div class="startImageImage" style="background-image: url('images/sonne.jpg'); width: 499px; height: 405px; " ></div><div class="startImageTextR"></div>
+                </div>
+
+                <div class="startImage" style="width: 500px; " id="img_niedermayr">
+                    <div class="startImageTextL">Walter Niedermayr | Essay</div><div class="startImageImage" style="background-image: url('images/niedermayr.jpg'); width: 499px; height: 356px; " ></div><div class="startImageTextL"></div>
+                </div>
+
+                <div class="startImage" style="width: 353px; " id="img_paradiesglaube">
+                    <div class="startImageTextR">Paradise – Faith | Subtitles</div><div class="startImageImage" style="background-image: url('images/paradiesglaube_EN.jpg'); width: 352px; height: 499px; " ></div><div class="startImageTextR">Photo: KorneliusTarmann_Design</div>
+                </div>
+
+                <div class="startImage" style="width: 500px; " id="img_quadratsch">
+                    <div class="startImageTextR">Quadrat:sch | Lyric poetry</div><div class="startImageImage" style="background-image: url('images/quadratsch_START.jpg'); width: 499px; height: 239px; " ></div><div class="startImageTextR"></div>
+                </div>
+
+                <div class="startImage" style="width: 337px; " id="img_revanche">
+                    <div class="startImageTextL">Revanche | Subtitles</div><div class="startImageImage" style="background-image: url('images/revanche_EN.jpg'); width: 336px; height: 499px; " ></div><div class="startImageTextL"></div>
+                </div>
+
+                <div class="startImage" style="width: 352px; " id="img_spiluttini">
+                    <div class="startImageTextL">Margherita Spiluttini | Catalogue</div><div class="startImageImage" style="background-image: url('images/spiluttini.jpg'); width: 351px; height: 499px; " ></div><div class="startImageTextL"></div>
+                </div>
+
+                <div class="startImage" style="width: 353px; " id="img_ueberdiejahre">
+                    <div class="startImageTextL">Over the Years | Subtitles</div><div class="startImageImage" style="background-image: url('images/ueberdiejahre_EN.jpg'); width: 352px; height: 499px; " ></div><div class="startImageTextL"></div>
+                </div>
+
+                <div class="startImage" style="width: 500px; " id="img_vorderarchitektur">
+                    <div class="startImageTextR"></div><div class="startImageImage" style="background-image: url('images/vorderarchitektur_START.jpg'); width: 499px; height: 301px; " ></div><div class="startImageTextR">Vor der Architektur | Catalogue</div>
+                </div>
+
+                <div class="startImage" style="width: 500px; " id="img_peterzumthor">
+                    <div class="startImageTextL"></div><div class="startImageImage" style="background-image: url('images/peterzumthor.jpg'); width: 499px; height: 331px; " ></div><div class="startImageTextL">Peter Zumthor  | Essay</div>
+                </div>
+
+                <div class="startImage" style="width: 500px; " id="img_thermevals">
+                    <div class="startImageTextL">Hotel Therme Vals | Lyric poetry, Short fiction</div><div class="startImageImage" style="background-image: url('images/thermevals_START.jpg'); width: 499px; height: 395px; " ></div><div class="startImageTextL"></div>
+                </div>
+
+            </div>
+
+            <script>
+$( document ).ready(function() {
+console.log("ready");
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_koen" ).css({top: offset.top + -80, left: offset.left + -309, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_untitled" ).css({top: offset.top + 80, left: offset.left + -440, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_atmen" ).css({top: offset.top + -80, left: offset.left + -297, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_ewigeleben" ).css({top: offset.top + -80, left: offset.left + -293, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_crownhall" ).css({top: offset.top + -80, left: offset.left + -440, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_dogdays" ).css({top: offset.top + -80, left: offset.left + 240, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_earthfell" ).css({top: offset.top + -80, left: offset.left + 240, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_frank" ).css({top: offset.top + -80, left: offset.left + -440, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_whoresgloryfilm" ).css({top: offset.top + -80, left: offset.left + -293, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_wmdbook" ).css({top: offset.top + 230, left: offset.left + -100, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_honeybunny" ).css({top: offset.top + -80, left: offset.left + 240, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_importexport" ).css({top: offset.top + -80, left: offset.left + 240, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_jirkuff" ).css({top: offset.top + -80, left: offset.left + 240, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_luftzigarette" ).css({top: offset.top + -80, left: offset.left + -440, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_sonne" ).css({top: offset.top + -80, left: offset.left + -440, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_niedermayr" ).css({top: offset.top + -80, left: offset.left + 240, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_paradiesglaube" ).css({top: offset.top + -80, left: offset.left + -293, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_quadratsch" ).css({top: offset.top + -80, left: offset.left + -440, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_revanche" ).css({top: offset.top + -80, left: offset.left + 240, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_spiluttini" ).css({top: offset.top + -80, left: offset.left + 240, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_ueberdiejahre" ).css({top: offset.top + -80, left: offset.left + 240, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_vorderarchitektur" ).css({top: offset.top + 230, left: offset.left + -100, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_peterzumthor" ).css({top: offset.top + 80, left: offset.left + 240, position:'absolute'});
+var elem = $( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+$( "#img_thermevals" ).css({top: offset.top + -80, left: offset.left + 240, position:'absolute'});
+initMobileImages();
+});
+$( "#char_sos" ).mouseenter(function() { $( "#img_sos" ).fadeIn( 500 );});
+$( "#char_sos" ).mouseleave(function() { $( "#img_sos" ).fadeOut( 500 );});
+$( "#char_koen" ).mouseenter(function() { $( "#img_koen" ).fadeIn( 500 );});
+$( "#char_koen" ).mouseleave(function() { $( "#img_koen" ).fadeOut( 500 );});
+$( "#char_wald" ).mouseenter(function() { $( "#img_wald" ).fadeIn( 500 );});
+$( "#char_wald" ).mouseleave(function() { $( "#img_wald" ).fadeOut( 500 );});
+$( "#char_koex" ).mouseenter(function() { $( "#img_koex" ).fadeIn( 500 );});
+$( "#char_koex" ).mouseleave(function() { $( "#img_koex" ).fadeOut( 500 );});
+$( "#char_binder" ).mouseenter(function() { $( "#img_binder" ).fadeIn( 500 );});
+$( "#char_binder" ).mouseleave(function() { $( "#img_binder" ).fadeOut( 500 );});
+$( "#char_simeon" ).mouseenter(function() { $( "#img_simeon" ).fadeIn( 500 );});
+$( "#char_simeon" ).mouseleave(function() { $( "#img_simeon" ).fadeOut( 500 );});
+$( "#char_untitled" ).mouseenter(function() { $( "#img_untitled" ).fadeIn( 500 );});
+$( "#char_untitled" ).mouseleave(function() { $( "#img_untitled" ).fadeOut( 500 );});
+$( "#char_raumaneignungen" ).mouseenter(function() { $( "#img_raumaneignungen" ).fadeIn( 500 );});
+$( "#char_raumaneignungen" ).mouseleave(function() { $( "#img_raumaneignungen" ).fadeOut( 500 );});
+$( "#char_stabatmater" ).mouseenter(function() { $( "#img_stabatmater" ).fadeIn( 500 );});
+$( "#char_stabatmater" ).mouseleave(function() { $( "#img_stabatmater" ).fadeOut( 500 );});
+$( "#char_diegetraeumten" ).mouseenter(function() { $( "#img_diegetraeumten" ).fadeIn( 500 );});
+$( "#char_diegetraeumten" ).mouseleave(function() { $( "#img_diegetraeumten" ).fadeOut( 500 );});
+$( "#char_maxbrand" ).mouseenter(function() { $( "#img_maxbrand" ).fadeIn( 500 );});
+$( "#char_maxbrand" ).mouseleave(function() { $( "#img_maxbrand" ).fadeOut( 500 );});
+$( "#char_azw" ).mouseenter(function() { $( "#img_azw" ).fadeIn( 500 );});
+$( "#char_azw" ).mouseleave(function() { $( "#img_azw" ).fadeOut( 500 );});
+$( "#char_siebzehn" ).mouseenter(function() { $( "#img_siebzehn" ).fadeIn( 500 );});
+$( "#char_siebzehn" ).mouseleave(function() { $( "#img_siebzehn" ).fadeOut( 500 );});
+$( "#char_hotelrr" ).mouseenter(function() { $( "#img_hotelrr" ).fadeIn( 500 );});
+$( "#char_hotelrr" ).mouseleave(function() { $( "#img_hotelrr" ).fadeOut( 500 );});
+$( "#char_atmen" ).mouseenter(function() { $( "#img_atmen" ).fadeIn( 500 );});
+$( "#char_atmen" ).mouseleave(function() { $( "#img_atmen" ).fadeOut( 500 );});
+$( "#char_kommsuessertod" ).mouseenter(function() { $( "#img_kommsuessertod" ).fadeIn( 500 );});
+$( "#char_kommsuessertod" ).mouseleave(function() { $( "#img_kommsuessertod" ).fadeOut( 500 );});
+$( "#char_silentium" ).mouseenter(function() { $( "#img_silentium" ).fadeIn( 500 );});
+$( "#char_silentium" ).mouseleave(function() { $( "#img_silentium" ).fadeOut( 500 );});
+$( "#char_knochenmann" ).mouseenter(function() { $( "#img_knochenmann" ).fadeIn( 500 );});
+$( "#char_knochenmann" ).mouseleave(function() { $( "#img_knochenmann" ).fadeOut( 500 );});
+$( "#char_ewigeleben" ).mouseenter(function() { $( "#img_ewigeleben" ).fadeIn( 500 );});
+$( "#char_ewigeleben" ).mouseleave(function() { $( "#img_ewigeleben" ).fadeOut( 500 );});
+$( "#char_crownhall" ).mouseenter(function() { $( "#img_crownhall" ).fadeIn( 500 );});
+$( "#char_crownhall" ).mouseleave(function() { $( "#img_crownhall" ).fadeOut( 500 );});
+$( "#char_dogdays" ).mouseenter(function() { $( "#img_dogdays" ).fadeIn( 500 );});
+$( "#char_dogdays" ).mouseleave(function() { $( "#img_dogdays" ).fadeOut( 500 );});
+$( "#char_earthfell" ).mouseenter(function() { $( "#img_earthfell" ).fadeIn( 500 );});
+$( "#char_earthfell" ).mouseleave(function() { $( "#img_earthfell" ).fadeOut( 500 );});
+$( "#char_frank" ).mouseenter(function() { $( "#img_frank" ).fadeIn( 500 );});
+$( "#char_frank" ).mouseleave(function() { $( "#img_frank" ).fadeOut( 500 );});
+$( "#char_nacktschnecken" ).mouseenter(function() { $( "#img_nacktschnecken" ).fadeIn( 500 );});
+$( "#char_nacktschnecken" ).mouseleave(function() { $( "#img_nacktschnecken" ).fadeOut( 500 );});
+$( "#char_wmdfilm" ).mouseenter(function() { $( "#img_wmdfilm" ).fadeIn( 500 );});
+$( "#char_wmdfilm" ).mouseleave(function() { $( "#img_wmdfilm" ).fadeOut( 500 );});
+$( "#char_slumming" ).mouseenter(function() { $( "#img_slumming" ).fadeIn( 500 );});
+$( "#char_slumming" ).mouseleave(function() { $( "#img_slumming" ).fadeOut( 500 );});
+$( "#char_contacthigh" ).mouseenter(function() { $( "#img_contacthigh" ).fadeIn( 500 );});
+$( "#char_contacthigh" ).mouseleave(function() { $( "#img_contacthigh" ).fadeOut( 500 );});
+$( "#char_whoresgloryfilm" ).mouseenter(function() { $( "#img_whoresgloryfilm" ).fadeIn( 500 );});
+$( "#char_whoresgloryfilm" ).mouseleave(function() { $( "#img_whoresgloryfilm" ).fadeOut( 500 );});
+$( "#char_whoresglorybook" ).mouseenter(function() { $( "#img_whoresglorybook" ).fadeIn( 500 );});
+$( "#char_whoresglorybook" ).mouseleave(function() { $( "#img_whoresglorybook" ).fadeOut( 500 );});
+$( "#char_wmdbook" ).mouseenter(function() { $( "#img_wmdbook" ).fadeIn( 500 );});
+$( "#char_wmdbook" ).mouseleave(function() { $( "#img_wmdbook" ).fadeOut( 500 );});
+$( "#char_honeybunny" ).mouseenter(function() { $( "#img_honeybunny" ).fadeIn( 500 );});
+$( "#char_honeybunny" ).mouseleave(function() { $( "#img_honeybunny" ).fadeOut( 500 );});
+$( "#char_importexport" ).mouseenter(function() { $( "#img_importexport" ).fadeIn( 500 );});
+$( "#char_importexport" ).mouseleave(function() { $( "#img_importexport" ).fadeOut( 500 );});
+$( "#char_jirkuff" ).mouseenter(function() { $( "#img_jirkuff" ).fadeIn( 500 );});
+$( "#char_jirkuff" ).mouseleave(function() { $( "#img_jirkuff" ).fadeOut( 500 );});
+$( "#char_kern" ).mouseenter(function() { $( "#img_kern" ).fadeIn( 500 );});
+$( "#char_kern" ).mouseleave(function() { $( "#img_kern" ).fadeOut( 500 );});
+$( "#char_keramik" ).mouseenter(function() { $( "#img_keramik" ).fadeIn( 500 );});
+$( "#char_keramik" ).mouseleave(function() { $( "#img_keramik" ).fadeOut( 500 );});
+$( "#char_luftzigarette" ).mouseenter(function() { $( "#img_luftzigarette" ).fadeIn( 500 );});
+$( "#char_luftzigarette" ).mouseleave(function() { $( "#img_luftzigarette" ).fadeOut( 500 );});
+$( "#char_sonne" ).mouseenter(function() { $( "#img_sonne" ).fadeIn( 500 );});
+$( "#char_sonne" ).mouseleave(function() { $( "#img_sonne" ).fadeOut( 500 );});
+$( "#char_niedermayr" ).mouseenter(function() { $( "#img_niedermayr" ).fadeIn( 500 );});
+$( "#char_niedermayr" ).mouseleave(function() { $( "#img_niedermayr" ).fadeOut( 500 );});
+$( "#char_paradiesglaube" ).mouseenter(function() { $( "#img_paradiesglaube" ).fadeIn( 500 );});
+$( "#char_paradiesglaube" ).mouseleave(function() { $( "#img_paradiesglaube" ).fadeOut( 500 );});
+$( "#char_quadratsch" ).mouseenter(function() { $( "#img_quadratsch" ).fadeIn( 500 );});
+$( "#char_quadratsch" ).mouseleave(function() { $( "#img_quadratsch" ).fadeOut( 500 );});
+$( "#char_revanche" ).mouseenter(function() { $( "#img_revanche" ).fadeIn( 500 );});
+$( "#char_revanche" ).mouseleave(function() { $( "#img_revanche" ).fadeOut( 500 );});
+$( "#char_spiluttini" ).mouseenter(function() { $( "#img_spiluttini" ).fadeIn( 500 );});
+$( "#char_spiluttini" ).mouseleave(function() { $( "#img_spiluttini" ).fadeOut( 500 );});
+$( "#char_tuorsettembrini" ).mouseenter(function() { $( "#img_tuorsettembrini" ).fadeIn( 500 );});
+$( "#char_tuorsettembrini" ).mouseleave(function() { $( "#img_tuorsettembrini" ).fadeOut( 500 );});
+$( "#char_unterblinden" ).mouseenter(function() { $( "#img_unterblinden" ).fadeIn( 500 );});
+$( "#char_unterblinden" ).mouseleave(function() { $( "#img_unterblinden" ).fadeOut( 500 );});
+$( "#char_ueberdiejahre" ).mouseenter(function() { $( "#img_ueberdiejahre" ).fadeIn( 500 );});
+$( "#char_ueberdiejahre" ).mouseleave(function() { $( "#img_ueberdiejahre" ).fadeOut( 500 );});
+$( "#char_vorderarchitektur" ).mouseenter(function() { $( "#img_vorderarchitektur" ).fadeIn( 500 );});
+$( "#char_vorderarchitektur" ).mouseleave(function() { $( "#img_vorderarchitektur" ).fadeOut( 500 );});
+$( "#char_peterzumthor" ).mouseenter(function() { $( "#img_peterzumthor" ).fadeIn( 500 );});
+$( "#char_peterzumthor" ).mouseleave(function() { $( "#img_peterzumthor" ).fadeOut( 500 );});
+$( "#char_thermevals" ).mouseenter(function() { $( "#img_thermevals" ).fadeIn( 500 );});
+$( "#char_thermevals" ).mouseleave(function() { $( "#img_thermevals" ).fadeOut( 500 );});
+var idsm = [
+    '#imgm_azw',
+    '#imgm_diegetraumten',
+    '#imgm_binder',
+    '#imgm_frank',
+    '#imgm_koex'
+];
+function initMobileImages() {
+    var parent = $( document.body );
+    var border = 50;
+    var height = parent.height();
+    var width = parent.width();
+    var offset = parent.offset();
+    console.log("initMobileImages w/h/ol/ot " + width + '/' + height + '/' + offset.left + '/' + offset.top);
+    for (var idval of idsm) {
+        var r1 = offset.left + border + Math.random() * (width - 500 - (2 * border));
+        var r2 = offset.top + border + Math.random() * (height - 500 - (2 * border));
+        $( idval ).css({top: r2, left: r1, position:'absolute', display:'none'});
+    }
+    setInterval(fadeInOut, 5000);
+}
+function fadeInOut() {
+    var len = idsm.length;
+    var i = Math.floor(Math.random() * len);
+    console.log("fadeinout " + i + "/" + len);
+    var id = idsm[i];
+    $( id ).fadeIn( 100 );
+    $( id ).fadeOut( 4000 );
+}
+
+</script>
+
+
+        </div>
+
+    </div>
+</div>
+
+<div class="DV_MobilePortrait">
+    <div id="page">
+
+        <div class="headline">
+            <span class="headline1">KIMI LUM</span>
+        </div>
+        <div class="headlineB">
+            <span class="headline2">TRANSLATOR</span>
+            <span class="headline3">from German to English</span>
+        </div>
+
+        <div id="infoMenu"><div class="menuItemFill"></div><div   class="menuItemF"><span class="infoMenuItemText">HOME</span></div><div id="prjCatPage"   class="menuItemM"><a href="prjCatPage-eng.html"><span class="infoMenuItemText">PROJECTS</span></a></div><div id="bio"   class="menuItemM"><a href="bio-eng.html"><span class="infoMenuItemText">BIO / CONTACT</span></a></div><div id="lang" class="menuItemL" style="padding-left : 4px">
+            <a href="index-ger.html">
+                <span class="infoMenuItemText">DE</span>
+            </a>
+        </div></div>
+        <div id="contentStart">
+            <div id="startAphaBlock">
+                <div><div class="startChar" id="char_atmen"><a href="atmen-eng.html">A</a></div>
+                    <div class="startChar" id="char_ewigeleben"><a href="ewigeleben-eng.html">B</a></div>
+                    <div class="startChar" id="char_crownhall"><a href="crownhall-eng.html">C</a></div>
+                    <div class="startChar" id="char_dogdays"><a href="dogdays-eng.html">D</a></div>
+                    <div class="startChar" id="char_earthfell"><a href="earthfell-eng.html">E</a></div></div>
+                <div><div class="startChar" id="char_frank"><a href="frank-eng.html">F</a></div>
+                    <div class="startChar" id="char_whoresgloryfilm"><a href="whoresgloryfilm-eng.html">G</a></div>
+                    <div class="startChar" id="char_honeybunny"><a href="honeybunny-eng.html">H</a></div>
+                    <div class="startChar" id="char_importexport"><a href="importexport-eng.html">I</a></div>
+                    <div class="startChar" id="char_jirkuff"><a href="jirkuff-eng.html">J</a></div></div>
+                <div><div class="startChar" id="char_koen"><a href="koen-eng.html">K</a></div>
+                    <div class="startChar" id="char_luftzigarette"><a href="luftzigarette-eng.html">L</a></div>
+                    <div class="startChar" id="char_sonne"><a href="sonne-eng.html">M</a></div>
+                    <div class="startChar" id="char_niedermayr"><a href="niedermayr-eng.html">N</a></div>
+                    <div class="startChar" id="char_ueberdiejahre"><a href="ueberdiejahre-eng.html">O</a></div></div>
+                <div><div class="startChar" id="char_paradiesglaube"><a href="paradiesglaube-eng.html">P</a></div>
+                    <div class="startChar" id="char_quadratsch"><a href="quadratsch-eng.html">Q</a></div>
+                    <div class="startChar" id="char_revanche"><a href="revanche-eng.html">R</a></div>
+                    <div class="startChar" id="char_spiluttini"><a href="spiluttini-eng.html">S</a></div>
+                    <div class="startChar" id="char_thermevals"><a href="thermevals-eng.html">T</a></div></div>
+                <div><div class="startChar" id="char_untitled"><a href="untitled-eng.html">U</a></div>
+                    <div class="startChar" id="char_vorderarchitektur"><a href="vorderarchitektur-eng.html">V</a></div>
+                    <div class="startChar" id="char_wmdbook"><a href="wmdbook-eng.html">W</a></div>
+                    <span class="startChar">X</span>
+                    <div class="startChar" id="char_peterzumthor"><a href="peterzumthor-eng.html">Z</a></div></div>
+            </div>
+            <div id="startAlphaBlockBack"></div>
+
+            <div id="imgm_azw" class="startImageImage" style="background-image: url('images/azw.jpg'); width: 500px; height: 476px; "></div>
+            <div id="imgm_diegetraumten" class="startImageImage" style="background-image: url('images/diegetraeumten.jpg'); width: 354px; height: 500px; "></div>
+            <div id="imgm_binder" class="startImageImage" style="background-image: url('images/binder.jpeg'); width: 500px; height: 472px; "></div>
+            <div id="imgm_frank" class="startImageImage" style="background-image: url('images/frank.jpg'); width: 499px; height: 328px; "></div>
+            <div id="imgm_koex" class="startImageImage" style="background-image: url('images/koex.jpeg'); width: 363px; height: 500px; "></div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="DV_MobileLandscape">
+    <div id="page">
+
+        <div class="headline">
+            <span class="headline1">KIMI LUM</span>
+            <span class="headline2">TRANSLATOR</span>
+            <span class="headline3">from German to English</span>
+        </div>
+    </div>
+
+    <div id="infoMenu"><div class="menuItemFill"></div><div   class="menuItemF"><span class="infoMenuItemText">HOME</span></div><div id="prjCatPage"   class="menuItemM"><a href="prjCatPage-eng.html"><span class="infoMenuItemText">PROJECTS</span></a></div><div id="bio"   class="menuItemM"><a href="bio-eng.html"><span class="infoMenuItemText">BIO / CONTACT</span></a></div><div id="lang" class="menuItemL" style="padding-left : 4px">
+        <a href="index-ger.html">
+            <span class="infoMenuItemText">DE</span>
+        </a>
+    </div></div>
+    <div id="contentStart">
+        <div id="startAphaBlock">
+            <div><div class="startChar" id="char_atmen"><a href="atmen-eng.html">A</a></div>
+                <div class="startChar" id="char_ewigeleben"><a href="ewigeleben-eng.html">B</a></div>
+                <div class="startChar" id="char_crownhall"><a href="crownhall-eng.html">C</a></div>
+                <div class="startChar" id="char_dogdays"><a href="dogdays-eng.html">D</a></div>
+                <div class="startChar" id="char_earthfell"><a href="earthfell-eng.html">E</a></div></div>
+            <div><div class="startChar" id="char_frank"><a href="frank-eng.html">F</a></div>
+                <div class="startChar" id="char_whoresgloryfilm"><a href="whoresgloryfilm-eng.html">G</a></div>
+                <div class="startChar" id="char_honeybunny"><a href="honeybunny-eng.html">H</a></div>
+                <div class="startChar" id="char_importexport"><a href="importexport-eng.html">I</a></div>
+                <div class="startChar" id="char_jirkuff"><a href="jirkuff-eng.html">J</a></div></div>
+            <div><div class="startChar" id="char_koen"><a href="koen-eng.html">K</a></div>
+                <div class="startChar" id="char_luftzigarette"><a href="luftzigarette-eng.html">L</a></div>
+                <div class="startChar" id="char_sonne"><a href="sonne-eng.html">M</a></div>
+                <div class="startChar" id="char_niedermayr"><a href="niedermayr-eng.html">N</a></div>
+                <div class="startChar" id="char_ueberdiejahre"><a href="ueberdiejahre-eng.html">O</a></div></div>
+            <div><div class="startChar" id="char_paradiesglaube"><a href="paradiesglaube-eng.html">P</a></div>
+                <div class="startChar" id="char_quadratsch"><a href="quadratsch-eng.html">Q</a></div>
+                <div class="startChar" id="char_revanche"><a href="revanche-eng.html">R</a></div>
+                <div class="startChar" id="char_spiluttini"><a href="spiluttini-eng.html">S</a></div>
+                <div class="startChar" id="char_thermevals"><a href="thermevals-eng.html">T</a></div></div>
+            <div><div class="startChar" id="char_untitled"><a href="untitled-eng.html">U</a></div>
+                <div class="startChar" id="char_vorderarchitektur"><a href="vorderarchitektur-eng.html">V</a></div>
+                <div class="startChar" id="char_wmdbook"><a href="wmdbook-eng.html">W</a></div>
+                <span class="startChar">X</span>
+                <div class="startChar" id="char_peterzumthor"><a href="peterzumthor-eng.html">Z</a></div></div>
+        </div>
+        <div id="startAlphaBlockBack"></div>
+
+        <div id="imgm_azw" class="startImageImage" style="background-image: url('images/azw.jpg'); width: 500px; height: 476px; "></div>
+        <div id="imgm_diegetraumten" class="startImageImage" style="background-image: url('images/diegetraeumten.jpg'); width: 354px; height: 500px; "></div>
+        <div id="imgm_binder" class="startImageImage" style="background-image: url('images/binder.jpeg'); width: 500px; height: 472px; "></div>
+        <div id="imgm_frank" class="startImageImage" style="background-image: url('images/frank.jpg'); width: 499px; height: 328px; "></div>
+        <div id="imgm_koex" class="startImageImage" style="background-image: url('images/koex.jpeg'); width: 363px; height: 500px; "></div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+
