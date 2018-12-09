@@ -2,6 +2,16 @@ package net.entelijan.kimi
 
 object Css {
 
+  /* google noto Font
+   * @font-face {
+   *            font-family: 'TradeGothic';
+   *            src: url("css-noto/NotoSansDisplay-ExtraCondensed.ttf") format("truetype"); }
+   * @font-face {
+   *            font-family: 'TradeGothic';
+   *            src: url("css-noto/NotoSansDisplay-ExtraCondensedBold.ttf") format("truetype");
+   *            font-weight: bold; }
+   */
+
   def all: String =
     """.DV_Browser {  display: block;}
       |.DV_MobilePortrait {  display: none;}

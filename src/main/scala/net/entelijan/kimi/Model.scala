@@ -50,7 +50,7 @@ object Model {
     def order = 50
   }
 
-  case object AR_Editor$ extends ArtistRole {
+  case object AR_Editor extends ArtistRole {
     def masculineSingular = MultiLangString(ger = "Herausgeber:", eng = "Editor:")
 
     def femininSingular = MultiLangString(ger = "Herausgeberin:", eng = "Editor:")
@@ -64,7 +64,21 @@ object Model {
     def order = 40
   }
 
-  case object AR_Author$ extends ArtistRole {
+  case object AR_Composer extends ArtistRole {
+    def masculineSingular = MultiLangString(ger = "Komponist:", eng = "Composer:")
+
+    def femininSingular = MultiLangString(ger = "Komponistin:", eng = "Composer:")
+
+    def masculinePlural = MultiLangString(ger = "Komponisten:", eng = "Composers:")
+
+    def femininPlural = MultiLangString(ger = "Komponistinnen:", eng = "Composers:")
+
+    def mixedPlural = MultiLangString(ger = "Komponisten von", eng = "Composers:")
+
+    def order = 25
+  }
+
+  case object AR_Author extends ArtistRole {
     def masculineSingular = MultiLangString(ger = "Autor:", eng = "Author:")
 
     def femininSingular = MultiLangString(ger = "Autorin:", eng = "Author:")
@@ -78,7 +92,7 @@ object Model {
     def order = 20
   }
 
-  case object AR1_Artist extends ArtistRole {
+  case object AR_Artist extends ArtistRole {
     def masculineSingular = MultiLangString(ger = "Künstler:", eng = "Artist:")
 
     def femininSingular = MultiLangString(ger = "Künstlerin:", eng = "Artist:")
@@ -306,10 +320,11 @@ object Model {
 
         def parseRole(code: String): ArtistRole =
           if (code.endsWith("D")) AR_Director$
-          else if (code.endsWith("E")) AR_Editor$
-          else if (code.endsWith("W")) AR_Author$
-          else if (code.endsWith("A")) AR1_Artist
+          else if (code.endsWith("E")) AR_Editor
+          else if (code.endsWith("W")) AR_Author
+          else if (code.endsWith("A")) AR_Artist
           else if (code.endsWith("B")) AR_Architect
+          else if (code.endsWith("K")) AR_Composer
           else AR_Undef
 
         val code = rn._1.trim()
