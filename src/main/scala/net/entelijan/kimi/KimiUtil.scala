@@ -43,9 +43,7 @@ object KimiUtil {
 
   private object FileUtil {
 
-    def homeDir: File = getOrCreateDir(None, System.getProperty("user.home"))
-
-    def generalWorkDir: File = getOrCreateDir(Some(homeDir), "work")
+    def generalWorkDir: File = getOrCreateDir(Some(new File(".")), "target")
 
     def myWorkDir: File = getOrCreateDir(Some(generalWorkDir), "work-html-hp-k")
 

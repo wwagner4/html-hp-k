@@ -19,7 +19,7 @@
 			verbose="true"
 			command="rm -rf /var/www/kimi1/*"/>
 		<scp verbose="true" todir="root@entelijan.net:/var/www/kimi1" keyfile="${user.home}/.ssh/id_rsa">
-			<fileset dir="${user.home}/work/work-html-hp-k/output">
+			<fileset dir="target/work-html-hp-k/output">
 				<include name="**/*" />
 			</fileset>
 		</scp>	
