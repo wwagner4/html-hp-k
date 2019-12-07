@@ -180,6 +180,7 @@ object ProjectFromFile {
           case "S" => Cat_S
           case "A" => Cat_A
           case "U" => Cat_U
+          case "Q" => Cat_Q
           case x => throw new ProjectException("Error in line %d. Unknown category code %s. %s" format(nr, x, line))
         }
       }

@@ -11,7 +11,7 @@ class ArtistRolesSuite extends FunSuite {
 
   val ptvs = List(
     PTV("femD/masE", "Gerda Klein/Emil Tumpl", "Klein Gerda/Tumpl Emil",
-      List(Artist(G_Feminin, AR_Director$, "Gerda Klein", "Klein Gerda"),
+      List(Artist(G_Feminin, AR_Director, "Gerda Klein", "Klein Gerda"),
         Artist(G_Masculin, AR_Editor, "Emil Tumpl", "Tumpl Emil"))),
     PTV("femW/masA", " Gerda Klein / Emil Tumpl ", "Klein Gerda/Tumpl Emil",
       List(Artist(G_Feminin, AR_Author, "Gerda Klein", "Klein Gerda"),
@@ -47,11 +47,11 @@ class ArtistRolesSuite extends FunSuite {
       Eng,
       List("Artists: B A, Y X")),
     FTV(
-      List(Artist(G_Masculin, AR_Artist, "A B", "B A"), Artist(G_Feminin, AR_Director$, "X Y", "Y X")),
+      List(Artist(G_Masculin, AR_Artist, "A B", "B A"), Artist(G_Feminin, AR_Director, "X Y", "Y X")),
       Ger,
       List("Künstler: B A", "Regie: Y X")),
     FTV(
-      List(Artist(G_Masculin, AR_Artist, "A B", "B A"), Artist(G_Feminin, AR_Director$, "X Y", "Y X")),
+      List(Artist(G_Masculin, AR_Artist, "A B", "B A"), Artist(G_Feminin, AR_Director, "X Y", "Y X")),
       Eng,
       List("Artist: B A", "Director: Y X")),
     FTV(

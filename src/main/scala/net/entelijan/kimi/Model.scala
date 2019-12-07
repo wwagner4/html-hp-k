@@ -36,7 +36,7 @@ object Model {
     def order: Int
   }
 
-  case object AR_Director$ extends ArtistRole {
+  case object AR_Director extends ArtistRole {
     def masculineSingular = MultiLangString(ger = "Regie:", eng = "Director:")
 
     def femininSingular = MultiLangString(ger = "Regie:", eng = "Director:")
@@ -48,6 +48,48 @@ object Model {
     def mixedPlural = MultiLangString(ger = "Regie:", eng = "Directors:")
 
     def order = 50
+  }
+
+  case object AR_Director_Author extends ArtistRole {
+    def masculineSingular = MultiLangString(ger = "Regie, Autor:", eng = "Director, Author:")
+
+    def femininSingular = MultiLangString(ger = "Regie, Autorin:", eng = "Director, Author:")
+
+    def masculinePlural = MultiLangString(ger = "Regie, Autoren:", eng = "Directors, Authors:")
+
+    def femininPlural = MultiLangString(ger = "Regie, Autorinnen:", eng = "Directors, Authors:")
+
+    def mixedPlural = MultiLangString(ger = "Regie, Autoren:", eng = "Directors, Authors:")
+
+    def order = 51
+  }
+
+  case object AR_Author extends ArtistRole {
+    def masculineSingular = MultiLangString(ger = "Autor:", eng = "Author:")
+
+    def femininSingular = MultiLangString(ger = "Autorin:", eng = "Author:")
+
+    def masculinePlural = MultiLangString(ger = "Autoren:", eng = "Authors:")
+
+    def femininPlural = MultiLangString(ger = "Autorinnen:", eng = "Authors:")
+
+    def mixedPlural = MultiLangString(ger = "Autoren:", eng = "Authors:")
+
+    def order = 20
+  }
+
+  case object AR_Editor_Author extends ArtistRole {
+    def masculineSingular = MultiLangString(ger = "Herausgeber, Autor:", eng = "Editor, Author:")
+
+    def femininSingular = MultiLangString(ger = "Herausgeberin, Autorin:", eng = "Editor, Author:")
+
+    def masculinePlural = MultiLangString(ger = "Herausgeber, Autoren:", eng = "Editors, Authors:")
+
+    def femininPlural = MultiLangString(ger = "Herausgeberinnen, Autorinnen:", eng = "Editors, Authors:")
+
+    def mixedPlural = MultiLangString(ger = "Herausgeber, Autoren:", eng = "Editors, Authors:")
+
+    def order = 41
   }
 
   case object AR_Editor extends ArtistRole {
@@ -76,20 +118,6 @@ object Model {
     def mixedPlural = MultiLangString(ger = "Komponisten von", eng = "Composers:")
 
     def order = 25
-  }
-
-  case object AR_Author extends ArtistRole {
-    def masculineSingular = MultiLangString(ger = "Autor:", eng = "Author:")
-
-    def femininSingular = MultiLangString(ger = "Autorin:", eng = "Author:")
-
-    def masculinePlural = MultiLangString(ger = "Autoren:", eng = "Authors:")
-
-    def femininPlural = MultiLangString(ger = "Autorinnen:", eng = "Authors:")
-
-    def mixedPlural = MultiLangString(ger = "Autoren:", eng = "Authors:")
-
-    def order = 20
   }
 
   case object AR_Artist extends ArtistRole {
@@ -309,6 +337,10 @@ object Model {
     def name = MultiLangString("Musik", "Music")
   }
 
+  case object Cat_Q extends Category {
+    def name = MultiLangString("Drehbuch", "Screenplay")
+  }
+
   object ArtistRolesUtil {
     def parse(roles: String, names: String, namesRev: String): List[Artist] = {
       def roleNameToArtist(rn: (String, (String, String))): Artist = {
@@ -319,7 +351,9 @@ object Model {
           else G_Undef
 
         def parseRole(code: String): ArtistRole =
-          if (code.endsWith("D")) AR_Director$
+          if (code.endsWith("DW")) AR_Director_Author
+          else if (code.endsWith("EW")) AR_Editor_Author
+          else if (code.endsWith("D")) AR_Director
           else if (code.endsWith("E")) AR_Editor
           else if (code.endsWith("W")) AR_Author
           else if (code.endsWith("A")) AR_Artist
