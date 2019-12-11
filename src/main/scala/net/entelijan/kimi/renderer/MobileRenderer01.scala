@@ -252,7 +252,7 @@ class MobileRenderer01 extends DefaultRenderer {
           case _ =>
             s"""${artist(lang)}
                |
-               |${comp(lang)}$yearString
+               |${comp(lang)}$yearString  
                |$isbn
                |${credit(lang)}
                |""".stripMargin.trim()
