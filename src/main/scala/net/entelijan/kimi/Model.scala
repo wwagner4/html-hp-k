@@ -51,15 +51,15 @@ object Model {
   }
 
   case object AR_Director_Author extends ArtistRole {
-    def masculineSingular = MultiLangString(ger = "Regie, Autor:", eng = "Director, Author:")
+    def masculineSingular = MultiLangString(ger = "Regie, Autor:", eng = "Director, author:")
 
-    def femininSingular = MultiLangString(ger = "Regie, Autorin:", eng = "Director, Author:")
+    def femininSingular = MultiLangString(ger = "Regie, Autorin:", eng = "Director, author:")
 
-    def masculinePlural = MultiLangString(ger = "Regie, Autoren:", eng = "Directors, Authors:")
+    def masculinePlural = MultiLangString(ger = "Regie, Autoren:", eng = "Directors, authors:")
 
-    def femininPlural = MultiLangString(ger = "Regie, Autorinnen:", eng = "Directors, Authors:")
+    def femininPlural = MultiLangString(ger = "Regie, Autorinnen:", eng = "Directors, authors:")
 
-    def mixedPlural = MultiLangString(ger = "Regie, Autoren:", eng = "Directors, Authors:")
+    def mixedPlural = MultiLangString(ger = "Regie, Autoren:", eng = "Directors, authors:")
 
     def order = 51
   }
@@ -79,15 +79,15 @@ object Model {
   }
 
   case object AR_Editor_Author extends ArtistRole {
-    def masculineSingular = MultiLangString(ger = "Herausgeber, Autor:", eng = "Editor, Author:")
+    def masculineSingular = MultiLangString(ger = "Herausgeber, Autor:", eng = "Editor, author:")
 
-    def femininSingular = MultiLangString(ger = "Herausgeberin, Autorin:", eng = "Editor, Author:")
+    def femininSingular = MultiLangString(ger = "Herausgeberin, Autorin:", eng = "Editor, author:")
 
-    def masculinePlural = MultiLangString(ger = "Herausgeber, Autoren:", eng = "Editors, Authors:")
+    def masculinePlural = MultiLangString(ger = "Herausgeber, Autoren:", eng = "Editors, authors:")
 
-    def femininPlural = MultiLangString(ger = "Herausgeberinnen, Autorinnen:", eng = "Editors, Authors:")
+    def femininPlural = MultiLangString(ger = "Herausgeberinnen, Autorinnen:", eng = "Editors, authors:")
 
-    def mixedPlural = MultiLangString(ger = "Herausgeber, Autoren:", eng = "Editors, Authors:")
+    def mixedPlural = MultiLangString(ger = "Herausgeber, Autoren:", eng = "Editors, authors:")
 
     def order = 41
   }
