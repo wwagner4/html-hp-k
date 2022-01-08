@@ -1,5 +1,6 @@
 package net.entelijan.kimi
 
+//noinspection TypeAnnotation
 object Model {
 
   sealed trait ReportBody
@@ -196,11 +197,15 @@ object Model {
   }
 
   case object Comp_E extends CompanyType {
-    def name = MultiLangString("Editor", "Herausgeber")
+    def name = MultiLangString("Herausgeber", "Editor")
   }
 
   case object Comp_L extends CompanyType {
     def name = MultiLangString("Label", "Label")
+  }
+
+  case object Comp_C extends CompanyType {
+    def name = MultiLangString("Kulturelle Einrichtung", "Cultural institution")
   }
 
   case object Comp_UNDEF extends CompanyType {
@@ -313,30 +318,37 @@ object Model {
     def name: MultiLang[String]
   }
 
+  //noinspection TypeAnnotation
   case object Cat_A extends Category {
     def name = MultiLangString("Architektur", "Architecture")
   }
 
+  //noinspection TypeAnnotation
   case object Cat_M extends Category {
     def name = MultiLangString("Film", "Film")
   }
 
+  //noinspection TypeAnnotation
   case object Cat_D extends Category {
     def name = MultiLangString("Kunst | Design", "Art | Design")
   }
 
+  //noinspection TypeAnnotation
   case object Cat_L extends Category {
     def name = MultiLangString("Literatur", "Literature")
   }
 
+  //noinspection TypeAnnotation
   case object Cat_S extends Category {
     def name = MultiLangString("Sachbuch", "Nonfiction")
   }
 
+  //noinspection TypeAnnotation
   case object Cat_U extends Category {
     def name = MultiLangString("Musik", "Music")
   }
 
+  //noinspection TypeAnnotation
   case object Cat_Q extends Category {
     def name = MultiLangString("Drehbuch", "Screenplay")
   }
@@ -392,7 +404,7 @@ object Model {
 
     def format(artists: List[Artist], lang: Lang): List[String] = {
       def roleGroupsToString(rg: List[Artist], lang: Lang): String = {
-        val g = rg(0)
+        val g = rg.head
 
         def allFeminin: Boolean = rg.forall(artist => artist.gender == G_Feminin)
 
@@ -400,7 +412,7 @@ object Model {
 
         def heading: String =
           if (rg.size == 1) {
-            rg(0).gender match {
+            rg.head.gender match {
               case G_Feminin => g.role.femininSingular.value(lang)
               case G_Masculin => g.role.masculineSingular.value(lang)
               case G_Undef => ""
@@ -558,7 +570,7 @@ object Model {
         }
       }
 
-      require(files.size > 0)
+      require(files.nonEmpty)
 
       val analyzed = analyze(files)
 

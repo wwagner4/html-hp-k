@@ -208,6 +208,7 @@ object ProjectFromFile {
             case "M" => Comp_M
             case "E" => Comp_E
             case "L" => Comp_L
+            case "C" => Comp_C
             case "" => Comp_UNDEF
             case x => throw new IllegalStateException("'%s' cannot be matched to a CompanyType (R, P, M, E, L or '')" format x)
           }
@@ -247,7 +248,7 @@ object ProjectFromFile {
             reader.setInput(stream)
             val width = reader.getWidth(reader.getMinIndex)
             val height = reader.getHeight(reader.getMinIndex)
-            new Dimension(width, height);
+            new Dimension(width, height)
           } finally {
             reader.dispose()
           }
@@ -272,7 +273,7 @@ object ProjectFromFile {
           def result: Option[Project] = None
 
           def report: Report = new Report {
-            def heading = Some("INFO Project '%s' not active" format line(1))
+            def heading: Some[String] = Some("INFO Project '%s' not active" format line(1))
 
             def body = List.empty[ReportBody]
           }
@@ -299,12 +300,12 @@ object ProjectFromFile {
 
           def report: Report = infos match {
             case Nil => new Report {
-              def heading = Some("INFO Create project %s" format prj.id)
+              def heading: Some[String] = Some("INFO Create project %s" format prj.id)
 
               def body = List.empty[ReportBody]
             }
             case _ => new Report {
-              def heading = Some("INFO Creating project %s" format prj.id)
+              def heading: Some[String] = Some("INFO Creating project %s" format prj.id)
 
               def body = List(ReportLinesImpl(infos))
             }
