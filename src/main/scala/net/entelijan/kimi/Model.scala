@@ -353,6 +353,21 @@ object Model {
     def name = MultiLangString("Drehbuch", "Screenplay")
   }
 
+  //noinspection TypeAnnotation
+  case object Cat_AF extends Category {
+    def name = MultiLangString("Hörspiel", "Audio Fiction")
+  }
+
+  //noinspection TypeAnnotation
+  case object Cat_T extends Category {
+    def name = MultiLangString("Theater", "Theater")
+  }
+
+  //noinspection TypeAnnotation
+  case object Cat_P extends Category {
+    def name = MultiLangString("Photography", "Photography")
+  }
+
   object ArtistRolesUtil {
     def parse(roles: String, names: String, namesRev: String): List[Artist] = {
       def roleNameToArtist(rn: (String, (String, String))): Artist = {
