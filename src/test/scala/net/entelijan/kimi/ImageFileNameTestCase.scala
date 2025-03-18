@@ -1,9 +1,9 @@
 package net.entelijan.kimi
 
 import net.entelijan.kimi.Model._
-import org.scalatest._
+import org.scalatest.funsuite.AnyFunSuite
 
-class ImageFileNameTestCase extends FunSuite {
+class ImageFileNameTestCase extends AnyFunSuite {
 
   case class T(nr: Int, files: List[String], gerStart: String, engStart: String, gerPrj: String, engPrj: String)
 

@@ -365,7 +365,7 @@ object Model {
 
   //noinspection TypeAnnotation
   case object Cat_P extends Category {
-    def name = MultiLangString("Photography", "Photography")
+    def name = MultiLangString("Fotografie", "Photography")
   }
 
   object ArtistRolesUtil {

@@ -1,8 +1,9 @@
 package net.entelijan.kimi
 
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
-class KimiUtilSuite extends FunSuite {
+
+class KimiUtilSuite extends AnyFunSuite {
 
   test("Test remove qualifier") {
     val is: String = KimiUtil.uqual("Es war einmal (Hallo du)")
