@@ -6,5 +6,6 @@ lazy val root = (project in file("."))
     scalaVersion := "2.12.15",
     version      := "1.0-SNAPSHOT",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % "test",
-    libraryDependencies += "org.planet42" %% "laika-core" % "0.7.5"
+    libraryDependencies += "org.planet42" %% "laika-core" % "0.7.5",
+    libraryDependencies += "org.apache.poi" % "poi-ooxml" % "5.4.0"
 )
