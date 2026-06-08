@@ -1,0 +1,28 @@
+Hallo Kimi.
+Ich sehe:
+
+Du hast heuer 19 neue projekte angelegt
+
+tong, album, motion, landscape, quantum, forest,
+glück, moons, sisters, lonely, haribo, stunden
+perla, normal, lacrimosa, hot, butter, xenakis, prince
+
+Du hast letztes jahr 4 neue projekte angelegt, insgesamt  23 neue projekte
+
+jm, eis, hot, zuck
+
+Davon sollen zwei nicht angezeigt werden
+
+glück, moons, eis, zuck, erdbeer
+
+Drei sollen auf der Start Seite angezeigt werden
+
+hot, butter, xenakis
+
+Auf der Startseite nicht mehr angezeigt werden
+
+ewigeleben, honeybunny
+
+Überhaupt nicht mehr angezeigt werden
+
+

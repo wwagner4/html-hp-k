@@ -12,7 +12,7 @@ import scala.io.Codec
 object ProjectFromFile {
 
   private val inputFile = KimiUtil.inputFile
-  private val colCount = 27
+  private val colCount = 28
 
   def projects: CreationResult[List[Project]] = {
     var reps = List.empty[Report]
@@ -66,7 +66,7 @@ object ProjectFromFile {
     }
 
     def createYear: Option[String] = {
-      val year = line(25)
+      val year = line(26)
       year match {
         case "" => None
         case any => Some(any)
@@ -79,8 +79,8 @@ object ProjectFromFile {
         l.replaceAll(":::", "\n\n").replaceAll("::", repl)
       }
 
-      val pdDe = linebreak(line(21).trim())
-      val pdEn = linebreak(line(22).trim())
+      val pdDe = linebreak(line(22).trim())
+      val pdEn = linebreak(line(23).trim())
       (pdDe, pdEn) match {
         case ("", "") => None
         case (x, "") => Some(MultiLangStringSimple(x))
@@ -90,8 +90,8 @@ object ProjectFromFile {
     }
 
     def createStartTitle: MultiLang[String] = {
-      val startTitelGer = line(4)
-      val startTitelEng = line(5)
+      val startTitelGer = line(5)
+      val startTitelEng = line(6)
       val _ger = if (startTitelGer == "") createTitle.ger.name.get else startTitelGer
       val _eng = if (startTitelEng == "") createTitle.eng.name.get else startTitelEng
       MultiLangString(_ger, _eng)
@@ -99,10 +99,10 @@ object ProjectFromFile {
 
     def createTitle: MultiLang[ProjectTitle] = {
       val hpAlph = line(3).trim().toUpperCase()
-      val alphDe = line(8).trim().toUpperCase()
-      val namDe = line(9).trim()
-      val alphEn = line(11).trim().toUpperCase()
-      val namEn = line(12).trim()
+      val alphDe = line(9).trim().toUpperCase()
+      val namDe = line(10).trim()
+      val alphEn = line(12).trim().toUpperCase()
+      val namEn = line(13).trim()
 
       def createHomepageAlph(char: String): Option[Char] = char match {
         case "" => None
@@ -144,9 +144,9 @@ object ProjectFromFile {
 
     def uqual(title: String): String = KimiUtil.uqual(title)
 
-    def createSubTitle: Option[MultiLang[String]] = createMultilangString(10, 13)
+    def createSubTitle: Option[MultiLang[String]] = createMultilangString(11, 14)
 
-    def createContrib: Option[MultiLang[String]] = createMultilangString(6, 7)
+    def createContrib: Option[MultiLang[String]] = createMultilangString(7, 8)
 
     def createMultilangString(indexDe: Int, indexEn: Int): Option[MultiLang[String]] = {
       val de = line(indexDe)
@@ -163,14 +163,14 @@ object ProjectFromFile {
     }
 
     def createArtistList: List[Artist] = {
-      val roles = line(17)
-      val nams = line(19)
-      val namsRev = line(20)
+      val roles = line(18)
+      val nams = line(20)
+      val namsRev = line(21)
       ArtistRolesUtil.parse(roles, nams, namsRev)
     }
 
     def createCategory: List[Category] = {
-      val code = line(14)
+      val code = line(15)
       val codeList = code.split("/").toList
       codeList map { c =>
         c.trim().toUpperCase() match {
@@ -181,13 +181,16 @@ object ProjectFromFile {
           case "A" => Cat_A
           case "U" => Cat_U
           case "Q" => Cat_Q
+          case "AF" => Cat_AF
+          case "T" => Cat_T
+          case "P" => Cat_P
           case x => throw new ProjectException("Error in line %d. Unknown category code %s. %s" format(nr, x, line))
         }
       }
     }
 
     def createIsbn: Option[String] = {
-      val code = line(26)
+      val code = line(27)
       code match {
         case "" => None
         case any => Some(any)
@@ -195,8 +198,8 @@ object ProjectFromFile {
     }
 
     def createCompany: Option[Company] = {
-      val typStr = line(23)
-      val namStr = line(24)
+      val typStr = line(24)
+      val namStr = line(25)
       namStr match {
         case "" => None
         case _ => Some(new Company {

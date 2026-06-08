@@ -1,9 +1,10 @@
 package net.entelijan.kimi
 
 import net.entelijan.kimi.Model._
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
-class ArtistRolesSuite extends FunSuite {
+
+class ArtistRolesSuite extends AnyFunSuite {
   
   import ArtistRolesUtil._
 
