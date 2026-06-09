@@ -6,8 +6,7 @@ import java.nio.file.{FileVisitResult, Files, Path, SimpleFileVisitor}
 
 object KimiUtil {
 
-  /**
-    * Deletes all files and directories in 'dir'
+  /** Deletes all files and directories in 'dir'
     */
   def clearDirectoryRecursive(dir: File): Unit = {
 
@@ -28,12 +27,11 @@ object KimiUtil {
     }
   }
 
-
   def uqual(in: String): String = {
     val R = """(.*)\(.*\)""".r
     in match {
       case R(a) => a.trim()
-      case _ => in
+      case _    => in
     }
   }
 

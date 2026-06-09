@@ -12,31 +12,37 @@ class DefaultRenderer extends Renderer {
     def links(artist: Artist): String = {
 
       val prjs = page.projects.filter { p =>
-        p.artist.foldRight(false)((a, b) => b || a.name == artist.name) && // What is that condition good for ??
-          artist.role != AR_Undef // Ignore artists with undefined role
+        p.artist.foldRight(false)((a, b) =>
+          b || a.name == artist.name
+        ) &&                    // What is that condition good for ??
+        artist.role != AR_Undef // Ignore artists with undefined role
       }
       val prjsSort = prjs.sortBy {
         _.title.value(lang).name.alph
       }
-      prjsSort.map(p => {
-        val page = ProjectPage(p)
-        val fname = HtmlTemplateEngine.fileName(page, lang)
-        val pname = HtmlTemplateEngine.pageNameContentHtml(page.name.value(lang))
-        s"""<div class="prjCatLink"><a href="$fname">$pname</a></div>"""
-      }).mkString("")
+      prjsSort
+        .map(p => {
+          val page  = ProjectPage(p)
+          val fname = HtmlTemplateEngine.fileName(page, lang)
+          val pname = HtmlTemplateEngine.pageNameContentHtml(page.name.value(lang))
+          s"""<div class="prjCatLink"><a href="$fname">$pname</a></div>"""
+        })
+        .mkString("")
     }
 
     val usedAuthors =
-      page
-        .projects.flatMap(_.artist)
+      page.projects
+        .flatMap(_.artist)
         .distinct
         .sortBy(_.name.toUpperCase())
 
-    usedAuthors.map(artist => {
-      s"""<div class="prjCatHeading">${artist.name.toUpperCase()}</div>
-         |${links(artist)}
-         |""".stripMargin.trim
-    }).mkString
+    usedAuthors
+      .map(artist => {
+        s"""<div class="prjCatHeading">${artist.name.toUpperCase()}</div>
+           |${links(artist)}
+           |""".stripMargin.trim
+      })
+      .mkString
 
   }
 
@@ -44,14 +50,6 @@ class DefaultRenderer extends Renderer {
     lang match {
       case Ger =>
         s"""<div class="bioTextGer">
-           |Geboren in Hawaii, USA, aufgewachsen in Kalifornien,
-           |lebt und arbeitet in Wien.
-           |Kam in den 80er Jahren im Rahmen eines Auslandsstudiums
-           |nach Österreich und blieb.
-           |Absolvierte 1996 das Studium am Institut für Übersetzen
-           |und Dolmetschen an der Universität Wien.
-           |Seither freiberufliche Übersetzerin
-           |mit den Schwerpunkten Film, Kunst und Architektur.
            |Mitglied der IG Übersetzerinnen Übersetzer, der Interessenvertretung der
            |literarischen und wissenschaftlichen ÜbersetzerInnen in Österreich.
            |</div>
@@ -72,18 +70,8 @@ class DefaultRenderer extends Renderer {
            |""".stripMargin
       case Eng =>
         s"""<div class="bioTextEng">
-           |Born in Hawaii, grew up in California,
-           |lives and works in Vienna.
-           |Came to Austria on a study abroad
-           |program in the 80s and stayed.
-           |Earned her master's degree
-           |at the University of Vienna’s Institute for Translation
-           |and Interpreting Studies in 1996.
-           |Has worked since then as a freelance
-           |translator mainly in the areas of
-           |film, art, and architecture.
-           |Member of IG Übersetzerinnen Übersetzer, the Austrian Association
-           |of Literary and Scientific Translators.
+           |Member of IG Übersetzerinnen Übersetzer, the Austrian Association of
+           |Literary and Scientific Translators.
            |</div>
            |<div class="bioAdr">
            |<div class="bioTextEng">
@@ -105,21 +93,27 @@ class DefaultRenderer extends Renderer {
 
   override def rendPagePrjCat(page: PrjCatPage, lang: Lang, device: Device): String = {
     def links(cat: Category): String = {
-      val prjs = page.projects.filter { p => p.category.contains(cat) }
+      val prjs     = page.projects.filter { p => p.category.contains(cat) }
       val prjsSort = prjs.sortBy { x => x.title.value(lang).name.alph }
-      prjsSort.map(p => {
-        val page = ProjectPage(p)
-        s"""<div class="prjCatLink"><a href="${fileName(page, lang)}">${pageNameContentHtml(page.name.value(lang))}</a></div>"""
-      }).mkString("\n")
+      prjsSort
+        .map(p => {
+          val page = ProjectPage(p)
+          s"""<div class="prjCatLink"><a href="${fileName(page, lang)}">${pageNameContentHtml(
+              page.name.value(lang)
+            )}</a></div>"""
+        })
+        .mkString("\n")
     }
 
     val usedCategories = page.projects.flatMap(p => p.category).distinct
-    val ordered = usedCategories.sortBy(c => c.name.value(lang).toUpperCase())
-    ordered.map(cat => {
-      s"""<div class="prjCatHeading">${cat.name.value(lang).toUpperCase()}</div>
-         |${links(cat)}
-         |""".stripMargin
-    }).mkString
+    val ordered        = usedCategories.sortBy(c => c.name.value(lang).toUpperCase())
+    ordered
+      .map(cat => {
+        s"""<div class="prjCatHeading">${cat.name.value(lang).toUpperCase()}</div>
+           |${links(cat)}
+           |""".stripMargin
+      })
+      .mkString
 
   }
 
@@ -127,10 +121,14 @@ class DefaultRenderer extends Renderer {
 
     val prjSorted = page.projects.sortBy { x => x.title.value(lang).name.alph }
 
-    val names = prjSorted.map { prj =>
-      val p = ProjectPage(prj)
-      s"""<div class="alphText"><a class="ainv" href="${fileName(p, lang)}">${pageNameHtml(p.name.value(lang))}</a></div>"""
-    }.mkString("\n")
+    val names = prjSorted
+      .map { prj =>
+        val p = ProjectPage(prj)
+        s"""<div class="alphText"><a class="ainv" href="${fileName(p, lang)}">${pageNameHtml(
+            p.name.value(lang)
+          )}</a></div>"""
+      }
+      .mkString("\n")
     s"""<div class="alphFill"></div>
        |$names
        |""".stripMargin
@@ -146,18 +144,24 @@ class DefaultRenderer extends Renderer {
 
   case object TA_RightBottom extends TxtAlignment
 
-  case class ImagePlacement(prj: Project, alignment: TxtAlignment, xoff: Int, yoff: Int, imgName: String)
+  case class ImagePlacement(
+      prj: Project,
+      alignment: TxtAlignment,
+      xoff: Int,
+      yoff: Int,
+      imgName: String
+  )
 
   override def rendPageStart(page: StartPage, lang: Lang, device: Device): String = {
 
     def calcImageOffset(prj: Project, lang: Lang): ImagePlacement = {
       require(prj.title.value(lang).homepageAlph.isDefined)
-      val img = prj.images.imageInfo(lang, ILStart)
-      val w = img.width
-      val cw = 60
-      val ch = 75
-      val top = 80
-      val blockWidth = 300
+      val img         = prj.images.imageInfo(lang, ILStart)
+      val w           = img.width
+      val cw          = 60
+      val ch          = 75
+      val top         = 80
+      val blockWidth  = 300
       val blockHeight = 305
       val re = prj.title.value(lang).homepageAlph.get match {
         case 'A' => ImagePlacement(prj, TA_RightTop, -w + cw, -top, img.name)
@@ -185,58 +189,74 @@ class DefaultRenderer extends Renderer {
         case 'T' => ImagePlacement(prj, TA_LeftTop, blockWidth - cw, -top, img.name)
 
         case 'U' => ImagePlacement(prj, TA_RightBottom, -w + cw, blockHeight - (3 * ch), img.name)
-        case 'V' => ImagePlacement(prj, TA_RightBottom, (blockWidth / 2) - (w / 2), blockHeight - ch, img.name)
-        case 'W' => ImagePlacement(prj, TA_LeftBottom, (blockWidth / 2) - (w / 2), blockHeight - ch, img.name)
-        case 'X' => ImagePlacement(prj, TA_LeftBottom, (blockWidth / 2) - (w / 2), blockHeight - ch, img.name)
-        case 'Z' => ImagePlacement(prj, TA_LeftBottom, blockWidth - cw, blockHeight - (3 * ch), img.name)
+        case 'V' =>
+          ImagePlacement(
+            prj,
+            TA_RightBottom,
+            (blockWidth / 2) - (w / 2),
+            blockHeight - ch,
+            img.name
+          )
+        case 'W' =>
+          ImagePlacement(prj, TA_LeftBottom, (blockWidth / 2) - (w / 2), blockHeight - ch, img.name)
+        case 'X' =>
+          ImagePlacement(prj, TA_LeftBottom, (blockWidth / 2) - (w / 2), blockHeight - ch, img.name)
+        case 'Z' =>
+          ImagePlacement(prj, TA_LeftBottom, blockWidth - cw, blockHeight - (3 * ch), img.name)
         case x => throw new IllegalStateException("Illegal hompageAlph character '%s'" format x)
       }
       re
     }
 
     def images(placements: List[ImagePlacement], lang: Lang): String = {
-      val imgDivs = placements.map { p =>
-        val startImageTextClass = p.alignment match {
-          case TA_LeftTop => "startImageTextL"
-          case TA_RightTop => "startImageTextR"
-          case TA_LeftBottom => "startImageTextL"
-          case TA_RightBottom => "startImageTextR"
+      val imgDivs = placements
+        .map { p =>
+          val startImageTextClass = p.alignment match {
+            case TA_LeftTop     => "startImageTextL"
+            case TA_RightTop    => "startImageTextR"
+            case TA_LeftBottom  => "startImageTextL"
+            case TA_RightBottom => "startImageTextR"
+          }
+          val title = p.prj.startTitle.value(lang)
+          val contrib = p.prj.contrib match {
+            case None    => ""
+            case Some(c) => " | %s" format c.value(lang)
+          }
+          val credit = Photocredit.credit(lang, p.imgName) match {
+            case None    => ""
+            case Some(c) => "%s" format c
+          }
+
+          def imgHeight = p.prj.images.imageInfo(lang, ILStart).height - 1
+
+          def imgWidth = p.prj.images.imageInfo(lang, ILStart).width - 1
+
+          def imageDiv: String =
+            s"""<div class="startImageImage" style="background-image: url('images/${p.prj.images
+                .imageInfo(lang, ILStart)
+                .name}'); width: ${imgWidth}px; height: ${imgHeight}px; " ></div>""".trim
+
+          def imageTitleDiv: String =
+            s"""<div class="$startImageTextClass">$title$contrib</div>""".trim
+
+          def imageCreditDiv: String =
+            s"""<div class="$startImageTextClass">$credit</div>""".trim
+
+          def imageAllDiv: String = p.alignment match {
+            case TA_LeftTop     => imageTitleDiv + imageDiv + imageCreditDiv
+            case TA_RightTop    => imageTitleDiv + imageDiv + imageCreditDiv
+            case TA_LeftBottom  => imageCreditDiv + imageDiv + imageTitleDiv
+            case TA_RightBottom => imageCreditDiv + imageDiv + imageTitleDiv
+          }
+
+          s"""<div class="startImage" style="width: ${p.prj.images
+              .imageInfo(lang, ILStart)
+              .width}px; " id="img_${p.prj.id}">
+             |$imageAllDiv
+             |</div>
+             |""".stripMargin
         }
-        val title = p.prj.startTitle.value(lang)
-        val contrib = p.prj.contrib match {
-          case None => ""
-          case Some(c) => " | %s" format c.value(lang)
-        }
-        val credit = Photocredit.credit(lang, p.imgName) match {
-          case None => ""
-          case Some(c) => "%s" format c
-        }
-
-        def imgHeight = p.prj.images.imageInfo(lang, ILStart).height - 1
-
-        def imgWidth = p.prj.images.imageInfo(lang, ILStart).width - 1
-
-        def imageDiv: String =
-          s"""<div class="startImageImage" style="background-image: url('images/${p.prj.images.imageInfo(lang, ILStart).name}'); width: ${imgWidth}px; height: ${imgHeight}px; " ></div>""".trim
-
-        def imageTitleDiv: String =
-          s"""<div class="$startImageTextClass">$title$contrib</div>""".trim
-
-        def imageCreditDiv: String =
-          s"""<div class="$startImageTextClass">$credit</div>""".trim
-
-        def imageAllDiv: String = p.alignment match {
-          case TA_LeftTop => imageTitleDiv + imageDiv + imageCreditDiv
-          case TA_RightTop => imageTitleDiv + imageDiv + imageCreditDiv
-          case TA_LeftBottom => imageCreditDiv + imageDiv + imageTitleDiv
-          case TA_RightBottom => imageCreditDiv + imageDiv + imageTitleDiv
-        }
-
-        s"""<div class="startImage" style="width: ${p.prj.images.imageInfo(lang, ILStart).width}px; " id="img_${p.prj.id}">
-           |$imageAllDiv
-           |</div>
-           |""".stripMargin
-      }.mkString("\n")
+        .mkString("\n")
 
       s"""<div>
          |$imgDivs
@@ -245,17 +265,21 @@ class DefaultRenderer extends Renderer {
     }
 
     def script(placements: List[ImagePlacement], lang: Lang): String = {
-      def defElem: String = placements.map(p => {
-        s"""var elem = $$( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
-           |$$( "#img_${p.prj.id}" ).css({top: offset.top + ${p.yoff}, left: offset.left + ${p.xoff}, position:'absolute'});
-           |""".stripMargin.trim()
-      }).mkString("\n")
+      def defElem: String = placements
+        .map(p => {
+          s"""var elem = $$( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
+             |$$( "#img_${p.prj.id}" ).css({top: offset.top + ${p.yoff}, left: offset.left + ${p.xoff}, position:'absolute'});
+             |""".stripMargin.trim()
+        })
+        .mkString("\n")
 
-      def fade: String = page.projects.map(p => {
-        s"""$$( "#char_${p.id}" ).mouseenter(function() { $$( "#img_${p.id}" ).fadeIn( 500 );});
-           |$$( "#char_${p.id}" ).mouseleave(function() { $$( "#img_${p.id}" ).fadeOut( 500 );});
-           |""".stripMargin.trim()
-      }).mkString("\n")
+      def fade: String = page.projects
+        .map(p => {
+          s"""$$( "#char_${p.id}" ).mouseenter(function() { $$( "#img_${p.id}" ).fadeIn( 500 );});
+             |$$( "#char_${p.id}" ).mouseleave(function() { $$( "#img_${p.id}" ).fadeOut( 500 );});
+             |""".stripMargin.trim()
+        })
+        .mkString("\n")
 
       s"""<script>
          |$$( document ).ready(function() {
@@ -268,7 +292,8 @@ class DefaultRenderer extends Renderer {
          |""".stripMargin
     }
 
-    def alph(from: Char, to: Char, lang: Lang) = (from to to).map(c => createChar(c, lang)).mkString("\n")
+    def alph(from: Char, to: Char, lang: Lang) =
+      (from to to).map(c => createChar(c, lang)).mkString("\n")
 
     def alph1(chars: List[Char], lang: Lang) = chars.map(c => createChar(c, lang)).mkString("\n")
 
@@ -285,8 +310,8 @@ class DefaultRenderer extends Renderer {
       }
     }
 
-
-    val placements = page.projects.filter(_.title.value(Ger).homepageAlph.isDefined).map(calcImageOffset(_, Ger))
+    val placements =
+      page.projects.filter(_.title.value(Ger).homepageAlph.isDefined).map(calcImageOffset(_, Ger))
     s"""<div id="startAphaBlock">
        |<div>${alph('A', 'E', lang)}</div>
        |<div>${alph('F', 'J', lang)}</div>
@@ -304,19 +329,20 @@ class DefaultRenderer extends Renderer {
 
     val prj = page.prj
 
-    val isbn = if (prj.isbn.isDefined)
-      s"""${prj.isbn.get}"""
-    else ""
+    val isbn =
+      if (prj.isbn.isDefined)
+        s"""${prj.isbn.get}"""
+      else ""
 
     def artist(lang: Lang): String = ArtistRolesUtil.format(prj.artist, lang).mkString("</br>")
 
     def beitrag(lang: Lang): String = prj.contrib match {
-      case None => ""
+      case None    => ""
       case Some(a) => "| %s" format a.value(lang)
     }
 
     def yearString: String = prj.year match {
-      case None => " "
+      case None    => " "
       case Some(y) => ", " + y.trim()
     }
 
@@ -324,10 +350,11 @@ class DefaultRenderer extends Renderer {
       s"""${prj.company.get.typ.name.value(lang)}: ${prj.company.get.name}"""
     else ""
 
-    def credit(lang: Lang) = Photocredit.credit(lang, prj.images.imageInfo(lang, ILProject).name) match {
-      case Some(c) => c.trim()
-      case None => ""
-    }
+    def credit(lang: Lang) =
+      Photocredit.credit(lang, prj.images.imageInfo(lang, ILProject).name) match {
+        case Some(c) => c.trim()
+        case None    => ""
+      }
 
     def details(lang: Lang): String = prj.projectDetails match {
       case None =>
@@ -349,7 +376,7 @@ class DefaultRenderer extends Renderer {
         Md.transf(mdt.trim())
       case Some(txt) =>
         val mdt = txt.value(lang)
-        val re = Md.transf(mdt)
+        val re  = Md.transf(mdt)
         re
     }
 
@@ -359,7 +386,10 @@ class DefaultRenderer extends Renderer {
 
       prj.subTitle match {
         case None => ""
-        case Some(st) => s"""<div style="padding-left:${paddingLeft(lang)}px" class="prjSubtitle">${st.value(lang)}</div>"""
+        case Some(st) =>
+          s"""<div style="padding-left:${paddingLeft(lang)}px" class="prjSubtitle">${st.value(
+              lang
+            )}</div>"""
       }
 
     }
@@ -367,7 +397,9 @@ class DefaultRenderer extends Renderer {
     def contentDefault(lang: Lang): String =
       s"""<img class="prjImg" src="images/${prj.images.imageInfo(lang, ILProject).name}"/>
          |<div class="prjBody">
-         |<div class="prjTitle">${prj.title.value(lang).name.getUqual.toUpperCase()} ${beitrag(lang)}</div>
+         |<div class="prjTitle">${prj.title.value(lang).name.getUqual.toUpperCase()} ${beitrag(
+          lang
+        )}</div>
          |${subtitleHtml(lang)}
          |<div style="padding-left:${paddingLeft(lang)}px" class="prjText">
          |${details(lang)}
@@ -379,38 +411,52 @@ class DefaultRenderer extends Renderer {
     else contentDefault(lang)
   }
 
-  override def rendBody(currentPage: Page, pages: List[Page], lang: Lang, languages: List[Lang], pageContent: DeviceData[String]): DeviceData[String] = {
+  override def rendBody(
+      currentPage: Page,
+      pages: List[Page],
+      lang: Lang,
+      languages: List[Lang],
+      pageContent: DeviceData[String]
+  ): DeviceData[String] = {
 
     def menuItemClass(loc: Location, active: Boolean): String =
       if (active) "menuItemF" // Do not draw the short vertical line for the active menu item
-      else loc match {
-        case LOC_First => "menuItemF"
-        case LOC_Middle => "menuItemM"
-        case LOC_Last => "menuItemL"
-      }
+      else
+        loc match {
+          case LOC_First  => "menuItemF"
+          case LOC_Middle => "menuItemM"
+          case LOC_Last   => "menuItemL"
+        }
 
     def menuLangItemClass(loc: Location): String = loc match {
-      case LOC_First => "menuLangItemF"
+      case LOC_First  => "menuLangItemF"
       case LOC_Middle => "menuLangItemM"
-      case LOC_Last => "menuLangItemL"
+      case LOC_Last   => "menuLangItemL"
     }
 
     def menuInfo(current: Page, relevant: List[MenuPage], lang: Lang): String = {
       val li = relevant.map(menuPage => {
         val active = current.id == menuPage.page.id
-        val clazz = menuItemClass(menuPage.location, active)
+        val clazz  = menuItemClass(menuPage.location, active)
         val idAttr = menuPage.id match {
-          case None => ""
+          case None     => ""
           case Some(id) => s"""id="$id" """
         }
-        val style = if (current.pageType != PT_Project || menuPage.id.isEmpty || menuPage.id.get != "prjAlphaPage") ""
+        val style = if (
+          current.pageType != PT_Project || menuPage.id.isEmpty || menuPage.id.get != "prjAlphaPage"
+        ) ""
         else
           """ style="padding-bottom: 600px" """
 
         if (menuPage.page != current)
-          s"""<div $idAttr $style class="$clazz"><a href="${fileName(menuPage.page, lang)}">${pageNameHtml(menuPage.page.name.value(lang))}</a></div>"""
+          s"""<div $idAttr $style class="$clazz"><a href="${fileName(
+              menuPage.page,
+              lang
+            )}">${pageNameHtml(menuPage.page.name.value(lang))}</a></div>"""
         else
-          s"""<div $idAttr $style class="$clazz">${pageNameHtml(menuPage.page.name.value(lang))}</div>"""
+          s"""<div $idAttr $style class="$clazz">${pageNameHtml(
+              menuPage.page.name.value(lang)
+            )}</div>"""
       })
       val m = li.mkString("")
       s"""<div id="infoMenu"><div class="menuItemFill"></div>$m</div>"""
@@ -421,7 +467,10 @@ class DefaultRenderer extends Renderer {
       val li = oredered.map(l => {
         val clazz = menuLangItemClass(l.location)
         if (l.lang != currentLang)
-          s"""<span class="$clazz"><a href="${fileName(current, l.lang)}">${l.lang.name}</a></span>"""
+          s"""<span class="$clazz"><a href="${fileName(
+              current,
+              l.lang
+            )}">${l.lang.name}</a></span>"""
         else
           s"""<span class="$clazz">${l.lang.name}</span>"""
       })
@@ -430,9 +479,9 @@ class DefaultRenderer extends Renderer {
     }
 
     val contentId = currentPage.pageType match {
-      case PT_Start => "contentStart"
+      case PT_Start   => "contentStart"
       case PT_Project => "contentPrj"
-      case _ => "content"
+      case _          => "content"
     }
 
     def gerTxt(pContent: String) =
@@ -466,6 +515,5 @@ class DefaultRenderer extends Renderer {
       pageContent.copy(data = engTxt(pageContent.data))
     ).value(lang)
   }
-
 
 }

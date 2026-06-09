@@ -5,13 +5,12 @@ import org.apache.poi.ss.usermodel._
 import java.util
 import java.io.{File, FileInputStream}
 
-
 object Tryout extends App {
   println("Tryout")
 
   val filePath = "/home/wwagner4/tmp/ProjekteEinfach.xlsx"
 
-  val file = new File(filePath)
+  val file     = new File(filePath)
   val workbook = WorkbookFactory.create(file)
 
   val sheet = workbook.getSheet("main")
@@ -27,7 +26,7 @@ object Tryout extends App {
           val ct = cell.getCellType()
           val v = ct match {
             case CellType.STRING => cell.getStringCellValue()
-            case _ => ""
+            case _               => ""
           }
           println(f"cell $i $j $v")
         }
@@ -35,7 +34,5 @@ object Tryout extends App {
       println("---------------------------------------------")
     }
   }
-
-
 
 }

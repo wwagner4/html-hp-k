@@ -4,5 +4,5 @@ object ProjectFromFileTryout extends App {
 
   val prjs = ProjectFromFile.projects
   println(prjs)
-  
+
 }

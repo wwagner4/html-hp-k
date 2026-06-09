@@ -7,9 +7,9 @@ object SpecialProjectPage {
   private val pages: Map[String, (Lang) => String] = Map("jirkuff" -> jirkuff)
 
   def isSpecialPage(id: String): Boolean = pages.contains(id)
-  
+
   def specialPage(id: String, lang: Lang): String = pages(id)(lang)
-  
+
   private def jirkuff(lang: Lang): String = lang match {
     case Eng => """
 <div style="width: 310px;">
@@ -40,5 +40,5 @@ object SpecialProjectPage {
 </div>
       """
   }
-  
+
 }

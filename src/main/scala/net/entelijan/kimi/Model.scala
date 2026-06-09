@@ -86,7 +86,8 @@ object Model {
 
     def masculinePlural = MultiLangString(ger = "Herausgeber, Autoren:", eng = "Editors, authors:")
 
-    def femininPlural = MultiLangString(ger = "Herausgeberinnen, Autorinnen:", eng = "Editors, authors:")
+    def femininPlural =
+      MultiLangString(ger = "Herausgeberinnen, Autorinnen:", eng = "Editors, authors:")
 
     def mixedPlural = MultiLangString(ger = "Herausgeber, Autoren:", eng = "Editors, authors:")
 
@@ -166,7 +167,7 @@ object Model {
   case class Artist(gender: Gender, role: ArtistRole, name: String, nameReverse: String) {
     override def equals(o: Any): Boolean = o match {
       case that: Artist => that.name.equalsIgnoreCase(this.name)
-      case _ => false
+      case _            => false
     }
 
     override def hashCode: Int = 1
@@ -273,7 +274,7 @@ object Model {
   case class AlphStringSimple(get: String, getUqual: String) extends AlphString {
     def alph: String = get match {
       case "" => "ZZZZZZ"
-      case _ => get.trim().toUpperCase()
+      case _  => get.trim().toUpperCase()
     }
   }
 
@@ -318,52 +319,52 @@ object Model {
     def name: MultiLang[String]
   }
 
-  //noinspection TypeAnnotation
+  // noinspection TypeAnnotation
   case object Cat_A extends Category {
     def name = MultiLangString("Architektur", "Architecture")
   }
 
-  //noinspection TypeAnnotation
+  // noinspection TypeAnnotation
   case object Cat_M extends Category {
     def name = MultiLangString("Film", "Film")
   }
 
-  //noinspection TypeAnnotation
+  // noinspection TypeAnnotation
   case object Cat_D extends Category {
     def name = MultiLangString("Kunst | Design", "Art | Design")
   }
 
-  //noinspection TypeAnnotation
+  // noinspection TypeAnnotation
   case object Cat_L extends Category {
     def name = MultiLangString("Literatur", "Literature")
   }
 
-  //noinspection TypeAnnotation
+  // noinspection TypeAnnotation
   case object Cat_S extends Category {
     def name = MultiLangString("Sachbuch", "Nonfiction")
   }
 
-  //noinspection TypeAnnotation
+  // noinspection TypeAnnotation
   case object Cat_U extends Category {
     def name = MultiLangString("Musik", "Music")
   }
 
-  //noinspection TypeAnnotation
+  // noinspection TypeAnnotation
   case object Cat_Q extends Category {
     def name = MultiLangString("Drehbuch", "Screenplay")
   }
 
-  //noinspection TypeAnnotation
+  // noinspection TypeAnnotation
   case object Cat_AF extends Category {
     def name = MultiLangString("Hörspiel", "Audio Fiction")
   }
 
-  //noinspection TypeAnnotation
+  // noinspection TypeAnnotation
   case object Cat_T extends Category {
     def name = MultiLangString("Theater", "Theater")
   }
 
-  //noinspection TypeAnnotation
+  // noinspection TypeAnnotation
   case object Cat_P extends Category {
     def name = MultiLangString("Fotografie", "Photography")
   }
@@ -401,18 +402,25 @@ object Model {
         Artist(gender, role, name, nameRev)
       }
 
-      val rolesSplit = roles.split("/").toList
-      val namesSplit = names.split("/").toList
+      val rolesSplit    = roles.split("/").toList
+      val namesSplit    = names.split("/").toList
       val namesRevSplit = namesRev.split("/").toList
 
       if (rolesSplit.size < 1) throw new IllegalStateException(s"'$roles' contain no value(s)")
       if (namesSplit.size < 1) throw new IllegalStateException(s"'$names' contain no value(s)")
-      if (namesRevSplit.size < 1) throw new IllegalStateException(s"'$namesRev' contain no value(s)")
+      if (namesRevSplit.size < 1)
+        throw new IllegalStateException(s"'$namesRev' contain no value(s)")
 
-      if (namesSplit.size != namesRevSplit.size) throw new IllegalStateException(s"'$names' and '$namesRev' do not contain the same number of values")
-      if (namesSplit.size != rolesSplit.size) throw new IllegalStateException(s"'$names' and '$roles' do not contain the same number of values")
+      if (namesSplit.size != namesRevSplit.size)
+        throw new IllegalStateException(
+          s"'$names' and '$namesRev' do not contain the same number of values"
+        )
+      if (namesSplit.size != rolesSplit.size)
+        throw new IllegalStateException(
+          s"'$names' and '$roles' do not contain the same number of values"
+        )
 
-      val nn = namesSplit.zip(namesRevSplit)
+      val nn  = namesSplit.zip(namesRevSplit)
       val rns = rolesSplit.zip(nn)
       rns.map(rn => roleNameToArtist(rn))
     }
@@ -428,19 +436,21 @@ object Model {
         def heading: String =
           if (rg.size == 1) {
             rg.head.gender match {
-              case G_Feminin => g.role.femininSingular.value(lang)
+              case G_Feminin  => g.role.femininSingular.value(lang)
               case G_Masculin => g.role.masculineSingular.value(lang)
-              case G_Undef => ""
+              case G_Undef    => ""
             }
           } else if (allFeminin) g.role.femininPlural.value(lang)
           else if (allMasculin) g.role.masculinePlural.value(lang)
           else g.role.mixedPlural.value(lang)
 
-        def names = rg.map {
-          _.nameReverse
-        }.mkString(", ")
+        def names = rg
+          .map {
+            _.nameReverse
+          }
+          .mkString(", ")
 
-        "%s %s" format(heading, names)
+        "%s %s" format (heading, names)
 
       }
 
@@ -459,9 +469,7 @@ object Model {
 
   case object DV_MobileLandscape extends Device
 
-
-  case class DeviceData[T] (device: Device, data: T)
-
+  case class DeviceData[T](device: Device, data: T)
 
   sealed trait PageType
 
@@ -472,7 +480,6 @@ object Model {
   case object PT_Project extends PageType
 
   case object PT_Info extends PageType
-
 
   case class PageName(prefix: Option[String], name: String)
 
@@ -545,11 +552,16 @@ object Model {
               else 10
             case _ => 50
           }
-          //println("%5s %10s - %16s -> %d" format (lang, loc, name.name, re))
+          // println("%5s %10s - %16s -> %d" format (lang, loc, name.name, re))
           re
         }
 
-        def bestFit1(lang: Lang, loc: ImageLocation, nam1: NameAnalyzed, nam2: NameAnalyzed): NameAnalyzed = {
+        def bestFit1(
+            lang: Lang,
+            loc: ImageLocation,
+            nam1: NameAnalyzed,
+            nam2: NameAnalyzed
+        ): NameAnalyzed = {
           val f1 = fitVal(lang, loc, nam1)
           val f2 = fitVal(lang, loc, nam2)
           if (f1 > f2) nam1 else nam2
@@ -562,25 +574,25 @@ object Model {
 
         val EngStartRegex = ".*EN_START.*".r
         val GerStartRegex = ".*DE_START.*".r
-        val EngPrjRegex = ".*EN_PRJ.*".r
-        val GerPrjRegex = ".*DE_PRJ.*".r
-        val EngRegex = ".*EN.*".r
-        val GerRegex = ".*DE.*".r
-        val StartRegex = ".*START.*".r
-        val PrjRegex = ".*PRJ.*".r
-        val AnyRegex = ".*".r
+        val EngPrjRegex   = ".*EN_PRJ.*".r
+        val GerPrjRegex   = ".*DE_PRJ.*".r
+        val EngRegex      = ".*EN.*".r
+        val GerRegex      = ".*DE.*".r
+        val StartRegex    = ".*START.*".r
+        val PrjRegex      = ".*PRJ.*".r
+        val AnyRegex      = ".*".r
 
         names.map { imgInfo =>
           imgInfo.name match {
             case EngStartRegex() => NameAnalyzed(Some(Eng), Some(ILStart), imgInfo)
             case GerStartRegex() => NameAnalyzed(Some(Ger), Some(ILStart), imgInfo)
-            case EngPrjRegex() => NameAnalyzed(Some(Eng), Some(ILProject), imgInfo)
-            case GerPrjRegex() => NameAnalyzed(Some(Ger), Some(ILProject), imgInfo)
-            case GerRegex() => NameAnalyzed(Some(Ger), None, imgInfo)
-            case EngRegex() => NameAnalyzed(Some(Eng), None, imgInfo)
-            case StartRegex() => NameAnalyzed(None, Some(ILStart), imgInfo)
-            case PrjRegex() => NameAnalyzed(None, Some(ILProject), imgInfo)
-            case AnyRegex() => NameAnalyzed(None, None, imgInfo)
+            case EngPrjRegex()   => NameAnalyzed(Some(Eng), Some(ILProject), imgInfo)
+            case GerPrjRegex()   => NameAnalyzed(Some(Ger), Some(ILProject), imgInfo)
+            case GerRegex()      => NameAnalyzed(Some(Ger), None, imgInfo)
+            case EngRegex()      => NameAnalyzed(Some(Eng), None, imgInfo)
+            case StartRegex()    => NameAnalyzed(None, Some(ILStart), imgInfo)
+            case PrjRegex()      => NameAnalyzed(None, Some(ILProject), imgInfo)
+            case AnyRegex()      => NameAnalyzed(None, None, imgInfo)
           }
         }
       }
@@ -593,19 +605,21 @@ object Model {
 
         lazy val gerStart: ImageInfo = bestFit(Ger, ILStart, analyzed)
         lazy val engStart: ImageInfo = bestFit(Eng, ILStart, analyzed)
-        lazy val gerPrj: ImageInfo = bestFit(Ger, ILProject, analyzed)
-        lazy val engPrj: ImageInfo = bestFit(Eng, ILProject, analyzed)
+        lazy val gerPrj: ImageInfo   = bestFit(Ger, ILProject, analyzed)
+        lazy val engPrj: ImageInfo   = bestFit(Eng, ILProject, analyzed)
 
         def imageInfo(lang: Lang, loc: ImageLocation): ImageInfo = {
           lang match {
-            case Ger => loc match {
-              case ILStart => gerStart
-              case ILProject => gerPrj
-            }
-            case Eng => loc match {
-              case ILStart => engStart
-              case ILProject => engPrj
-            }
+            case Ger =>
+              loc match {
+                case ILStart   => gerStart
+                case ILProject => gerPrj
+              }
+            case Eng =>
+              loc match {
+                case ILStart   => engStart
+                case ILProject => engPrj
+              }
           }
         }
       }

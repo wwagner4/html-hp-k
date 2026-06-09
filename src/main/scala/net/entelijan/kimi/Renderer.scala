@@ -5,7 +5,13 @@ import net.entelijan.kimi.PagesConf._
 
 trait Renderer {
 
-  final def rendPage(page: Page, pages: List[Page], lang: Lang, languages: List[Lang], devices: List[Device]): String = {
+  final def rendPage(
+      page: Page,
+      pages: List[Page],
+      lang: Lang,
+      languages: List[Lang],
+      devices: List[Device]
+  ): String = {
 
     val bodyCont = page match {
       case p: StartPage =>
@@ -36,7 +42,13 @@ trait Renderer {
     HtmlTemplateEngine.pageTemplate(bodyCont, page, lang)
   }
 
-  def rendBody(currentPage: Page, pages: List[Page], lang: Lang, languages: List[Lang], pageContent: DeviceData[String]): DeviceData[String]
+  def rendBody(
+      currentPage: Page,
+      pages: List[Page],
+      lang: Lang,
+      languages: List[Lang],
+      pageContent: DeviceData[String]
+  ): DeviceData[String]
 
   def rendPageStart(page: StartPage, lang: Lang, device: Device): String
 

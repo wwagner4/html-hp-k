@@ -11,7 +11,8 @@ object ImageTransformFiles {
     }
 
     def runDir(indir: File, h: Handler): Unit = {
-      if (!indir.isDirectory) throw new IllegalArgumentException("Input directory %s is not a directory" format indir)
+      if (!indir.isDirectory)
+        throw new IllegalArgumentException("Input directory %s is not a directory" format indir)
       val files = indir.listFiles().toList
       files.foreach { f => runFile(f, h) }
     }
@@ -53,7 +54,8 @@ class DefaultHandler(outDirName: String) extends ToOtherFileHandler {
     if (in.endsWith("jpg")) {
       println("Handling filename '%s' ---> '%s'" format (in, out))
       Utils.deleteFile(out)
-      val contents = s"""/opt/local/bin/gimp -i -d -f -b '(kimi-conv "$in" "$out")' -b '(gimp-quit 0)'"""
+      val contents =
+        s"""/opt/local/bin/gimp -i -d -f -b '(kimi-conv "$in" "$out")' -b '(gimp-quit 0)'"""
       val tdir = System.getProperty("java.io.tmpdir")
       println("tmpdir %s" format tdir)
       val bashfile = "%s/%s" format (tdir, "kimi.sh")
@@ -68,12 +70,12 @@ class DefaultHandler(outDirName: String) extends ToOtherFileHandler {
 object Utils {
 
   val pathSepaRegex = "/"
-  val pathSepaOut = "/"
+  val pathSepaOut   = "/"
 
   def toSeparateDirectory(path: String)(outdir: String): String = {
 
     def toPngFile(fname: String): String = {
-      val split = fname.split("\\.").toList.reverse
+      val split  = fname.split("\\.").toList.reverse
       def errmsg = "Filename '%s' contains no qualifier" format fname
       split match {
         case Nil       => throw new IllegalArgumentException(errmsg)
@@ -83,7 +85,7 @@ object Utils {
     }
 
     val pathElems: List[String] = path.split(pathSepaRegex).toList
-    val fileName = pathElems.reverse(0)
+    val fileName                = pathElems.reverse(0)
     outdir + pathSepaOut + toPngFile(fileName)
 
   }
@@ -132,7 +134,7 @@ object Utils {
 
   def writeToFile(content: String, fname: String): Unit = {
     val file = new File(fname)
-    val pw = new PrintWriter(file)
+    val pw   = new PrintWriter(file)
     pw.print(content)
     pw.close()
   }
@@ -142,4 +144,3 @@ object Utils {
     if (f.exists()) f.delete()
   }
 }
-

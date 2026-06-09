@@ -12,21 +12,22 @@ import scala.io.Codec
 object ProjectFromFile {
 
   private val inputFile = KimiUtil.inputFile
-  private val colCount = 28
+  private val colCount  = 28
 
   def projects: CreationResult[List[Project]] = {
-    var reps = List.empty[Report]
-    val bs = scala.io.Source.fromFile(inputFile)(Codec.UTF8)
+    var reps  = List.empty[Report]
+    val bs    = scala.io.Source.fromFile(inputFile)(Codec.UTF8)
     val lines = bs.getLines.toList
-    val re = lines.zipWithIndex.flatMap {
-      case (line, nr) =>
-        val r = toProject(line, nr)
-        reps ::= r.report
-        r.result
+    val re = lines.zipWithIndex.flatMap { case (line, nr) =>
+      val r = toProject(line, nr)
+      reps ::= r.report
+      r.result
     }
     new CreationResult[List[Project]] {
       def report: Report = new Report {
-        def heading: Option[String] = Some("Created %d projects from %s" format(re.size, inputFile))
+        def heading: Option[String] = Some(
+          "Created %d projects from %s" format (re.size, inputFile)
+        )
 
         def body: List[Report] = reps.reverse
       }
@@ -39,12 +40,18 @@ object ProjectFromFile {
     try {
       val ori = line.split("\t").toList
       if (ori.size > colCount) {
-        throw new IllegalStateException("Fehler in Zeile %d '%s'. Die Anzahl der Spalten ist nicht %d sondern %d" format(nr, line, colCount, ori.size))
+        throw new IllegalStateException(
+          "Fehler in Zeile %d '%s'. Die Anzahl der Spalten ist nicht %d sondern %d" format (nr, line, colCount, ori.size)
+        )
       }
       val adjusted = if (ori.size < colCount) fill(ori, "", colCount) else ori
       toProject(adjusted, nr)
     } catch {
-      case e: Exception => throw new IllegalArgumentException("Error parsing line %d '%s'. %s" format(nr, line, e.getMessage), e)
+      case e: Exception =>
+        throw new IllegalArgumentException(
+          "Error parsing line %d '%s'. %s" format (nr, line, e.getMessage),
+          e
+        )
     }
   }
 
@@ -60,7 +67,9 @@ object ProjectFromFile {
     def createId: String = {
       val id = line(1)
       if (id == "") {
-        throw new ProjectException("ERROR: No ID defined in line %d. %s" format(nr, line.mkString(";")))
+        throw new ProjectException(
+          "ERROR: No ID defined in line %d. %s" format (nr, line.mkString(";"))
+        )
       }
       id
     }
@@ -68,7 +77,7 @@ object ProjectFromFile {
     def createYear: Option[String] = {
       val year = line(26)
       year match {
-        case "" => None
+        case ""  => None
         case any => Some(any)
       }
     }
@@ -83,8 +92,8 @@ object ProjectFromFile {
       val pdEn = linebreak(line(23).trim())
       (pdDe, pdEn) match {
         case ("", "") => None
-        case (x, "") => Some(MultiLangStringSimple(x))
-        case ("", x) => Some(MultiLangStringSimple(x))
+        case (x, "")  => Some(MultiLangStringSimple(x))
+        case ("", x)  => Some(MultiLangStringSimple(x))
         case (de, en) => Some(MultiLangString(de, en))
       }
     }
@@ -92,20 +101,20 @@ object ProjectFromFile {
     def createStartTitle: MultiLang[String] = {
       val startTitelGer = line(5)
       val startTitelEng = line(6)
-      val _ger = if (startTitelGer == "") createTitle.ger.name.get else startTitelGer
-      val _eng = if (startTitelEng == "") createTitle.eng.name.get else startTitelEng
+      val _ger          = if (startTitelGer == "") createTitle.ger.name.get else startTitelGer
+      val _eng          = if (startTitelEng == "") createTitle.eng.name.get else startTitelEng
       MultiLangString(_ger, _eng)
     }
 
     def createTitle: MultiLang[ProjectTitle] = {
       val hpAlph = line(3).trim().toUpperCase()
       val alphDe = line(9).trim().toUpperCase()
-      val namDe = line(10).trim()
+      val namDe  = line(10).trim()
       val alphEn = line(12).trim().toUpperCase()
-      val namEn = line(13).trim()
+      val namEn  = line(13).trim()
 
       def createHomepageAlph(char: String): Option[Char] = char match {
-        case "" => None
+        case ""  => None
         case any => Some(any.charAt(0))
       }
 
@@ -126,18 +135,34 @@ object ProjectFromFile {
       }
 
       if (namDe == "" && namEn == "") {
-        throw new ProjectException("Error in line %d. Neither english nor german name defined. %s" format(nr, line.mkString(";")))
+        throw new ProjectException(
+          "Error in line %d. Neither english nor german name defined. %s" format (nr, line.mkString(
+            ";"
+          ))
+        )
       } else if (namDe != "" && namEn == "") {
         infos ::= "Info for line %d. No english title defined" format nr
-        if (alphDe != "") create(AlphStringImpl(alphDe, namDe, uqual(namDe)), AlphStringImpl(alphDe, namDe, uqual(namDe)))
+        if (alphDe != "")
+          create(
+            AlphStringImpl(alphDe, namDe, uqual(namDe)),
+            AlphStringImpl(alphDe, namDe, uqual(namDe))
+          )
         else create(AlphStringSimple(namDe, uqual(namDe)), AlphStringSimple(namDe, uqual(namDe)))
       } else if (namDe == "" && namEn != "") {
         infos ::= "Info for line %d. No german title defined" format nr
-        if (alphEn != "") create(AlphStringImpl(alphEn, namEn, uqual(namEn)), AlphStringImpl(alphEn, namEn, uqual(namEn)))
+        if (alphEn != "")
+          create(
+            AlphStringImpl(alphEn, namEn, uqual(namEn)),
+            AlphStringImpl(alphEn, namEn, uqual(namEn))
+          )
         else create(AlphStringSimple(namEn, uqual(namEn)), AlphStringSimple(namEn, uqual(namEn)))
       } else {
-        val de = if (alphDe != "") AlphStringImpl(alphDe, namDe, uqual(namDe)) else AlphStringSimple(namDe, uqual(namDe))
-        val en = if (alphEn != "") AlphStringImpl(alphEn, namEn, uqual(namEn)) else AlphStringSimple(namEn, uqual(namEn))
+        val de =
+          if (alphDe != "") AlphStringImpl(alphDe, namDe, uqual(namDe))
+          else AlphStringSimple(namDe, uqual(namDe))
+        val en =
+          if (alphEn != "") AlphStringImpl(alphEn, namEn, uqual(namEn))
+          else AlphStringSimple(namEn, uqual(namEn))
         create(de, en)
       }
     }
@@ -163,28 +188,31 @@ object ProjectFromFile {
     }
 
     def createArtistList: List[Artist] = {
-      val roles = line(18)
-      val nams = line(20)
+      val roles   = line(18)
+      val nams    = line(20)
       val namsRev = line(21)
       ArtistRolesUtil.parse(roles, nams, namsRev)
     }
 
     def createCategory: List[Category] = {
-      val code = line(15)
+      val code     = line(15)
       val codeList = code.split("/").toList
       codeList map { c =>
         c.trim().toUpperCase() match {
-          case "M" => Cat_M
-          case "L" => Cat_L
-          case "D" => Cat_D
-          case "S" => Cat_S
-          case "A" => Cat_A
-          case "U" => Cat_U
-          case "Q" => Cat_Q
+          case "M"  => Cat_M
+          case "L"  => Cat_L
+          case "D"  => Cat_D
+          case "S"  => Cat_S
+          case "A"  => Cat_A
+          case "U"  => Cat_U
+          case "Q"  => Cat_Q
           case "AF" => Cat_AF
-          case "T" => Cat_T
-          case "P" => Cat_P
-          case x => throw new ProjectException("Error in line %d. Unknown category code %s. %s" format(nr, x, line))
+          case "T"  => Cat_T
+          case "P"  => Cat_P
+          case x =>
+            throw new ProjectException(
+              "Error in line %d. Unknown category code %s. %s" format (nr, x, line)
+            )
         }
       }
     }
@@ -192,7 +220,7 @@ object ProjectFromFile {
     def createIsbn: Option[String] = {
       val code = line(27)
       code match {
-        case "" => None
+        case ""  => None
         case any => Some(any)
       }
     }
@@ -202,20 +230,24 @@ object ProjectFromFile {
       val namStr = line(25)
       namStr match {
         case "" => None
-        case _ => Some(new Company {
-          def name: String = namStr
+        case _ =>
+          Some(new Company {
+            def name: String = namStr
 
-          def typ: CompanyType = typStr match {
-            case "R" => Comp_R
-            case "P" => Comp_P
-            case "M" => Comp_M
-            case "E" => Comp_E
-            case "L" => Comp_L
-            case "C" => Comp_C
-            case "" => Comp_UNDEF
-            case x => throw new IllegalStateException("'%s' cannot be matched to a CompanyType (R, P, M, E, L or '')" format x)
-          }
-        })
+            def typ: CompanyType = typStr match {
+              case "R" => Comp_R
+              case "P" => Comp_P
+              case "M" => Comp_M
+              case "E" => Comp_E
+              case "L" => Comp_L
+              case "C" => Comp_C
+              case ""  => Comp_UNDEF
+              case x =>
+                throw new IllegalStateException(
+                  "'%s' cannot be matched to a CompanyType (R, P, M, E, L or '')" format x
+                )
+            }
+          })
       }
     }
 
@@ -223,7 +255,7 @@ object ProjectFromFile {
       import java.awt.Dimension
 
       def createImageInfo(f: File): ImageInfo = {
-        val n = f.getName
+        val n   = f.getName
         val dim = getJPEGDimension(f)
         new ImageInfo {
           def name: String = n
@@ -236,7 +268,7 @@ object ProjectFromFile {
 
       def getSuffix(f: File): String = {
         val path = f.getAbsolutePath
-        val idx = path.lastIndexOf('.')
+        val idx  = path.lastIndexOf('.')
         if (idx < 0) throw new IllegalStateException("File %s has no suffix" format f)
         path.substring(idx + 1)
       }
@@ -249,7 +281,7 @@ object ProjectFromFile {
           try {
             val stream: ImageInputStream = new FileImageInputStream(f)
             reader.setInput(stream)
-            val width = reader.getWidth(reader.getMinIndex)
+            val width  = reader.getWidth(reader.getMinIndex)
             val height = reader.getHeight(reader.getMinIndex)
             new Dimension(width, height)
           } finally {
@@ -260,7 +292,7 @@ object ProjectFromFile {
         }
       }
 
-      val imgDir = new File("src/main/web/images")
+      val imgDir   = new File("src/main/web/images")
       val imgFiles = imgDir.listFiles().toList.filter { f => f.isFile && f.getName.startsWith(id) }
       if (imgFiles.isEmpty) {
         throw new ProjectException("Found no image for project: '%s'" format id)
@@ -285,33 +317,35 @@ object ProjectFromFile {
         new CreationResult[Option[Project]] {
           private val _id = createId
           private val prj = new Project {
-            val id: String = _id
-            val title: MultiLang[ProjectTitle] = createTitle
-            val startTitle: MultiLang[String] = createStartTitle
-            val subTitle: Option[MultiLang[String]] = createSubTitle
-            val contrib: Option[MultiLang[String]] = createContrib
-            val artist: List[Artist] = createArtistList
-            val category: List[Category] = createCategory
-            val isbn: Option[String] = createIsbn
-            val company: Option[Company] = createCompany
-            val images: ImageLangLoc = createImageInfo(_id)
-            override val year: Option[String] = createYear
+            val id: String                                         = _id
+            val title: MultiLang[ProjectTitle]                     = createTitle
+            val startTitle: MultiLang[String]                      = createStartTitle
+            val subTitle: Option[MultiLang[String]]                = createSubTitle
+            val contrib: Option[MultiLang[String]]                 = createContrib
+            val artist: List[Artist]                               = createArtistList
+            val category: List[Category]                           = createCategory
+            val isbn: Option[String]                               = createIsbn
+            val company: Option[Company]                           = createCompany
+            val images: ImageLangLoc                               = createImageInfo(_id)
+            override val year: Option[String]                      = createYear
             override val projectDetails: Option[MultiLang[String]] = createProjectDetails
           }
 
           def result: Option[Project] = Some(prj)
 
           def report: Report = infos match {
-            case Nil => new Report {
-              def heading: Some[String] = Some("INFO Create project %s" format prj.id)
+            case Nil =>
+              new Report {
+                def heading: Some[String] = Some("INFO Create project %s" format prj.id)
 
-              def body = List.empty[ReportBody]
-            }
-            case _ => new Report {
-              def heading: Some[String] = Some("INFO Creating project %s" format prj.id)
+                def body = List.empty[ReportBody]
+              }
+            case _ =>
+              new Report {
+                def heading: Some[String] = Some("INFO Creating project %s" format prj.id)
 
-              def body = List(ReportLinesImpl(infos))
-            }
+                def body = List(ReportLinesImpl(infos))
+              }
           }
         }
       }

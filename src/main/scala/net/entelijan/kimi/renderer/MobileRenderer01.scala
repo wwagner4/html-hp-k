@@ -5,7 +5,6 @@ import net.entelijan.kimi.Model._
 import net.entelijan.kimi.PagesConf.{ProjectPage, StartPage}
 import net.entelijan.kimi.{Md, Model, PagesConf, Photocredit}
 
-
 class MobileRenderer01 extends DefaultRenderer {
 
   private val headlinePortrait = MultiLangGeneric(
@@ -26,7 +25,8 @@ class MobileRenderer01 extends DefaultRenderer {
        |  <span class="headline2">TRANSLATOR</span>
        |  <span class="headline3">from German to English</span>
        |</div>
-       """.stripMargin)
+       """.stripMargin
+  )
 
   private val headlineLandscape = MultiLangGeneric(
     s"""
@@ -44,36 +44,52 @@ class MobileRenderer01 extends DefaultRenderer {
        |  <span class="headline3">from German to English</span>
        |</div>
        |</div>
-       """.stripMargin)
+       """.stripMargin
+  )
 
-
-  override def rendBody(currentPage: Model.Page, pages: List[Model.Page], lang: Model.Lang, languages: List[Model.Lang], pageContent: Model.DeviceData[String]): Model.DeviceData[String] = {
+  override def rendBody(
+      currentPage: Model.Page,
+      pages: List[Model.Page],
+      lang: Model.Lang,
+      languages: List[Model.Lang],
+      pageContent: Model.DeviceData[String]
+  ): Model.DeviceData[String] = {
     pageContent.device match {
       case DV_Browser => super.rendBody(currentPage, pages, lang, languages, pageContent)
-      case DV_MobilePortrait => rendMobileBody(currentPage, pages, lang, languages, pageContent, headlinePortrait)
-      case DV_MobileLandscape => rendMobileBody(currentPage, pages, lang, languages, pageContent, headlineLandscape)
+      case DV_MobilePortrait =>
+        rendMobileBody(currentPage, pages, lang, languages, pageContent, headlinePortrait)
+      case DV_MobileLandscape =>
+        rendMobileBody(currentPage, pages, lang, languages, pageContent, headlineLandscape)
     }
   }
 
-  def rendMobileBody(currentPage: Page, pages: List[Page], lang: Lang, languages: List[Lang], pageContent: DeviceData[String], headline: MultiLang[String]): DeviceData[String] = {
+  def rendMobileBody(
+      currentPage: Page,
+      pages: List[Page],
+      lang: Lang,
+      languages: List[Lang],
+      pageContent: DeviceData[String],
+      headline: MultiLang[String]
+  ): DeviceData[String] = {
 
     def menuItemClass(loc: Location, active: Boolean): String =
       loc match {
-        case LOC_First => "menuItemF"
+        case LOC_First  => "menuItemF"
         case LOC_Middle => "menuItemM"
-        case LOC_Last => "menuItemM"
+        case LOC_Last   => "menuItemM"
       }
-
 
     def menuInfo(current: Page, menuPages: List[MenuPage], lang: Lang): String = {
       val menueRendered: Seq[String] = menuPages.map(menuPage => {
         val active = current.id == menuPage.page.id
-        val clazz = menuItemClass(menuPage.location, active)
+        val clazz  = menuItemClass(menuPage.location, active)
         val idAttr = menuPage.id match {
-          case None => ""
+          case None     => ""
           case Some(id) => s"""id="$id" """
         }
-        val style = if (current.pageType != PT_Project || menuPage.id.isEmpty || menuPage.id.get != "prjAlphaPage") ""
+        val style = if (
+          current.pageType != PT_Project || menuPage.id.isEmpty || menuPage.id.get != "prjAlphaPage"
+        ) ""
         else
           """ style="padding-bottom: 600px" """
 
@@ -91,12 +107,15 @@ class MobileRenderer01 extends DefaultRenderer {
           else menuPage.page.name
 
         if (menuPage.page != current)
-          s"""<div $idAttr $style class="$clazz"><a href="${fileName(menuPage.page, lang)}">${pageNameHtml(pageName.value(lang))}</a></div>"""
+          s"""<div $idAttr $style class="$clazz"><a href="${fileName(
+              menuPage.page,
+              lang
+            )}">${pageNameHtml(pageName.value(lang))}</a></div>"""
         else
           s"""<div $idAttr $style class="$clazz">${pageNameHtml(pageName.value(lang))}</div>"""
       })
       val menuRenderedString = menueRendered.mkString("")
-      val m = menuRenderedString + menuLang(current, lang)
+      val m                  = menuRenderedString + menuLang(current, lang)
       s"""<div id="infoMenu"><div class="menuItemFill"></div>$m</div>"""
     }
 
@@ -117,9 +136,9 @@ class MobileRenderer01 extends DefaultRenderer {
     }
 
     val contentId = currentPage.pageType match {
-      case PT_Start => "contentStart"
+      case PT_Start   => "contentStart"
       case PT_Project => "mobileContentPrj"
-      case _ => "mobileContent"
+      case _          => "mobileContent"
     }
 
     def menuPagesMobile(pages: List[Page]): List[MenuPage] = {
@@ -164,17 +183,24 @@ class MobileRenderer01 extends DefaultRenderer {
 
   override def rendPageStart(page: StartPage, lang: Lang, device: Device): String = {
     device match {
-      case DV_Browser => super.rendPageStart(page, lang, device)
-      case DV_MobilePortrait => rendMobilePageStart(page, lang, device)
+      case DV_Browser         => super.rendPageStart(page, lang, device)
+      case DV_MobilePortrait  => rendMobilePageStart(page, lang, device)
       case DV_MobileLandscape => rendMobilePageStart(page, lang, device)
     }
   }
 
   def rendMobilePageStart(page: StartPage, lang: Lang, device: Device): String = {
 
-    case class ImagePlacement(prj: Project, alignment: TxtAlignment, xoff: Int, yoff: Int, imgName: String)
+    case class ImagePlacement(
+        prj: Project,
+        alignment: TxtAlignment,
+        xoff: Int,
+        yoff: Int,
+        imgName: String
+    )
 
-    def alph(from: Char, to: Char, lang: Lang) = (from to to).map(c => createChar(c, lang)).mkString("\n")
+    def alph(from: Char, to: Char, lang: Lang) =
+      (from to to).map(c => createChar(c, lang)).mkString("\n")
 
     def alph1(chars: List[Char], lang: Lang) = chars.map(c => createChar(c, lang)).mkString("\n")
 
@@ -202,32 +228,37 @@ class MobileRenderer01 extends DefaultRenderer {
        |""".stripMargin
   }
 
-
   override def rendPageProject(page: PagesConf.ProjectPage, lang: Lang, device: Device): String = {
     device match {
-      case DV_Browser => super.rendPageProject(page, lang, device)
-      case DV_MobilePortrait => rendMobilePageProject(page, lang, device, "85%")
+      case DV_Browser         => super.rendPageProject(page, lang, device)
+      case DV_MobilePortrait  => rendMobilePageProject(page, lang, device, "85%")
       case DV_MobileLandscape => rendMobilePageProject(page, lang, device, "65%")
     }
   }
 
-  def rendMobilePageProject(page: ProjectPage, lang: Lang, device: Device, imageWidth: String): String = {
+  def rendMobilePageProject(
+      page: ProjectPage,
+      lang: Lang,
+      device: Device,
+      imageWidth: String
+  ): String = {
 
     val prj = page.prj
 
-    val isbn = if (prj.isbn.isDefined)
-      s"""${prj.isbn.get}"""
-    else ""
+    val isbn =
+      if (prj.isbn.isDefined)
+        s"""${prj.isbn.get}"""
+      else ""
 
     def artist(lang: Lang): String = ArtistRolesUtil.format(prj.artist, lang).mkString("</br>")
 
     def beitrag(lang: Lang): String = prj.contrib match {
-      case None => ""
+      case None    => ""
       case Some(a) => "| %s" format a.value(lang)
     }
 
     def yearString: String = prj.year match {
-      case None => " "
+      case None    => " "
       case Some(y) => ", " + y.trim()
     }
 
@@ -235,10 +266,11 @@ class MobileRenderer01 extends DefaultRenderer {
       s"""${prj.company.get.typ.name.value(lang)}: ${prj.company.get.name.trim}"""
     else ""
 
-    def credit(lang: Lang) = Photocredit.credit(lang, prj.images.imageInfo(lang, ILProject).name) match {
-      case Some(c) => c.trim()
-      case None => ""
-    }
+    def credit(lang: Lang) =
+      Photocredit.credit(lang, prj.images.imageInfo(lang, ILProject).name) match {
+        case Some(c) => c.trim()
+        case None    => ""
+      }
 
     def details(lang: Lang): String = prj.projectDetails match {
       case None =>
@@ -260,14 +292,14 @@ class MobileRenderer01 extends DefaultRenderer {
         Md.transf(mdt.trim())
       case Some(txt) =>
         val mdt = txt.value(lang)
-        val re = Md.transf(mdt)
+        val re  = Md.transf(mdt)
         re
     }
 
     def subtitleHtml(lang: Lang): String = {
 
       prj.subTitle match {
-        case None => ""
+        case None     => ""
         case Some(st) => s"""<div class="prjSubtitle">${st.value(lang)}</div>"""
       }
 
@@ -275,17 +307,20 @@ class MobileRenderer01 extends DefaultRenderer {
 
     def contentDefault(lang: Lang): String =
       s"""<div class="prjBody">
-         |<div class="prjTitle">${prj.title.value(lang).name.getUqual.toUpperCase()} ${beitrag(lang)}</div>
+         |<div class="prjTitle">${prj.title.value(lang).name.getUqual.toUpperCase()} ${beitrag(
+          lang
+        )}</div>
          |${subtitleHtml(lang)}
          |<div class="prjText">
          |${details(lang)}
          |</div>
          |</div>
-         |<img class="prjImg" src="images/${prj.images.imageInfo(lang, ILProject).name}" width="$imageWidth" />
+         |<img class="prjImg" src="images/${prj.images
+          .imageInfo(lang, ILProject)
+          .name}" width="$imageWidth" />
          |""".stripMargin
 
     contentDefault(lang)
   }
-
 
 }

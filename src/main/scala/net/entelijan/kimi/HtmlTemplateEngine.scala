@@ -6,14 +6,15 @@ object HtmlTemplateEngine {
 
   def pageNameHtml(name: PageName): String = name.prefix match {
     case None => s"""<span class="infoMenuItemText">${name.name.toUpperCase()}</span>"""
-    case Some(prefix) => s"""<span class="infoMenuItemTextPrefix">$prefix</span><span class="infoMenuItemText">${name.name.toUpperCase()}</span>"""
+    case Some(prefix) =>
+      s"""<span class="infoMenuItemTextPrefix">$prefix</span><span class="infoMenuItemText">${name.name
+          .toUpperCase()}</span>"""
   }
 
   def pageNameContentHtml(name: PageName): String = name.prefix match {
-    case None => s"""${name.name}"""
+    case None         => s"""${name.name}"""
     case Some(prefix) => s"""$prefix ${name.name}"""
   }
-
 
   sealed trait Location
 
@@ -27,12 +28,11 @@ object HtmlTemplateEngine {
 
   case class MenuLang(lang: Lang, location: Location)
 
-  def fileName(page: Page, lang: Lang): String = "%s-%s.html" format(page.id, lang.id)
+  def fileName(page: Page, lang: Lang): String = "%s-%s.html" format (page.id, lang.id)
 
-  def fileName(prj: Project, lang: Lang): String = "%s-%s.html" format(prj.id, lang.id)
+  def fileName(prj: Project, lang: Lang): String = "%s-%s.html" format (prj.id, lang.id)
 
   def pageTemplate(bodyContent: List[DeviceData[String]], page: Page, lang: Lang): String = {
-
 
     val mobileMaxWidth = 900
 
@@ -162,7 +162,7 @@ object HtmlTemplateEngine {
          |</div>
          |""".stripMargin
 
-     data.map(cont).mkString("\n")
+    data.map(cont).mkString("\n")
 
   }
 
@@ -181,7 +181,8 @@ object HtmlTemplateEngine {
     }
     val relPages = pages
       .filter { page =>
-        page.pageType == PT_Start || page.pageType == PT_ProjectOverview || page.pageType == PT_Info }
+        page.pageType == PT_Start || page.pageType == PT_ProjectOverview || page.pageType == PT_Info
+      }
       .sortBy(_.menuSortOrder)
     convertToMenuPages(relPages)
   }
@@ -190,7 +191,5 @@ object HtmlTemplateEngine {
     val locs = locations(languages.size)
     languages.zip(locs) map { case (a, b) => MenuLang(a, b) }
   }
-
-
 
 }

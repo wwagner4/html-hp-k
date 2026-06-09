@@ -3,16 +3,23 @@ package net.entelijan.kimi
 object MarkdownTryout extends App {
 
   def md(in: String): String = {
-    import laika.api._
-    import laika.parse.markdown.Markdown
-    import laika.render.HTML
+    import laika.api.Transformer
+    import laika.format.{Markdown, HTML}
+    import laika.markdown.github.GitHubFlavor
+    import laika.parse.markup.DocumentParser.ParserError
 
-    import scala.io.Codec
-    import scala.language.postfixOps
-    
-    implicit val codec: Codec = Codec.UTF8
-    val internal = Parse as Markdown fromString txt
-    Render as HTML from internal toString
+    val result = Transformer
+      .from(Markdown)
+      .to(HTML)
+      .build
+      .transform(in)
+
+    result match {
+      case Right(html) =>
+        html
+      case Left(error) =>
+        s"Error Message: ${error.message}"
+    }
   }
 
   val txt = """

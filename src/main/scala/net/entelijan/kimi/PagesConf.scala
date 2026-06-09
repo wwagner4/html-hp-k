@@ -9,9 +9,7 @@ object PagesConf {
     override def id: String = "index"
 
     override def name: MultiLang[PageName] =
-      MultiLangGeneric(
-        PageName(None, "START"),
-        PageName(None, "HOME"))
+      MultiLangGeneric(PageName(None, "START"), PageName(None, "HOME"))
 
     override def menuId: Option[String] = None
 
@@ -28,7 +26,8 @@ object PagesConf {
     override def name: MultiLang[PageName] =
       MultiLangGeneric(
         PageName(Some("Projekte nach"), "TITEL"),
-        PageName(Some("Projects by"), "TITLE"))
+        PageName(Some("Projects by"), "TITLE")
+      )
 
     override def menuSortOrder: Int = 10
 
@@ -44,7 +43,8 @@ object PagesConf {
 
     override def name: MultiLang[PageName] = MultiLangGeneric(
       PageName(Some("Projekte nach"), "AUTOR"),
-      PageName(Some("Projects by"), "AUTHOR"))
+      PageName(Some("Projects by"), "AUTHOR")
+    )
 
     override def menuSortOrder: Int = 15
 
@@ -58,7 +58,10 @@ object PagesConf {
 
     override def id: String = "prjCatPage"
 
-    override def name: MultiLang[PageName] = MultiLangGeneric(PageName(Some("Projekte nach"), "KATEGORIE"), PageName(Some("Projects by"), "CATEGORY"))
+    override def name: MultiLang[PageName] = MultiLangGeneric(
+      PageName(Some("Projekte nach"), "KATEGORIE"),
+      PageName(Some("Projects by"), "CATEGORY")
+    )
 
     override def menuSortOrder: Int = 20
 
@@ -103,6 +106,5 @@ object PagesConf {
     override def pageType: PageType = PT_Project
 
   }
-
 
 }
