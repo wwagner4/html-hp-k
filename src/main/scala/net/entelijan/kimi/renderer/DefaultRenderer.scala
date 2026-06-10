@@ -50,8 +50,11 @@ class DefaultRenderer extends Renderer {
     lang match {
       case Ger =>
         s"""<div class="bioTextGer">
-           |Mitglied der IG Übersetzerinnen Übersetzer, der Interessenvertretung der
-           |literarischen und wissenschaftlichen ÜbersetzerInnen in Österreich.
+           |Geboren in Hawaii, USA, aufgewachsen in Kalifornien, lebt und arbeitet in Wien.
+           |Kam in den 80er Jahren im Rahmen eines Auslandsstudiums nach Österreich und blieb.
+           |Absolvierte 1996 das Studium am Institut für Übersetzen und Dolmetschen an der Universität Wien.
+           |Seither freiberufliche Übersetzerin mit den Schwerpunkten Film, Kunst und Architektur.
+           |Mitglied des Forum Literaturübersetzen Österreich.
            |</div>
            |<div class="bioAdr">
            |<div class="bioTextGer">
@@ -70,8 +73,11 @@ class DefaultRenderer extends Renderer {
            |""".stripMargin
       case Eng =>
         s"""<div class="bioTextEng">
-           |Member of IG Übersetzerinnen Übersetzer, the Austrian Association of
-           |Literary and Scientific Translators.
+           |Born in Hawaii, grew up in California, lives and works in Vienna. Came to Austria on a
+           |study abroad program in the 80s and stayed. Earned her master's degree at the University of
+           |Vienna’s Institute for Translation and Interpreting Studies in 1996. Has worked since then as
+           |a freelance translator mainly in the areas of film, art, and architecture.
+           |Member of the Austrian Forum for Literary Translation.
            |</div>
            |<div class="bioAdr">
            |<div class="bioTextEng">
