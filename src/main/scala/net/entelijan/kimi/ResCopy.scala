@@ -3,10 +3,12 @@ package net.entelijan.kimi
 import java.io.File
 import java.nio.file.attribute.BasicFileAttributes
 import java.nio.file.{FileSystems, Files, Path}
+import scala.annotation.tailrec
 
 object ResCopy {
 
   def copy(from: File, to: File, ignore: List[String]): Unit = {
+    @tailrec
     def accept(f: File, i: List[String]): Boolean = i match {
       case Nil       => true
       case m :: rest => if (f.getName.matches(m)) false else accept(f, rest)
@@ -44,9 +46,14 @@ object ResCopy {
     import scala.language.postfixOps
     require(dir.isDirectory, "%s is not a directory" format dir)
     val newFile = new File(dir, f.getName)
-    new FileOutputStream(newFile) getChannel () transferFrom (new FileInputStream(
-      f
-    ) getChannel, 0, Long.MaxValue)
+    new FileOutputStream(newFile).getChannel
+      .transferFrom(
+        new FileInputStream(
+          f
+        ) getChannel,
+        0,
+        Long.MaxValue
+      )
     println("copied %s to %s" format (f, dir))
   }
 
@@ -61,6 +68,7 @@ object ResCopy {
     re
   }
 
+  @tailrec
   private def findFile(name: String, files: List[File]): Option[File] = {
     files match {
       case Nil => None

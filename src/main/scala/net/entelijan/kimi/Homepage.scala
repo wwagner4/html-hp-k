@@ -87,7 +87,7 @@ case object Homepage {
         infos ::= "'%s' is defined in more than one project for german. %s" format (a.alph, a.projectsIDsWithHpAlph
           .mkString(","))
       } else if (a.projectsIDsWithHpAlph.isEmpty) {
-        infos ::= "'%s' is not defined for german" format a.alph
+        infos ::= "Letter square: '%s' is not defined for german" format a.alph
       }
     })
     eng.foreach(a => {
@@ -96,7 +96,7 @@ case object Homepage {
         infos ::= "'%s' is defined in more than one project for english. %s" format (a.alph, a.projectsIDsWithHpAlph
           .mkString(","))
       } else if (a.projectsIDsWithHpAlph.isEmpty) {
-        infos ::= "'%s' is not defined for english" format a.alph
+        infos ::= "Letter square:'%s' is not defined for english" format a.alph
       }
     })
 
