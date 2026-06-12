@@ -57,9 +57,9 @@ class MobileRenderer01 extends DefaultRenderer {
     pageContent.device match {
       case DV_Browser => super.rendBody(currentPage, pages, lang, languages, pageContent)
       case DV_MobilePortrait =>
-        rendMobileBody(currentPage, pages, lang, languages, pageContent, headlinePortrait)
+        rendMobileBody(currentPage, pages, lang, pageContent, headlinePortrait)
       case DV_MobileLandscape =>
-        rendMobileBody(currentPage, pages, lang, languages, pageContent, headlineLandscape)
+        rendMobileBody(currentPage, pages, lang, pageContent, headlineLandscape)
     }
   }
 
@@ -67,12 +67,11 @@ class MobileRenderer01 extends DefaultRenderer {
       currentPage: Page,
       pages: List[Page],
       lang: Lang,
-      languages: List[Lang],
       pageContent: DeviceData[String],
       headline: MultiLang[String]
   ): DeviceData[String] = {
 
-    def menuItemClass(loc: Location, active: Boolean): String =
+    def menuItemClass(loc: Location): String =
       loc match {
         case LOC_First  => "menuItemF"
         case LOC_Middle => "menuItemM"
@@ -81,8 +80,8 @@ class MobileRenderer01 extends DefaultRenderer {
 
     def menuInfo(current: Page, menuPages: List[MenuPage], lang: Lang): String = {
       val menueRendered: Seq[String] = menuPages.map(menuPage => {
-        val active = current.id == menuPage.page.id
-        val clazz  = menuItemClass(menuPage.location, active)
+        current.id == menuPage.page.id
+        val clazz = menuItemClass(menuPage.location)
         val idAttr = menuPage.id match {
           case None     => ""
           case Some(id) => s"""id="$id" """
@@ -184,12 +183,12 @@ class MobileRenderer01 extends DefaultRenderer {
   override def rendPageStart(page: StartPage, lang: Lang, device: Device): String = {
     device match {
       case DV_Browser         => super.rendPageStart(page, lang, device)
-      case DV_MobilePortrait  => rendMobilePageStart(page, lang, device)
-      case DV_MobileLandscape => rendMobilePageStart(page, lang, device)
+      case DV_MobilePortrait  => rendMobilePageStart(page, lang)
+      case DV_MobileLandscape => rendMobilePageStart(page, lang)
     }
   }
 
-  def rendMobilePageStart(page: StartPage, lang: Lang, device: Device): String = {
+  def rendMobilePageStart(page: StartPage, lang: Lang): String = {
 
     case class ImagePlacement(
         prj: Project,
@@ -231,15 +230,14 @@ class MobileRenderer01 extends DefaultRenderer {
   override def rendPageProject(page: PagesConf.ProjectPage, lang: Lang, device: Device): String = {
     device match {
       case DV_Browser         => super.rendPageProject(page, lang, device)
-      case DV_MobilePortrait  => rendMobilePageProject(page, lang, device, "85%")
-      case DV_MobileLandscape => rendMobilePageProject(page, lang, device, "65%")
+      case DV_MobilePortrait  => rendMobilePageProject(page, lang, "85%")
+      case DV_MobileLandscape => rendMobilePageProject(page, lang, "65%")
     }
   }
 
   def rendMobilePageProject(
       page: ProjectPage,
       lang: Lang,
-      device: Device,
       imageWidth: String
   ): String = {
 
