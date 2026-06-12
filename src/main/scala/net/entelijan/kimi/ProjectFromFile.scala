@@ -18,8 +18,8 @@ object ProjectFromFile {
     var reps  = List.empty[Report]
     val bs    = scala.io.Source.fromFile(inputFile)(Codec.UTF8)
     val lines = bs.getLines.toList
-    val re = lines.zipWithIndex.flatMap { case (line, nr) =>
-      val r = toProject(line, nr)
+    val re = lines.drop(2).zipWithIndex.flatMap { case (line, index) =>
+      val r = toProject(line, index + 3)
       reps ::= r.report
       r.result
     }
