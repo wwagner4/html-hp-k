@@ -16,7 +16,7 @@ class ImageFileNameTestCase extends AnyFunSuite {
 
   case class II(name: String, width: Int, height: Int) extends ImageInfo
 
-  val testvalues = List(
+  val testvalues: List[T] = List(
     T(1, List("a_DE.jpg", "a_EN.jpg"), "a_DE.jpg", "a_EN.jpg", "a_DE.jpg", "a_EN.jpg"),
     T(
       2,

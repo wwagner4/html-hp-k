@@ -5,8 +5,6 @@ object MarkdownTryout extends App {
   def md(in: String): String = {
     import laika.api.Transformer
     import laika.format.{Markdown, HTML}
-    import laika.markdown.github.GitHubFlavor
-    import laika.parse.markup.DocumentParser.ParserError
 
     val result = Transformer
       .from(Markdown)

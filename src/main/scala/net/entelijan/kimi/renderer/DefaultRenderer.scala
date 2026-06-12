@@ -100,7 +100,7 @@ class DefaultRenderer extends Renderer {
   override def rendPagePrjCat(page: PrjCatPage, lang: Lang, device: Device): String = {
     def links(cat: Category): String = {
       val prjs     = page.projects.filter { p => p.category.contains(cat) }
-      val prjsSort = prjs.sortBy { x => x.title.value(lang).name.alph }
+      val prjsSort = prjs.sortBy { p => p.title.value(lang).name.alph }
       prjsSort
         .map(p => {
           val page = ProjectPage(p)

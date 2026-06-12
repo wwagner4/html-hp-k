@@ -9,7 +9,7 @@ class ArtistRolesSuite extends AnyFunSuite {
 
   case class PTV(roles: String, names: String, namesRev: String, should: List[Artist])
 
-  val ptvs = List(
+  val ptvs: List[PTV] = List(
     PTV(
       "femD/masE",
       "Gerda Klein/Emil Tumpl",
@@ -46,7 +46,7 @@ class ArtistRolesSuite extends AnyFunSuite {
 
   case class FTV(artists: List[Artist], lang: Lang, should: List[String])
 
-  val ftvs = List(
+  val ftvs: List[FTV] = List(
     FTV(List(Artist(G_Feminin, AR_Artist, "A B", "B A")), Ger, List("Künstlerin: B A")),
     FTV(
       List(Artist(G_Feminin, AR_Artist, "A B", "B A"), Artist(G_Feminin, AR_Artist, "X Y", "Y X")),
