@@ -38,128 +38,141 @@ object Model {
   }
 
   case object AR_Director extends ArtistRole {
-    def masculineSingular = MultiLangString(ger = "Regie:", eng = "Director:")
+    def masculineSingular: MultiLangString = MultiLangString(ger = "Regie:", eng = "Director:")
 
-    def femininSingular = MultiLangString(ger = "Regie:", eng = "Director:")
+    def femininSingular: MultiLangString = MultiLangString(ger = "Regie:", eng = "Director:")
 
-    def masculinePlural = MultiLangString(ger = "Regie:", eng = "Directors:")
+    def masculinePlural: MultiLangString = MultiLangString(ger = "Regie:", eng = "Directors:")
 
-    def femininPlural = MultiLangString(ger = "Regie:", eng = "Directors:")
+    def femininPlural: MultiLangString = MultiLangString(ger = "Regie:", eng = "Directors:")
 
-    def mixedPlural = MultiLangString(ger = "Regie:", eng = "Directors:")
+    def mixedPlural: MultiLangString = MultiLangString(ger = "Regie:", eng = "Directors:")
 
     def order = 50
   }
 
   case object AR_Director_Author extends ArtistRole {
-    def masculineSingular = MultiLangString(ger = "Regie, Autor:", eng = "Director, author:")
+    def masculineSingular: MultiLangString =
+      MultiLangString(ger = "Regie, Autor:", eng = "Director, author:")
 
-    def femininSingular = MultiLangString(ger = "Regie, Autorin:", eng = "Director, author:")
+    def femininSingular: MultiLangString =
+      MultiLangString(ger = "Regie, Autorin:", eng = "Director, author:")
 
-    def masculinePlural = MultiLangString(ger = "Regie, Autoren:", eng = "Directors, authors:")
+    def masculinePlural: MultiLangString =
+      MultiLangString(ger = "Regie, Autoren:", eng = "Directors, authors:")
 
-    def femininPlural = MultiLangString(ger = "Regie, Autorinnen:", eng = "Directors, authors:")
+    def femininPlural: MultiLangString =
+      MultiLangString(ger = "Regie, Autorinnen:", eng = "Directors, authors:")
 
-    def mixedPlural = MultiLangString(ger = "Regie, Autoren:", eng = "Directors, authors:")
+    def mixedPlural: MultiLangString =
+      MultiLangString(ger = "Regie, Autoren:", eng = "Directors, authors:")
 
     def order = 51
   }
 
   case object AR_Author extends ArtistRole {
-    def masculineSingular = MultiLangString(ger = "Autor:", eng = "Author:")
+    def masculineSingular: MultiLangString = MultiLangString(ger = "Autor:", eng = "Author:")
 
-    def femininSingular = MultiLangString(ger = "Autorin:", eng = "Author:")
+    def femininSingular: MultiLangString = MultiLangString(ger = "Autorin:", eng = "Author:")
 
-    def masculinePlural = MultiLangString(ger = "Autoren:", eng = "Authors:")
+    def masculinePlural: MultiLangString = MultiLangString(ger = "Autoren:", eng = "Authors:")
 
-    def femininPlural = MultiLangString(ger = "Autorinnen:", eng = "Authors:")
+    def femininPlural: MultiLangString = MultiLangString(ger = "Autorinnen:", eng = "Authors:")
 
-    def mixedPlural = MultiLangString(ger = "Autoren:", eng = "Authors:")
+    def mixedPlural: MultiLangString = MultiLangString(ger = "Autoren:", eng = "Authors:")
 
     def order = 20
   }
 
   case object AR_Editor_Author extends ArtistRole {
-    def masculineSingular = MultiLangString(ger = "Herausgeber, Autor:", eng = "Editor, author:")
+    def masculineSingular: MultiLangString =
+      MultiLangString(ger = "Herausgeber, Autor:", eng = "Editor, author:")
 
-    def femininSingular = MultiLangString(ger = "Herausgeberin, Autorin:", eng = "Editor, author:")
+    def femininSingular: MultiLangString =
+      MultiLangString(ger = "Herausgeberin, Autorin:", eng = "Editor, author:")
 
-    def masculinePlural = MultiLangString(ger = "Herausgeber, Autoren:", eng = "Editors, authors:")
+    def masculinePlural: MultiLangString =
+      MultiLangString(ger = "Herausgeber, Autoren:", eng = "Editors, authors:")
 
-    def femininPlural =
+    def femininPlural: MultiLangString =
       MultiLangString(ger = "Herausgeberinnen, Autorinnen:", eng = "Editors, authors:")
 
-    def mixedPlural = MultiLangString(ger = "Herausgeber, Autoren:", eng = "Editors, authors:")
+    def mixedPlural: MultiLangString =
+      MultiLangString(ger = "Herausgeber, Autoren:", eng = "Editors, authors:")
 
     def order = 41
   }
 
   case object AR_Editor extends ArtistRole {
-    def masculineSingular = MultiLangString(ger = "Herausgeber:", eng = "Editor:")
+    def masculineSingular: MultiLangString = MultiLangString(ger = "Herausgeber:", eng = "Editor:")
 
-    def femininSingular = MultiLangString(ger = "Herausgeberin:", eng = "Editor:")
+    def femininSingular: MultiLangString = MultiLangString(ger = "Herausgeberin:", eng = "Editor:")
 
-    def masculinePlural = MultiLangString(ger = "Herausgeber:", eng = "Editors:")
+    def masculinePlural: MultiLangString = MultiLangString(ger = "Herausgeber:", eng = "Editors:")
 
-    def femininPlural = MultiLangString(ger = "Herausgeberinnen:", eng = "Editors:")
+    def femininPlural: MultiLangString =
+      MultiLangString(ger = "Herausgeberinnen:", eng = "Editors:")
 
-    def mixedPlural = MultiLangString(ger = "Herausgegeben von", eng = "Editors:")
+    def mixedPlural: MultiLangString = MultiLangString(ger = "Herausgegeben von", eng = "Editors:")
 
     def order = 40
   }
 
   case object AR_Composer extends ArtistRole {
-    def masculineSingular = MultiLangString(ger = "Komponist:", eng = "Composer:")
+    def masculineSingular: MultiLangString = MultiLangString(ger = "Komponist:", eng = "Composer:")
 
-    def femininSingular = MultiLangString(ger = "Komponistin:", eng = "Composer:")
+    def femininSingular: MultiLangString = MultiLangString(ger = "Komponistin:", eng = "Composer:")
 
-    def masculinePlural = MultiLangString(ger = "Komponisten:", eng = "Composers:")
+    def masculinePlural: MultiLangString = MultiLangString(ger = "Komponisten:", eng = "Composers:")
 
-    def femininPlural = MultiLangString(ger = "Komponistinnen:", eng = "Composers:")
+    def femininPlural: MultiLangString =
+      MultiLangString(ger = "Komponistinnen:", eng = "Composers:")
 
-    def mixedPlural = MultiLangString(ger = "Komponisten von", eng = "Composers:")
+    def mixedPlural: MultiLangString = MultiLangString(ger = "Komponisten von", eng = "Composers:")
 
     def order = 25
   }
 
   case object AR_Artist extends ArtistRole {
-    def masculineSingular = MultiLangString(ger = "Künstler:", eng = "Artist:")
+    def masculineSingular: MultiLangString = MultiLangString(ger = "Künstler:", eng = "Artist:")
 
-    def femininSingular = MultiLangString(ger = "Künstlerin:", eng = "Artist:")
+    def femininSingular: MultiLangString = MultiLangString(ger = "Künstlerin:", eng = "Artist:")
 
-    def masculinePlural = MultiLangString(ger = "Künstler:", eng = "Artists:")
+    def masculinePlural: MultiLangString = MultiLangString(ger = "Künstler:", eng = "Artists:")
 
-    def femininPlural = MultiLangString(ger = "Künstlerinnen:", eng = "Artists:")
+    def femininPlural: MultiLangString = MultiLangString(ger = "Künstlerinnen:", eng = "Artists:")
 
-    def mixedPlural = MultiLangString(ger = "Künstler:", eng = "Artists:")
+    def mixedPlural: MultiLangString = MultiLangString(ger = "Künstler:", eng = "Artists:")
 
     def order = 30
   }
 
   case object AR_Architect extends ArtistRole {
-    def masculineSingular = MultiLangString(ger = "Architekt:", eng = "Architect:")
+    def masculineSingular: MultiLangString = MultiLangString(ger = "Architekt:", eng = "Architect:")
 
-    def femininSingular = MultiLangString(ger = "Architektin:", eng = "Architect:")
+    def femininSingular: MultiLangString = MultiLangString(ger = "Architektin:", eng = "Architect:")
 
-    def masculinePlural = MultiLangString(ger = "Architekten:", eng = "Architects:")
+    def masculinePlural: MultiLangString =
+      MultiLangString(ger = "Architekten:", eng = "Architects:")
 
-    def femininPlural = MultiLangString(ger = "Architektinnen:", eng = "Architects:")
+    def femininPlural: MultiLangString =
+      MultiLangString(ger = "Architektinnen:", eng = "Architects:")
 
-    def mixedPlural = MultiLangString(ger = "Architekten:", eng = "Architects:")
+    def mixedPlural: MultiLangString = MultiLangString(ger = "Architekten:", eng = "Architects:")
 
     def order = 10
   }
 
   case object AR_Undef extends ArtistRole {
-    def masculineSingular = MultiLangString(ger = "", eng = "")
+    def masculineSingular: MultiLangString = MultiLangString(ger = "", eng = "")
 
-    def femininSingular = MultiLangString(ger = "", eng = "")
+    def femininSingular: MultiLangString = MultiLangString(ger = "", eng = "")
 
-    def masculinePlural = MultiLangString(ger = "", eng = "")
+    def masculinePlural: MultiLangString = MultiLangString(ger = "", eng = "")
 
-    def femininPlural = MultiLangString(ger = "", eng = "")
+    def femininPlural: MultiLangString = MultiLangString(ger = "", eng = "")
 
-    def mixedPlural = MultiLangString(ger = "", eng = "")
+    def mixedPlural: MultiLangString = MultiLangString(ger = "", eng = "")
 
     def order = 11
   }
@@ -186,31 +199,31 @@ object Model {
   }
 
   case object Comp_R extends CompanyType {
-    def name = MultiLangString("Verlag", "Publisher")
+    def name: MultiLangString = MultiLangString("Verlag", "Publisher")
   }
 
   case object Comp_P extends CompanyType {
-    def name = MultiLangString("Produktion", "Production company")
+    def name: MultiLangString = MultiLangString("Produktion", "Production company")
   }
 
   case object Comp_M extends CompanyType {
-    def name = MultiLangString("Museum", "Museum")
+    def name: MultiLangString = MultiLangString("Museum", "Museum")
   }
 
   case object Comp_E extends CompanyType {
-    def name = MultiLangString("Herausgeber", "Editor")
+    def name: MultiLangString = MultiLangString("Herausgeber", "Editor")
   }
 
   case object Comp_L extends CompanyType {
-    def name = MultiLangString("Label", "Label")
+    def name: MultiLangString = MultiLangString("Label", "Label")
   }
 
   case object Comp_C extends CompanyType {
-    def name = MultiLangString("Kulturelle Einrichtung", "Cultural institution")
+    def name: MultiLangString = MultiLangString("Kulturelle Einrichtung", "Cultural institution")
   }
 
   case object Comp_UNDEF extends CompanyType {
-    def name = MultiLangString("", "")
+    def name: MultiLangString = MultiLangString("", "")
   }
 
   trait Company {
@@ -321,52 +334,52 @@ object Model {
 
   // noinspection TypeAnnotation
   case object Cat_A extends Category {
-    def name = MultiLangString("Architektur", "Architecture")
+    def name: MultiLangString = MultiLangString("Architektur", "Architecture")
   }
 
   // noinspection TypeAnnotation
   case object Cat_M extends Category {
-    def name = MultiLangString("Film", "Film")
+    def name: MultiLangString = MultiLangString("Film", "Film")
   }
 
   // noinspection TypeAnnotation
   case object Cat_D extends Category {
-    def name = MultiLangString("Kunst | Design", "Art | Design")
+    def name: MultiLangString = MultiLangString("Kunst | Design", "Art | Design")
   }
 
   // noinspection TypeAnnotation
   case object Cat_L extends Category {
-    def name = MultiLangString("Literatur", "Literature")
+    def name: MultiLangString = MultiLangString("Literatur", "Literature")
   }
 
   // noinspection TypeAnnotation
   case object Cat_S extends Category {
-    def name = MultiLangString("Sachbuch", "Nonfiction")
+    def name: MultiLangString = MultiLangString("Sachbuch", "Nonfiction")
   }
 
   // noinspection TypeAnnotation
   case object Cat_U extends Category {
-    def name = MultiLangString("Musik", "Music")
+    def name: MultiLangString = MultiLangString("Musik", "Music")
   }
 
   // noinspection TypeAnnotation
   case object Cat_Q extends Category {
-    def name = MultiLangString("Drehbuch", "Screenplay")
+    def name: MultiLangString = MultiLangString("Drehbuch", "Screenplay")
   }
 
   // noinspection TypeAnnotation
   case object Cat_AF extends Category {
-    def name = MultiLangString("Hörspiel", "Audio Fiction")
+    def name: MultiLangString = MultiLangString("Hörspiel", "Audio Fiction")
   }
 
   // noinspection TypeAnnotation
   case object Cat_T extends Category {
-    def name = MultiLangString("Theater", "Theater")
+    def name: MultiLangString = MultiLangString("Theater", "Theater")
   }
 
   // noinspection TypeAnnotation
   case object Cat_P extends Category {
-    def name = MultiLangString("Fotografie", "Photography")
+    def name: MultiLangString = MultiLangString("Fotografie", "Photography")
   }
 
   object ArtistRolesUtil {

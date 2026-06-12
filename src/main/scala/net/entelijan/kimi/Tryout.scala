@@ -2,18 +2,17 @@ package net.entelijan.kimi
 
 import org.apache.poi.ss.usermodel._
 
-import java.util
-import java.io.{File, FileInputStream}
+import java.io.File
 
 object Tryout extends App {
   println("Tryout")
 
   val filePath = "/home/wwagner4/tmp/ProjekteEinfach.xlsx"
 
-  val file     = new File(filePath)
-  val workbook = WorkbookFactory.create(file)
+  val file               = new File(filePath)
+  val workbook: Workbook = WorkbookFactory.create(file)
 
-  val sheet = workbook.getSheet("main")
+  val sheet: Sheet = workbook.getSheet("main")
 
   println(s"sheet: $sheet")
 

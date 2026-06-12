@@ -4,9 +4,6 @@ import laika.api._
 import laika.format.Markdown
 import laika.format.HTML
 
-import scala.io.Codec
-import scala.language.postfixOps
-
 object Md {
   def transf(in: String): String = {
 

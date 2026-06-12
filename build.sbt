@@ -10,3 +10,7 @@ lazy val root = (project in file("."))
     libraryDependencies += "org.apache.poi" % "poi-ooxml" % "5.5.1",
     libraryDependencies += "com.lihaoyi" %% "os-lib" % "0.11.8",
 )
+
+scalacOptions ++= Seq(
+  "-Wunused",
+)

@@ -1,13 +1,12 @@
 package net.entelijan.kimi.imgtransform
 
+import os.Path
 object ImageTransformFilesKimi extends App {
 
-  import os._
-
   // Define source and destination paths using the home directory
-  val home    = os.home
-  val srcDir  = home / "tmp" / "kimi" / "images"
-  val destDir = home / "tmp" / "kimi" / "images-out"
+  val home          = os.home
+  val srcDir: Path  = home / "tmp" / "kimi" / "images"
+  val destDir: Path = home / "tmp" / "kimi" / "images-out"
 
   // Ensure output directory exists
   os.makeDir.all(srcDir)
@@ -19,7 +18,7 @@ object ImageTransformFilesKimi extends App {
   }
 
   // Set of valid image extensions to filter out non-image files
-  val validExtensions = Set("jpg", "jpeg", "png", "webp", "bmp", "tiff")
+  val validExtensions: Set[String] = Set("jpg", "jpeg", "png", "webp", "bmp", "tiff")
 
   var processedCount = 0
 
@@ -44,7 +43,7 @@ object ImageTransformFilesKimi extends App {
       } catch {
         case e: os.SubprocessException =>
           println(s"Failed to process ${filePath.last}. ImageMagick error: ${e.result.toString}")
-        case e: java.io.IOException =>
+        case _: java.io.IOException =>
           println(
             "Error: 'magick' command not found. Ensure ImageMagick is installed and in your PATH."
           )

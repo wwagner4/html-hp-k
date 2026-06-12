@@ -270,7 +270,7 @@ class DefaultRenderer extends Renderer {
          |""".stripMargin
     }
 
-    def script(placements: List[ImagePlacement], lang: Lang): String = {
+    def script(placements: List[ImagePlacement]): String = {
       def defElem: String = placements
         .map(p => {
           s"""var elem = $$( "#startAphaBlock" ); var height = elem.height(); var offset = elem.offset();
@@ -327,7 +327,7 @@ class DefaultRenderer extends Renderer {
        |</div>
        |<div id="startAlphaBlockBack"></div>
        |${images(placements, lang)}
-       |${script(placements, lang)}
+       |${script(placements)}
        |""".stripMargin
   }
 

@@ -65,7 +65,7 @@ object PagesConf {
 
     override def menuSortOrder: Int = 20
 
-    override def menuId = Some(id)
+    override def menuId: Some[String] = Some(id)
 
     override def pageType: PageType = PT_ProjectOverview
 
