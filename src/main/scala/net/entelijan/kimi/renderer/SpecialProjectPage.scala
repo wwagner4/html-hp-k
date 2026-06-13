@@ -4,7 +4,9 @@ import net.entelijan.kimi.Model._
 
 object SpecialProjectPage {
 
-  private val pages: Map[String, (Lang) => String] = Map("jirkuff" -> jirkuff)
+  // TODO Remove Special Project
+  //private val pages: Map[String, (Lang) => String] = Map("jirkuff" -> jirkuff)
+  private val pages: Map[String, (Lang) => String] = Map()
 
   def isSpecialPage(id: String): Boolean = pages.contains(id)
 
@@ -15,7 +17,7 @@ object SpecialProjectPage {
 <div style="width: 310px;">
 <img class="prjImg" src="images/jirkuff_PRJ_2.jpg"/>
 <img style="margin-top: 15px;" class="prjImg" src="images/jirkuff_PRJ_1.jpg"/>
-</div>  
+</div>
 <div class="prjBody">
   <div class="prjTitle">BOYZ IN THE WOOD | Short film</div>
   <div style="padding-left:535px" class="prjText">
