@@ -23,7 +23,7 @@ object Model {
     def result: T
   }
 
-  sealed trait ArtistRole {
+  sealed trait ArtistRole extends Ordered[ArtistRole] {
     def masculineSingular: MultiLang[String]
 
     def femininSingular: MultiLang[String]
@@ -35,6 +35,8 @@ object Model {
     def mixedPlural: MultiLang[String]
 
     def order: Int
+
+    def compare(that: ArtistRole): Int = this.order.compare(that.order)
   }
 
   case object AR_Director extends ArtistRole {
@@ -473,8 +475,8 @@ object Model {
       }
 
       if (artists.isEmpty) throw new IllegalStateException("Artists list must never be empty")
-      val roles = artists.groupBy { x => x.role }
-      roles.values.toList.map(rg => roleGroupsToString(rg, lang))
+      val roles: Seq[(ArtistRole, List[Artist])] = artists.groupBy { x => x.role }.toSeq
+      roles.sortBy { case (k, _) => k }.map { case (_, rg) => roleGroupsToString(rg, lang) }.toList
     }
 
   }

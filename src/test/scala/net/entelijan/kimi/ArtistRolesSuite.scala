@@ -44,26 +44,30 @@ class ArtistRolesSuite extends AnyFunSuite {
 
   }
 
-  case class FTV(artists: List[Artist], lang: Lang, should: List[String])
+  case class FTV(nr: Int, artists: List[Artist], lang: Lang, should: List[String])
 
   val ftvs: List[FTV] = List(
-    FTV(List(Artist(G_Feminin, AR_Artist, "A B", "B A")), Ger, List("Künstlerin: B A")),
+    FTV(0, List(Artist(G_Feminin, AR_Artist, "A B", "B A")), Ger, List("Künstlerin: B A")),
     FTV(
+      1,
       List(Artist(G_Feminin, AR_Artist, "A B", "B A"), Artist(G_Feminin, AR_Artist, "X Y", "Y X")),
       Ger,
       List("Künstlerinnen: B A, Y X")
     ),
     FTV(
+      2,
       List(Artist(G_Masculin, AR_Artist, "A B", "B A"), Artist(G_Feminin, AR_Artist, "X Y", "Y X")),
       Ger,
       List("Künstler: B A, Y X")
     ),
     FTV(
+      3,
       List(Artist(G_Masculin, AR_Artist, "A B", "B A"), Artist(G_Feminin, AR_Artist, "X Y", "Y X")),
       Eng,
       List("Artists: B A, Y X")
     ),
     FTV(
+      4,
       List(
         Artist(G_Masculin, AR_Artist, "A B", "B A"),
         Artist(G_Feminin, AR_Director, "X Y", "Y X")
@@ -72,6 +76,7 @@ class ArtistRolesSuite extends AnyFunSuite {
       List("Künstler: B A", "Regie: Y X")
     ),
     FTV(
+      5,
       List(
         Artist(G_Masculin, AR_Artist, "A B", "B A"),
         Artist(G_Feminin, AR_Director, "X Y", "Y X")
@@ -79,7 +84,7 @@ class ArtistRolesSuite extends AnyFunSuite {
       Eng,
       List("Artist: B A", "Director: Y X")
     ),
-    FTV(List(Artist(G_Feminin, AR_Author, "A B", "B A")), Eng, List("Author: B A"))
+    FTV(6, List(Artist(G_Feminin, AR_Author, "A B", "B A")), Eng, List("Author: B A"))
   )
 
   ftvs.foreach { tv =>
