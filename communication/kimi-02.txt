@@ -16,7 +16,9 @@ kontrolle aufgefallen sind.
 
 die gelbe markierung in der spalte B kennzeichnet entweder neue fotos oder fotos, die ich im ordner bilder umbenannt habe.
 beim projekt Everything begins to float gibt es zwei fotos: float_START (für die EN startseite buchstabe E) 
-und float_PRJ for die projektseite für beide sprachen. im prinzip ist das wie bei buchstabe J Jem Cohen Little, Big, and Far. hier gibt es auch zwei fotos jem_START und jem_PRJ. das hast du genau so gemacht, wie ich mir das vorgestellt habe, aber ich weiß nicht, wo ich in zukunft die zwei fotos in der tabelle eintragen soll.
+und float_PRJ for die projektseite für beide sprachen. im prinzip ist das wie bei buchstabe J Jem Cohen Little, Big, and Far. 
+hier gibt es auch zwei fotos jem_START und jem_PRJ. das hast du genau so gemacht, wie ich mir das vorgestellt habe, 
+aber ich weiß nicht, wo ich in zukunft die zwei fotos in der tabelle eintragen soll.
 ich habe ein paar fotos aus dem ordner Bilder gelöscht. ich werde in zukunft die namen konsequent benennen. 
 wo relevant mit _START bzw _PRJ
 
@@ -29,3 +31,24 @@ letzter punkt: du hast eine neue katagorie hinzugefügt. ich hätte lieber auch 
 literatur/literature. die kategorien "musik" und "literatur" sind so schön allgemein. und CDs hat ja niemand 
 mehr heutzutage, auch wenn sie noch produziert werden... Fantasy Studies und skin double bitte zu musik und 
 ... über Bäume, Hügel, und hintere Hindernisse zu literatur. danke!
+
+TODO:
+* Check how START is created. Start Sort Mobile, Start Sort DE, Start Sort EN ???
+* Take new images
+* Remove Category CD
+
+Hallo Kimi.
+
+Ich hab jetzt deine Änderungen übernommen. Bitte überprüfe die neuen Bilder. Da bin ich nicht sicher ob ich genau die 
+richtigen erwischt habe. 
+
+Zwei Punkte sind noch offen:
+1) kann man die fotos für die letzte buchstabenreihe (U, V, W, X) auch auf der seite abbilden lassen?
+   Das hab ich nicht genau verstanden. Was ich machen könnte ist den Oberen Rand von V, W, X auf die selbe Höhe wie U, Z
+   zu heben. Würde das passen ?
+2) ob man für EN und DE grundsätzlich zwei verschiedene projekte nehmen könnte?
+   Es gibt ja die Spalten 'Start Sort DE' und 'Start Sort EN'. Die verwende ich noch nicht richtig.
+
+Das werde ich in den nächsten tagen noch ausbessen. Geb. dir dann bescheid wenn das funktioniert. 
+
+https://kimilum.com/
