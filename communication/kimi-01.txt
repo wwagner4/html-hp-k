@@ -1,0 +1,48 @@
+ich würde gern ein paar projekte auf der startseite austauschen.
+ich dachte, es ist vielleicht leichter, wenn ich die zwei spalten für die deutsche und englische startseiten neu anlege. 
+d.h. die alten spalten D und E sind nicht mehr relevant und ich habe sie gelöscht (ich hoffe ich habe nichts durcheinander 
+gebracht).
+
+es gibt in der spalte B ein paar markierte felder. es ist vielleicht nicht ganz logisch, weil ich die namen der fotos auf 
+google drive/bilder nicht ändern will (du hast START hinzugefügt, wenn es sich um ein foto für die startseite handelt).
+jetzt sind in der spalte B die felder markiert, die vorher entweder anders auf der startseite waren oder überhaupt neu 
+hochgeladen wurden. z.b. workingman’s death und xenakis waren zu hoch und man konnte die schrift darunter nicht lesen. 
+deswegen habe ich zwei neue fotos (landscapeformat) hochgeladen. sie heißen wmd_START und xenakis_START, und sollen nur 
+für die startseite verwendet werden; für die projektseite dann wieder die jetztigen hochformatigen fotos: wmdhome und xenakis.
+
+quadratsch_PRJ soll jetzt statt quadratsch_START für die startseite verwendet u.z. nicht für Q (steht für quadrat:sch) 
+sondern für O (steht für Oswald Egger).
+dafür brauchen wir quadratsch_START als projektbild für einen eigenständigen eintrag: Quadrat:sch. ich habe die tabelle 
+diesbezüglich ergänzt. mir ist nämlich erst jetzt aufgefallen, dass Quadrat:sch nicht in den listen nach titel bzw. 
+nach autor und nach kategorie erscheint, sondern nur auf der startseite.
+
+bei spalte P (Kategorie/Category) habe ich was neues hinzugefügt: CD. es betrifft 3 projekte, die bis jetzt als U (=Musik) 
+gegolten haben. ich finde es bei diesen drei projekten unlogisch, dass auf der seite „Projekte nach Kategorie“ der CD-Titel 
+und nicht der oder die Musiker steht.
+also wenn CD statt U in spalte P steht soll nicht den titel aus der spalte K bzw. spalte N, sondern der künstler aus der 
+spalte V als datensatz geholt werden.
+
+bei der Kategorie/category (also sowohl DE als auch EN seiten) fehlt ein drehbuch/screenplay (es ist mein fehler, ich 
+habe das projekt in der tabelle als M statt Q eingetragen).
+eigentlich habe ich bei diesem projekt (wie auch bei Gipsy Queen und Nevrland sowohl das drehbuch als auch die untertitel 
+gemacht, aber ich will nicht, dass diese titel zweimal in derselben liste „projekte nach kategorie“ auftauchen, zumal die 
+mobile seite nur die liste „nach kategorie“ führt. sie sollen in der kategorie drehbuch aufgelistet sein (weil es dort 
+weniger titel gibt), aber jetzt habe ich in den spalten W und X (also projectDetails) Drehbuch mit Untertitel ergänzt, 
+so stehen zumindest auf der projektseite bzw. gegebenenfalls auf der startseite beide (drehbuch, untertitel). wird das 
+so funktionieren?
+
+das buch (zeile 6) ist in der spalte C noch inaktiv (X), weil es noch im druck ist. jedenfalls wollt ich fragen, ob ich 
+reihe 6 und 7 richtig in die tabelle eingetragen habe, weil die deutsche Vorlage schon 2020 herauskam. deswegen gibt es 
+zwei einträge, sie sollen trotzdem zusammen hängen/verlinkt sein.
+
+nächste frage, ob ich die daten richtig in die tabelle eingetragen habe: zeilen 8 & 9. es gibt zwei fotos für dasselbe 
+projekt. jem_START soll nur auf der startseite vorkommen, bei der projektseite soll das foto jem_PRJ verwendet werden.
+
+dasselbe situation bei zeilen 11 und 12: float_START nur für die startseite (nur englisch) und float_PRJ für die projektseiten
+für die deutsche startseite hätte ich gern das foto honeybunny für den buchstaben E.
+
+es gibt dann weitere projekte mit zwei fotos, z.b. zeilen 14/15, 18/19, 21/22 (alles rot markiert in der spalte B), 
+aber die sind nicht auf der startseite. das sind bloß projekte, wo es gut wäre, wenn es auf der projektseite statt 
+nur 1 foto 2 fotos gäbe. hier ist wieder die frage, ob ich das nicht anders in die tabelle eintragen soll?
+
+

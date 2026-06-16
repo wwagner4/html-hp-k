@@ -1,0 +1,31 @@
+hallo wolfgang, danke! ich habe es nur überflogen, ich bin jetzt auch den ganzen tag weg, aber ich versuche sie mir am abend 
+genauer anzuschauen. vorab hätte ich die frage auf der startseite 
+1) ob man für EN und DE grundsätzlich zwei verschiedene projekte nehmen könnte?  und 
+2) ob man den text auf der startseite anders schreiben kann, als er auf der projektseite erscheint. z.b. mir ist aufgefallen, 
+dass bei eat design (E) auf der startseite honey & bunny | Buch aber auf der projektseite Eat Design | Buch. 
+noch nichts ändern, aber das ist in meinem sinne, aber für dieses projekt nicht. vielleicht kann man in der 
+tabelle eine spalte haben, für den text auf der startseite. sonst ist es noch unlogisch, wenn bei J statt Jem Cohen Little, 
+Big, and Far steht. wenn das so grundsätzlich gehen würde, könnte ich die neue spalte selber befüllen...
+
+hallo wolfgang, ich hoffe, es war in deinem sinne, jetzt in die tabelle einzugreifen. dadurch, dass ich die spalte gefunden 
+habe, wo den text für die startseite steht, habe ich es leichter gefunden, die änderungen selbst vorzunehmen, 
+als dir alles zu erklären und dich eine liste durcharbeiten zu lassen. ich habe diese zwei spalten (F & G) 
+nicht richtig realisiert. jedenfalls müßte das jetzt stimmen. die änderungen sind gelb markiert.
+die gelbe markierungen in den spalten H & I sind auch änderungen, kleine ungereimtheiten, die mir jetzt bei der 
+kontrolle aufgefallen sind.
+
+die gelbe markierung in der spalte B kennzeichnet entweder neue fotos oder fotos, die ich im ordner bilder umbenannt habe.
+beim projekt Everything begins to float gibt es zwei fotos: float_START (für die EN startseite buchstabe E) 
+und float_PRJ for die projektseite für beide sprachen. im prinzip ist das wie bei buchstabe J Jem Cohen Little, Big, and Far. hier gibt es auch zwei fotos jem_START und jem_PRJ. das hast du genau so gemacht, wie ich mir das vorgestellt habe, aber ich weiß nicht, wo ich in zukunft die zwei fotos in der tabelle eintragen soll.
+ich habe ein paar fotos aus dem ordner Bilder gelöscht. ich werde in zukunft die namen konsequent benennen. 
+wo relevant mit _START bzw _PRJ
+
+ich habe die zwei neuen startseiten fotos für workingman's death und xenakis gelöscht. es gibt für das jeweilige projekt 
+jetzt nur mehr ein foto. für das problem, dass man den text auf der startseite nicht lesen konnte, hätte ich einen 
+anderen vorschlag: kann man die fotos für die letzte buchstabenreihe (U, V, W, X) auch auf der seite abbilden lassen? 
+für die obere buchstabenreihe bzw. für Z poppen sie ja auch auf der seite auf.
+
+letzter punkt: du hast eine neue katagorie hinzugefügt. ich hätte lieber auch die CDs unter musik/music bzw. 
+literatur/literature. die kategorien "musik" und "literatur" sind so schön allgemein. und CDs hat ja niemand 
+mehr heutzutage, auch wenn sie noch produziert werden... Fantasy Studies und skin double bitte zu musik und 
+... über Bäume, Hügel, und hintere Hindernisse zu literatur. danke!
