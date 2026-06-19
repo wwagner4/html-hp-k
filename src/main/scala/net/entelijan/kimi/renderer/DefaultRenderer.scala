@@ -317,7 +317,7 @@ class DefaultRenderer extends Renderer {
     }
 
     val placements =
-      page.projects.filter(_.title.value(Ger).homepageAlph.isDefined).map(calcImageOffset(_, Ger))
+      page.projects.filter(_.title.value(lang).homepageAlph.isDefined).map(calcImageOffset(_, lang))
     s"""<div id="startAphaBlock">
        |<div>${alph('A', 'E', lang)}</div>
        |<div>${alph('F', 'J', lang)}</div>

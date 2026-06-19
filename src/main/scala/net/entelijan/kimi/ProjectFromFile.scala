@@ -107,11 +107,12 @@ object ProjectFromFile {
     }
 
     def createTitle: MultiLang[ProjectTitle] = {
-      val hpAlph = line(3).trim().toUpperCase()
-      val alphDe = line(9).trim().toUpperCase()
-      val namDe  = line(10).trim()
-      val alphEn = line(12).trim().toUpperCase()
-      val namEn  = line(13).trim()
+      val hpAlphDe = line(3).trim().toUpperCase()
+      val hpAlphEn = line(4).trim().toUpperCase()
+      val alphDe   = line(9).trim().toUpperCase()
+      val namDe    = line(10).trim()
+      val alphEn   = line(12).trim().toUpperCase()
+      val namEn    = line(13).trim()
 
       def createHomepageAlph(char: String): Option[Char] = char match {
         case ""  => None
@@ -121,13 +122,13 @@ object ProjectFromFile {
       def create(alphStringGer: AlphString, alphStringEng: AlphString): MultiLang[ProjectTitle] = {
         new MultiLang[ProjectTitle] {
           def ger: ProjectTitle = new ProjectTitle {
-            override def homepageAlph: Option[Char] = createHomepageAlph(hpAlph)
+            override def homepageAlph: Option[Char] = createHomepageAlph(hpAlphDe)
 
             def name: AlphString = alphStringGer
           }
 
           def eng: ProjectTitle = new ProjectTitle {
-            override def homepageAlph: Option[Char] = createHomepageAlph(hpAlph)
+            override def homepageAlph: Option[Char] = createHomepageAlph(hpAlphEn)
 
             def name: AlphString = alphStringEng
           }
