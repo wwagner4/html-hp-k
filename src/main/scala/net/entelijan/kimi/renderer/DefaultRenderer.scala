@@ -162,53 +162,46 @@ class DefaultRenderer extends Renderer {
 
     def calcImageOffset(prj: Project, lang: Lang): ImagePlacement = {
       require(prj.title.value(lang).homepageAlph.isDefined)
-      val img         = prj.images.imageInfo(lang, ILStart)
-      val w           = img.width
-      val cw          = 60
-      val ch          = 75
-      val top         = 80
-      val blockWidth  = 300
-      val blockHeight = 305
+      val img = prj.images.imageInfo(lang, ILStart)
+      val w   = img.width
+      val cw  = 60
+      val ch  = 75
+      val top = 80
+      val bw  = 300
+      val bh  = 305
       val re = prj.title.value(lang).homepageAlph.get match {
         case 'A' => ImagePlacement(prj, TA_RightTop, -w + cw, -top, img.name)
         case 'B' => ImagePlacement(prj, TA_RightTop, -w + cw, -top, img.name)
         case 'C' => ImagePlacement(prj, TA_RightTop, -w + cw, -top, img.name)
-        case 'D' => ImagePlacement(prj, TA_LeftTop, blockWidth - cw, -top, img.name)
+        case 'D' => ImagePlacement(prj, TA_LeftTop, bw - cw, -top, img.name)
 
-        case 'E' => ImagePlacement(prj, TA_LeftTop, blockWidth - cw, -top, img.name)
+        case 'E' => ImagePlacement(prj, TA_LeftTop, bw - cw, -top, img.name)
         case 'F' => ImagePlacement(prj, TA_RightTop, -w + cw, -top, img.name)
         case 'G' => ImagePlacement(prj, TA_RightTop, -w + cw, -top, img.name)
-        case 'H' => ImagePlacement(prj, TA_LeftTop, blockWidth - cw, -top, img.name)
-        case 'I' => ImagePlacement(prj, TA_LeftTop, blockWidth - cw, -top, img.name)
-        case 'J' => ImagePlacement(prj, TA_LeftTop, blockWidth - cw, -top, img.name)
+        case 'H' => ImagePlacement(prj, TA_LeftTop, bw - cw, -top, img.name)
+        case 'I' => ImagePlacement(prj, TA_LeftTop, bw - cw, -top, img.name)
+        case 'J' => ImagePlacement(prj, TA_LeftTop, bw - cw, -top, img.name)
 
         case 'K' => ImagePlacement(prj, TA_RightTop, -w + cw, -top, img.name)
         case 'L' => ImagePlacement(prj, TA_RightTop, -w + cw, -top, img.name)
         case 'M' => ImagePlacement(prj, TA_RightTop, -w + cw, -top, img.name)
-        case 'N' => ImagePlacement(prj, TA_LeftTop, blockWidth - cw, -top, img.name)
-        case 'O' => ImagePlacement(prj, TA_LeftTop, blockWidth - cw, -top, img.name)
+        case 'N' => ImagePlacement(prj, TA_LeftTop, bw - cw, -top, img.name)
+        case 'O' => ImagePlacement(prj, TA_LeftTop, bw - cw, -top, img.name)
 
         case 'P' => ImagePlacement(prj, TA_RightTop, -w + cw, -top, img.name)
         case 'Q' => ImagePlacement(prj, TA_RightTop, -w + cw, -top, img.name)
-        case 'R' => ImagePlacement(prj, TA_LeftTop, blockWidth - cw, -top, img.name)
-        case 'S' => ImagePlacement(prj, TA_LeftTop, blockWidth - cw, -top, img.name)
-        case 'T' => ImagePlacement(prj, TA_LeftTop, blockWidth - cw, -top, img.name)
+        case 'R' => ImagePlacement(prj, TA_LeftTop, bw - cw, -top, img.name)
+        case 'S' => ImagePlacement(prj, TA_LeftTop, bw - cw, -top, img.name)
+        case 'T' => ImagePlacement(prj, TA_LeftTop, bw - cw, -top, img.name)
 
-        case 'U' => ImagePlacement(prj, TA_RightBottom, -w + cw, blockHeight - (3 * ch), img.name)
-        case 'V' =>
-          ImagePlacement(
-            prj,
-            TA_RightBottom,
-            (blockWidth / 2) - (w / 2),
-            blockHeight - ch,
-            img.name
-          )
+        case 'U' => ImagePlacement(prj, TA_LeftTop, -w + cw, bh - (3 * ch), img.name)
+        case 'V' => ImagePlacement(prj, TA_LeftTop, -w + cw, bh - (3 * ch), img.name)
         case 'W' =>
-          ImagePlacement(prj, TA_LeftBottom, (blockWidth / 2) - (w / 2), blockHeight - ch, img.name)
+          ImagePlacement(prj, TA_LeftTop, -w + cw, bh - (3 * ch), img.name)
         case 'X' =>
-          ImagePlacement(prj, TA_LeftBottom, (blockWidth / 2) - (w / 2), blockHeight - ch, img.name)
+          ImagePlacement(prj, TA_RightTop, bw - cw, bh - (3 * ch), img.name)
         case 'Z' =>
-          ImagePlacement(prj, TA_LeftBottom, blockWidth - cw, blockHeight - (3 * ch), img.name)
+          ImagePlacement(prj, TA_RightTop, bw - cw, bh - (3 * ch), img.name)
         case x => throw new IllegalStateException("Illegal hompageAlph character '%s'" format x)
       }
       re
