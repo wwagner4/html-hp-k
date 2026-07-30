@@ -1,0 +1,27 @@
+sorry, dass es so lange bei mir gedauert hat. es schaut super aus, es gibt aber noch ein paar änderungen: 
+
+1) ich habe im shared folder>bilder beim projekt "oswald egger" die bilder neu benannt, 
+damit sie getauscht werden "quadratsch_START" (ausgeklappte CD) 
+und "quadratsch_PRJ" (CD zu, wo man nur quadratsch sieht und nichts vom oswald egger), 
+
+2) beim projekt workingman's death ist das foto auf der startseite richtig, auf der projektseite soll genau dasselbe 
+foto wieder gezeigt. das foto, das jetzt auf der projektseite ist, kann überhaupt gelöscht werden. 
+
+3) beim projekt butterfly stroke ist das foto auf der startseite richtig, auf der projektseite soll das 
+foto von der startseite verwendet werden. das alte foto von der schwimmerin kann überhaupt gelöscht werden 
+
+(ich habe es aus dem shared folder gelöscht). 
+
+sonst ist alles perfekt... 
+die mobilversion ist noch ein bißchen durcheinander 
+
+lg kimi
+
+--------------------------------------------
+
+1) Projekt Oswald Egger quadratisch. Bei den Biledrn PRJ - START tauschen.
+
+2) Projekt wmd. Bild das derzeit auf der Projektseite angezeigt wird löschen.
+
+3) Projekt butterfly. Nur das Foto von der Startseite verwenden. Das aktuelle Projekt foto löschen.
+ 
